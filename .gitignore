@@ -7,7 +7,7 @@ venv/
 .env.*
 
 # Training outputs / checkpoints / datasets
-outputs/
+# outputs/
 data/
 HumanML3D/data/
 *.pth
@@ -21,7 +21,7 @@ HumanML3D/data/
 .idea/
 .DS_Store
 Thumbs.db
-*.data
-MoConVQ/out/
+# *.data
+# MoConVQ/out/
 MoConVQ/Data/
 MoConVQ/_extract_opensource/
