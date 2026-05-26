@@ -21,6 +21,7 @@ dist/
 # Training outputs / checkpoints / datasets
 # outputs/
 data/
+HumanML3D/
 HumanML3D/data/
 *.pth
 *.pt
