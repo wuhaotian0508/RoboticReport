@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  27 MAY 2026 22:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  27 MAY 2026 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -195,85 +195,97 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 56--56
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
 []\OT1/ptm/m/n/10 Table 2: LoRA dis-til-la-tion loss sum-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--56
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
 \OT1/ptm/m/n/10 mary. Val-ues are mea-sured from
  []
 
-<../../outputs/figures/lora_loss_curve.png, id=11, 578.16pt x 303.534pt>
+<../../outputs/figures/lora_loss_curve.png, id=8, 578.16pt x 303.534pt>
 File: ../../outputs/figures/lora_loss_curve.png Graphic file (type png)
 <use ../../outputs/figures/lora_loss_curve.png>
 Package pdftex.def Info: ../../outputs/figures/lora_loss_curve.png  used on inp
-ut line 73.
+ut line 92.
 (pdftex.def)             Requested size: 250.113pt x 131.30907pt.
+<../../outputs/figures/lora_train_val_loss.png, id=10, 433.62pt x 289.08pt>
+File: ../../outputs/figures/lora_train_val_loss.png Graphic file (type png)
+<use ../../outputs/figures/lora_train_val_loss.png>
+Package pdftex.def Info: ../../outputs/figures/lora_train_val_loss.png  used on
+ input line 98.
+(pdftex.def)             Requested size: 250.113pt x 166.74461pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 \OT1/ptm/m/n/10 The base-line gen-er-ated ten BVH files un-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 \OT1/pcr/m/n/10 outputs/baseline/project[]prompts/\OT1/ptm/m/n/10 . The
  []
 
 
-Underfull \hbox (badness 5022) in paragraph at lines 78--79
+Underfull \hbox (badness 5022) in paragraph at lines 103--104
 \OT1/ptm/m/n/10 LoRA adapter gen-er-ated the same ten prompts un-der
  []
 
 
-Underfull \hbox (badness 2903) in paragraph at lines 78--79
+Underfull \hbox (badness 2903) in paragraph at lines 103--104
 \OT1/pcr/m/n/10 outputs/finetune[]lora[]200[]samples/\OT1/ptm/m/n/10 . Se-lecte
 d
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 78--79
+Underfull \hbox (badness 1005) in paragraph at lines 103--104
 \OT1/ptm/m/n/10 base-line and LoRA out-puts were ren-dered as stick-figure
  []
 
-<../../outputs/figures/lora_qualitative_frames.png, id=13, 578.16pt x 867.24pt>
+<../../outputs/figures/lora_qualitative_frames.png, id=11, 578.16pt x 867.24pt>
 
 File: ../../outputs/figures/lora_qualitative_frames.png Graphic file (type png)
 
 <use ../../outputs/figures/lora_qualitative_frames.png>
 Package pdftex.def Info: ../../outputs/figures/lora_qualitative_frames.png  use
-d on input line 82.
+d on input line 107.
 (pdftex.def)             Requested size: 316.33763pt x 474.49568pt.
-
-Underfull \hbox (badness 1360) in paragraph at lines 94--95
+[2 <../../outputs/figures/lora_loss_curve.png> <../../outputs/figures/lora_trai
+n_val_loss.png>]
+Underfull \hbox (badness 1360) in paragraph at lines 142--143
 \OT1/ptm/m/n/10 We re-pro-duced the Mo-ConVQ base-line, cu-rated a style-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 \OT1/ptm/m/n/10 focused Hu-manML3D cap-tion sub-set, im-ple-mented a
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 94--95
+Underfull \hbox (badness 4144) in paragraph at lines 142--143
 \OT1/ptm/m/n/10 parameter-efficient LoRA dis-til-la-tion pipeline, trained a
  []
 
-(final_report.bbl) [2 <../../outputs/figures/lora_loss_curve.png>] [3 <../../ou
-tputs/figures/lora_qualitative_frames.png>] (final_report.aux)
+(final_report.bbl) [3
+
+] [4 <../../outputs/figures/lora_qualitative_frames.png>]
+(final_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2087 strings out of 467871
- 34797 string characters out of 5418376
- 452120 words of memory out of 5000000
- 30965 multiletter control sequences out of 15000+600000
+ 2094 strings out of 467871
+ 35160 string characters out of 5418376
+ 455120 words of memory out of 5000000
+ 30972 multiletter control sequences out of 15000+600000
  641129 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,1124b,232s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,1234b,232s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmr10.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmr7.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -282,9 +294,9 @@ pe1/urw/courier/ucrr8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/
 type1/urw/times/utmb8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/
 type1/urw/times/utmr8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on final_report.pdf (3 pages, 711932 bytes).
+Output written on final_report.pdf (4 pages, 760938 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

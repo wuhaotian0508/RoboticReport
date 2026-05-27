@@ -118,6 +118,36 @@ outputs/figures/lora_qualitative_frames.png
 outputs/comparison_lora_200/comparison_manifest.csv
 ```
 
+## 7. Quantitative Proxy Evaluation
+
+Measure whether the adapter learned the teacher pseudo-token distribution:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py `
+  --run-dir outputs\finetune_lora_200 `
+  --val-cache outputs\finetune_lora_val\distill_cache.pt `
+  --output-csv outputs\tables\lora_train_val_loss.csv
+```
+
+Measure BVH style-direction proxy metrics for baseline and LoRA outputs:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py `
+  --baseline-dir outputs\baseline\project_prompts `
+  --lora-dir outputs\finetune_lora_200_samples `
+  --output-dir outputs\metrics_lora_200
+```
+
+Measured final proxy result:
+
+```text
+outputs/metrics_lora_200/style_proxy_scores.csv
+total LoRA wins: 15 / 22 predefined style-direction comparisons
+```
+
+This is a project-specific proxy evaluation, not official HumanML3D FID or
+R-Precision.
+
 ## Report Wording
 
 Use this description:

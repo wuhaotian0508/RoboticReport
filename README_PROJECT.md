@@ -9,7 +9,7 @@ humanoid motion generation.
 - `proposal.pdf`: accepted proposal.
 - `PROJECT_PLAN.md`: project execution plan.
 - `DELIVERABLES.md`: current submission checklist.
-- `scripts/`: reproducible tools for data curation, baseline generation, LoRA distillation, generation, rendering, and summarization.
+- `scripts/`: reproducible tools for data curation, baseline generation, LoRA distillation, generation, rendering, train/validation loss evaluation, BVH proxy metrics, and summarization.
 - `data/`: prompt lists, style lexicon, style-filtered HumanML3D metadata, and audit templates.
 - `outputs/`: measured baseline, LoRA, rendered comparison, table, figure, and log outputs.
 - `report/`: midterm and final LaTeX reports with shared references.
@@ -28,7 +28,7 @@ The implemented final method is therefore a parameter-efficient backup:
 2. Use pretrained MoConVQ/MoConGPT as a teacher to generate pseudo token targets.
 3. Freeze the pretrained generator and train only LoRA updates in the text-conditioned transformer.
 4. Generate BVH outputs for the same prompts as the baseline.
-5. Report measured training loss and qualitative comparisons. Do not claim FID or R-Precision without a compatible evaluator.
+5. Report measured training loss, train/validation pseudo-token loss, BVH kinematic proxy metrics, and qualitative comparisons. Do not claim FID or R-Precision without a compatible evaluator.
 
 ## Conda Environment
 
@@ -66,6 +66,10 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lor
 
 # Render selected baseline/LoRA comparisons and summarize figures/tables
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_lora_results.py --run-dir outputs\finetune_lora_200 --comparison-dir outputs\comparison_lora_200
+
+# Evaluate checkpoint-level pseudo-token loss and BVH style proxy metrics
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py --run-dir outputs\finetune_lora_200 --val-cache outputs\finetune_lora_val\distill_cache.pt --output-csv outputs\tables\lora_train_val_loss.csv
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py --baseline-dir outputs\baseline\project_prompts --lora-dir outputs\finetune_lora_200_samples --output-dir outputs\metrics_lora_200
 ```
 
 ## Report Compilation
@@ -79,7 +83,8 @@ Compiled PDFs are written next to their `.tex` sources if LaTeX succeeds.
 ## Integrity Note
 
 This workspace reports only measured results: HumanML3D style subset counts,
-baseline BVH outputs, LoRA distillation loss, LoRA checkpoints, generated BVHs,
+baseline BVH outputs, LoRA distillation loss, checkpoint-level train/validation
+pseudo-token loss, LoRA checkpoints, generated BVHs, BVH style proxy metrics,
 and rendered qualitative comparisons. It does not report official FID or
 R-Precision because the current data/model formats are not compatible with that
 evaluation without additional conversion or an official evaluator bridge.
