@@ -1,0 +1,4 @@
+case,baseline_video,lora_video
+Slow deliberate walk,outputs\comparison_lora_200\baseline_slow.mp4,outputs\comparison_lora_200\lora_slow.mp4
+Tai chi style,outputs\comparison_lora_200\baseline_taichi.mp4,outputs\comparison_lora_200\lora_taichi.mp4
+Heavy tired walk,outputs\comparison_lora_200\baseline_heavy.mp4,outputs\comparison_lora_200\lora_heavy.mp4

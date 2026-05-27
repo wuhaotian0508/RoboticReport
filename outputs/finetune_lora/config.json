@@ -1,0 +1,18 @@
+{
+  "method": "lora_distillation",
+  "train_csv": "data/style_subset_small/style_train_small.csv",
+  "cache_path": "outputs/finetune_distill/distill_cache.pt",
+  "examples": 20,
+  "epochs": 5,
+  "lr": 0.0001,
+  "weight_decay": 0.0001,
+  "max_length": 50,
+  "lora_rank": 8,
+  "lora_alpha": 16.0,
+  "lora_dropout": 0.05,
+  "target_prefix": "trans_temporal",
+  "lora_modules": 132,
+  "trainable_params": 1966080,
+  "total_params": 195591680,
+  "trainable_fraction": 0.010051961310419747
+}
