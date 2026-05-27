@@ -33,8 +33,7 @@ The project follows the course direction "Language-guided motion generation": re
    - small split creation
    - baseline generation
    - style-adapter fine-tuning
-   - LoRA train/validation pseudo-token loss evaluation
-   - BVH motion-style proxy metric evaluation
+   - FID/R-Precision evaluation from extracted features
 3. Prompt lists, audit template, and output folder structure.
 4. Checklists for running the project once HumanML3D and pretrained weights are available.
 
@@ -60,24 +59,17 @@ Current status: completed locally. The official pretrained files are present, to
 
 ### Stage 3: Adaptation
 
-- Diagnose HumanML3D/MoConVQ format compatibility.
-- Use pretrained MoConVQ as a teacher to create pseudo token targets when true MoConVQ token labels are unavailable.
-- Freeze the pretrained generator and train only LoRA updates using `scripts/train_style_lora_distill.py`.
-- Save loss logs and checkpoints under `outputs/finetune_lora_200/`.
-- Continue the selected LoRA checkpoint with a lower learning rate when measured proxy metrics improve without changing the evaluation rule.
-
-Current status: completed for a 200-caption LoRA distillation run plus a two-epoch low-learning-rate continuation. The run trains 1,966,080 parameters out of 195,591,680 total parameters and writes `train_log.csv`, `style_lora_last.pth`, and epoch checkpoints.
+- Tokenize selected HumanML3D motions using the MoConVQ tokenizer.
+- Fine-tune only the text-to-motion transformer using `scripts/train_style_adapter.py`.
+- Use fp16, gradient accumulation, and early stopping for RTX 4060 8 GB.
+- Save loss logs and checkpoints under `outputs/finetune/`.
 
 ### Stage 4: Evaluation
 
 - Generate baseline and adapted motions for the same style prompts.
-- Render selected side-by-side qualitative comparisons.
-- Summarize LoRA loss and qualitative artifacts using `scripts/summarize_lora_results.py`.
-- Evaluate checkpoint-level train/validation pseudo-token loss using `scripts/evaluate_lora_distill_loss.py`.
-- Compare generated BVH files with kinematic proxy metrics using `scripts/compute_bvh_proxy_metrics.py`.
-- Do not report FID or R-Precision until a compatible evaluator bridge is implemented.
-
-Current status: baseline and LoRA BVHs exist for the same ten prompts, and the selected continued-LoRA run has deterministic BVHs for the five style prompts. Three updated baseline/LoRA video pairs, a qualitative frame grid, a loss curve, an epoch summary table, train/validation pseudo-token loss, and BVH style proxy metrics have been generated. The final selected LoRA run improves 18 of 22 predefined style-direction proxy comparisons, but does not improve every metric.
+- Extract motion features using the selected evaluator.
+- Run `scripts/evaluate_motion_metrics.py` for FID and retrieval metrics.
+- Report full-test retention and style-subset improvement.
 
 ### Stage 5: Reporting
 
@@ -86,4 +78,4 @@ Current status: baseline and LoRA BVHs exist for the same ten prompts, and the s
 
 ## Current Local Workspace Status
 
-This workspace contains MoConVQ source code, `base.bvh`, `track.bvh`, official pretrained assets, HumanML3D parquet data, verified baseline outputs, and a measured LoRA distillation run. The package avoids fabricated FID and R-Precision values because the available HumanML3D parquet features are not direct MoConVQ token supervision and no compatible official evaluator bridge has been verified. The reported quantitative evidence is limited to measured pseudo-token distillation loss and BVH kinematic proxy metrics.
+This workspace contains MoConVQ source code, `base.bvh`, `track.bvh`, official pretrained assets, and verified baseline outputs. It does not currently contain the external HumanML3D dataset. Therefore, this package avoids fabricated FID, R-Precision, or fine-tuning numbers and provides reproducible scripts plus report drafts that clearly mark the current diagnostic status.

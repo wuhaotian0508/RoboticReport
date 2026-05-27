@@ -1,91 +1,83 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[10pt,twocolumn]{article}
+
+\usepackage[margin=0.72in]{geometry}
 \usepackage{times}
-\usepackage[numbers]{natbib}
-\usepackage{multicol}
-\usepackage[bookmarks=true]{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
 
-\pdfinfo{
-   /Author (Haotian Wu, Yuhua Luo, Xuyang Yuan)
-   /Title  (Style-Aware Adaptation for Language-Conditioned Humanoid Motion Generation)
-   /Subject (Language-guided humanoid motion generation)
-   /Keywords (MoConVQ; HumanML3D; LoRA; humanoid motion generation)
-}
-
 \title{Style-Aware Adaptation for Language-Conditioned Humanoid Motion Generation}
-\author{\IEEEauthorblockN{Haotian Wu, Yuhua Luo, and Xuyang Yuan}}
+\author{Haotian Wu \and Yuhua Luo \and Xuyang Yuan}
+\date{}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This midterm report summarizes progress toward style-aware adaptation of MoConVQ for language-conditioned humanoid motion generation. We reproduced the pretrained MoConVQ inference pipeline, generated ten baseline BVH motions, built split-preserving HumanML3D style-subset tooling, and identified a key practical constraint: the available HumanML3D parquet export contains processed motion features rather than MoConVQ-compatible token targets. The next phase therefore uses parameter-efficient LoRA distillation as a faithful backup to the proposal's frozen-backbone adaptation plan.
+Language-conditioned humanoid motion generation provides an intuitive interface for controlling animated characters and humanoid robots. This project studies style-aware adaptation of MoConVQ, a physics-based motion generation framework with discrete motion representations. Since the proposal, we have reproduced the pretrained inference pipeline, verified motion tokenization and decoding, and generated baseline motions for ten generic and style-related prompts. We also implemented the data-curation and training-diagnostic entry points needed for a HumanML3D style subset. HumanML3D is not yet present in the local workspace, so we report the current stage as an honest diagnostic midterm: baseline inference is complete, style-subset tooling is ready, and fine-tuning is gated on preparing text-motion annotations and MoConVQ token targets.
 \end{abstract}
 
-\IEEEpeerreviewmaketitle
-
 \section{Problem and Motivation}
-The goal is to generate humanoid motion from natural language while preserving both action semantics and requested style. MoConVQ is a strong robotics baseline because it uses discrete motion representations and physics-based tracking control \cite{yao2024moconvq}. However, style-specific prompts such as slow deliberate walking, tai chi-like movement, graceful dance, and heavy tired walking may be underrepresented in general text-to-motion training data.
+Given a natural-language prompt, the goal is to generate a 3D humanoid motion sequence that captures both the action semantics and the requested style. MoConVQ is a suitable robotics baseline because it combines discrete motion representations with physics-based motion control \cite{yao2024moconvq}. However, style-specific prompts such as slow deliberate motion, tai chi-like motion, or graceful dance may remain underspecified by a general text-to-motion model. Our project therefore focuses on parameter-efficient style adaptation under limited compute, while avoiding training the motion representation backbone from scratch.
 
 \section{Related Work}
-HumanML3D provides paired motion and text descriptions for text-driven motion generation \cite{guo2022humanml3d}. MDM models raw motion with diffusion \cite{tevet2023mdm}, while T2M-GPT demonstrates the effectiveness of discrete motion tokens for text-to-motion generation \cite{zhang2023t2mgpt}. Our project follows the discrete-token direction but keeps MoConVQ's motion representation and controller frozen.
+HumanML3D provides paired motion and text descriptions for language-conditioned motion generation and is the planned source for our style-focused subset \cite{guo2022humanml3d}. MDM represents diffusion-based raw-motion generation \cite{tevet2023mdm}, while T2M-GPT shows the effectiveness of discrete motion tokens for text-to-motion generation \cite{zhang2023t2mgpt}. Our work differs from full model training: we keep MoConVQ's motion representation and decoder fixed and adapt only the language-conditioned generation component when tokenized supervision is available.
 
 \section{Technical Approach}
-The intended proposal pipeline freezes the VQ representation, codebook, decoder, and controller, while adapting only the language-conditioned code generator.
+The baseline inference pipeline is:
 
 \begin{figure}[h]
 \centering
 \fbox{\begin{minipage}{0.94\linewidth}
 \centering
-Text prompt $\rightarrow$ text encoder $\rightarrow$ language transformer $\rightarrow$ discrete motion codes $\rightarrow$ MoConVQ decoder/controller $\rightarrow$ BVH humanoid motion
+Text prompt $\rightarrow$ T5 text encoder $\rightarrow$ language transformer $\rightarrow$ discrete motion code sequence $\rightarrow$ MoConVQ decoder/controller $\rightarrow$ BVH humanoid motion
 \end{minipage}}
-\caption{Project pipeline. Adaptation is restricted to the language-conditioned generator; the motion backbone remains frozen.}
+\caption{Project pipeline. The motion representation backbone and physics-based decoder are kept frozen; adaptation is limited to the text-conditioned code generator.}
 \end{figure}
 
-For data curation, we filter style-related captions independently within each HumanML3D split using five keyword groups: controlled motion, graceful smooth motion, expressive dance, energetic dynamics, and heavy/awkward motion. This prevents leakage across train, validation, and test sets.
+For data curation, we preserve the official HumanML3D train, validation, and test split files. Keyword filtering is applied independently inside each split using a lexicon with controlled, graceful, dance, energetic, and heavy/awkward style groups. This prevents leakage from validation or test captions into training. A 30-sample manual audit table is generated to distinguish true style-related captions from ambiguous keyword matches.
 
-\section{Midterm Progress}
-Baseline reproduction is complete. The official pretrained MoConVQ assets are present locally, tokenization and decoding have been verified, and ten prompts have produced BVH files under \texttt{outputs/baseline/project\_prompts/}.
+For adaptation, the intended objective is cross-entropy over ground-truth MoConVQ token sequences. The upstream MoConVQ release provides pretrained inference weights but not the original MoConGPT training code, so our current implementation includes a diagnostic training entry point that checks for style captions, token targets, and pretrained files before enabling optimization.
+
+\section{Preliminary Results}
+Table~\ref{tab:progress} summarizes current implementation status. Baseline reproduction is complete: tokenization and decoding both run locally, the default text-to-motion prompt runs, and ten project prompts generate BVH files under the MoConVQ output directory. The generated prompt set includes both generic actions and style-related prompts such as deliberate walking, graceful dancing, tai chi-like motion, energetic jumping, and tired heavy walking.
 
 \begin{table}[h]
 \centering
 \caption{Implementation progress at midterm.}
+\label{tab:progress}
 \footnotesize
 \begin{tabular}{p{0.30\linewidth}p{0.17\linewidth}p{0.31\linewidth}}
 \hline
 Component & Status & Evidence \\
 \hline
 Environment & Complete & CUDA PyTorch and local extensions verified \\
-Baseline inference & Complete & 10 BVH files generated \\
-Style filtering & Complete & Split-preserving parquet filter \\
-Small splits & Complete & 200/40/40 style subset files \\
-Fine-tuning & Planned & LoRA distillation selected after format diagnosis \\
+Baseline inference & Complete & Token/decode and 10 BVHs generated \\
+Style subset tooling & Ready & Split-preserving filter and audit sampler \\
+HumanML3D data & Pending & Expected under datasets/ \\
+Fine-tuning loop & Diagnostic & Waiting for MoConVQ token targets \\
 \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[h]
 \centering
-\caption{Style subset statistics from the available HumanML3D parquet export.}
-\footnotesize
-\begin{tabular}{lrr}
+\caption{Style-subset status. Counts will be filled by the filtering script after HumanML3D is placed locally.}
+\label{tab:style}
+\begin{tabular}{p{0.20\linewidth}p{0.27\linewidth}p{0.27\linewidth}}
 \hline
-Split & Matched captions & Matched motion IDs \\
+Split & Matched captions & Matched motions \\
 \hline
-Train & 3332 & 2682 \\
-Validation & 214 & 168 \\
-Test & 586 & 486 \\
+Train & pending & pending \\
+Val & pending & pending \\
+Test & pending & pending \\
 \hline
 \end{tabular}
 \end{table}
 
-\section{Risk and Next Step}
-The main technical risk is format mismatch. The available HumanML3D parquet export contains processed 263-D features, while MoConVQ supervised fine-tuning requires discrete token sequences in its own representation. A direct conversion is nontrivial and could introduce invalid supervision.
+\section{Remaining Work}
+The next milestone is to place HumanML3D annotations under \texttt{datasets/HumanML3D}, run the style-subset filter, manually audit sampled captions, and tokenize selected motions into MoConVQ code sequences. If tokenization succeeds, we will fine-tune the language-conditioned generator with fp16 and gradient accumulation. If full fine-tuning remains unstable, the final report will present a diagnostic analysis and use inference-time sampling or frozen-layer adaptation as the backup route. We will not report FID, R-Precision, training loss, or style improvement until those quantities are actually measured.
 
-The final-stage plan is therefore to use a parameter-efficient backup: pretrained MoConVQ serves as a teacher to generate pseudo token targets for style captions, and a student trains only LoRA updates in the language-conditioned transformer. We will report only measured loss, generated BVH outputs, and qualitative comparisons unless a compatible FID/R-Precision evaluator is implemented.
-
-\bibliographystyle{plainnat}
+\bibliographystyle{plain}
 \bibliography{../shared/references}
 
 \end{document}
