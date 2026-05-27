@@ -33,7 +33,8 @@ The project follows the course direction "Language-guided motion generation": re
    - small split creation
    - baseline generation
    - style-adapter fine-tuning
-   - FID/R-Precision evaluation from extracted features
+   - LoRA train/validation pseudo-token loss evaluation
+   - BVH motion-style proxy metric evaluation
 3. Prompt lists, audit template, and output folder structure.
 4. Checklists for running the project once HumanML3D and pretrained weights are available.
 
@@ -71,9 +72,11 @@ Current status: completed for a 200-caption LoRA distillation run. The run train
 - Generate baseline and adapted motions for the same style prompts.
 - Render selected side-by-side qualitative comparisons.
 - Summarize LoRA loss and qualitative artifacts using `scripts/summarize_lora_results.py`.
+- Evaluate checkpoint-level train/validation pseudo-token loss using `scripts/evaluate_lora_distill_loss.py`.
+- Compare generated BVH files with kinematic proxy metrics using `scripts/compute_bvh_proxy_metrics.py`.
 - Do not report FID or R-Precision until a compatible evaluator bridge is implemented.
 
-Current status: baseline and LoRA BVHs exist for the same ten prompts. Three baseline/LoRA video pairs, a qualitative frame grid, a loss curve, and an epoch summary table have been generated.
+Current status: baseline and LoRA BVHs exist for the same ten prompts. Three baseline/LoRA video pairs, a qualitative frame grid, a loss curve, an epoch summary table, train/validation pseudo-token loss, and BVH style proxy metrics have been generated. The final selected LoRA run improves 15 of 22 predefined style-direction proxy comparisons, but does not improve every style case.
 
 ### Stage 5: Reporting
 
@@ -82,4 +85,4 @@ Current status: baseline and LoRA BVHs exist for the same ten prompts. Three bas
 
 ## Current Local Workspace Status
 
-This workspace contains MoConVQ source code, `base.bvh`, `track.bvh`, official pretrained assets, HumanML3D parquet data, verified baseline outputs, and a measured LoRA distillation run. The package avoids fabricated FID and R-Precision values because the available HumanML3D parquet features are not direct MoConVQ token supervision and no compatible official evaluator bridge has been verified.
+This workspace contains MoConVQ source code, `base.bvh`, `track.bvh`, official pretrained assets, HumanML3D parquet data, verified baseline outputs, and a measured LoRA distillation run. The package avoids fabricated FID and R-Precision values because the available HumanML3D parquet features are not direct MoConVQ token supervision and no compatible official evaluator bridge has been verified. The reported quantitative evidence is limited to measured pseudo-token distillation loss and BVH kinematic proxy metrics.

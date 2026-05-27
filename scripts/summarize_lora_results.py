@@ -59,6 +59,28 @@ def plot_loss(rows: list[dict[str, str]], output: Path) -> None:
     plt.close(fig)
 
 
+def plot_train_val_loss(path: Path, output: Path) -> None:
+    if not path.exists():
+        return
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+    epochs = [int(row["epoch"]) for row in rows]
+    train = [float(row["train_loss"]) for row in rows]
+    val = [float(row["val_loss"]) for row in rows]
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig, ax = plt.subplots(figsize=(6, 4), dpi=160)
+    ax.plot(epochs, train, marker="o", label="Train cache")
+    ax.plot(epochs, val, marker="o", label="Validation cache")
+    ax.set_xlabel("Checkpoint epoch")
+    ax.set_ylabel("Mean distillation loss")
+    ax.set_title("LoRA train/validation distillation loss")
+    ax.grid(True, alpha=0.25)
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(output)
+    plt.close(fig)
+
+
 def video_frame(path: Path, fraction: float = 0.45):
     reader = imageio.get_reader(path)
     try:
@@ -116,6 +138,10 @@ def main() -> int:
     rows = read_losses(args.run_dir / "train_log.csv")
     write_epoch_summary(rows, args.tables_dir / "lora_training_summary.csv")
     plot_loss(rows, args.figures_dir / "lora_loss_curve.png")
+    plot_train_val_loss(
+        args.tables_dir / "lora_train_val_loss.csv",
+        args.figures_dir / "lora_train_val_loss.png",
+    )
 
     pairs = [
         (
