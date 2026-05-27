@@ -98,21 +98,15 @@ def load_pretrained_gpt(model, device):
     model.load_state_dict(strip_module_prefix(state), strict=True)
 
 
-def read_prompts(args) -> list[tuple[int, str]]:
+def read_prompts(args) -> list[str]:
     if args.prompt_file:
         with Path(args.prompt_file).open("r", encoding="utf-8") as f:
-            prompts = [
-                (idx, line.strip())
-                for idx, line in enumerate(f)
+            return [
+                line.strip()
+                for line in f
                 if line.strip() and not line.lstrip().startswith("#")
             ]
-    else:
-        prompts = [(0, args.prompt)]
-    if args.start_index is not None:
-        prompts = [(idx, prompt) for idx, prompt in prompts if idx >= args.start_index]
-    if args.end_index is not None:
-        prompts = [(idx, prompt) for idx, prompt in prompts if idx <= args.end_index]
-    return prompts
+    return [args.prompt]
 
 
 def text2bert(text: str, tokenizer, encoder, device):
@@ -173,9 +167,6 @@ def main() -> int:
     parser.add_argument("--output-dir", default="outputs/finetune_lora_samples")
     parser.add_argument("--device", type=int, default=0)
     parser.add_argument("--max-length", type=int, default=50)
-    parser.add_argument("--seed", type=int, default=None)
-    parser.add_argument("--start-index", type=int, default=None)
-    parser.add_argument("--end-index", type=int, default=None)
     args = parser.parse_args()
 
     os.environ.setdefault("HF_ENDPOINT", "https://hf-mirror.com")
@@ -183,11 +174,6 @@ def main() -> int:
     os.environ.setdefault("no_proxy", "*")
 
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
-    if args.seed is not None:
-        random_seed = int(args.seed)
-        torch.manual_seed(random_seed)
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(random_seed)
     checkpoint = torch.load(args.checkpoint, map_location="cpu")
     config = checkpoint.get("config", {})
 
@@ -215,9 +201,9 @@ def main() -> int:
 
     prompts = read_prompts(args)
     out_dir = Path(args.output_dir)
-    for ordinal, (idx, prompt) in enumerate(prompts, start=1):
+    for idx, prompt in enumerate(prompts):
         output_file = out_dir / f"evaluate_lora{idx}.bvh"
-        print(f"[{ordinal}/{len(prompts)}] index={idx} {prompt}")
+        print(f"[{idx + 1}/{len(prompts)}] {prompt}")
         generate_one(agent, gpt, prompt, output_file, tokenizer, encoder, device, args.max_length)
         print(f"wrote {output_file}")
     return 0
