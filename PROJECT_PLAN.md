@@ -59,17 +59,21 @@ Current status: completed locally. The official pretrained files are present, to
 
 ### Stage 3: Adaptation
 
-- Tokenize selected HumanML3D motions using the MoConVQ tokenizer.
-- Fine-tune only the text-to-motion transformer using `scripts/train_style_adapter.py`.
-- Use fp16, gradient accumulation, and early stopping for RTX 4060 8 GB.
-- Save loss logs and checkpoints under `outputs/finetune/`.
+- Diagnose HumanML3D/MoConVQ format compatibility.
+- Use pretrained MoConVQ as a teacher to create pseudo token targets when true MoConVQ token labels are unavailable.
+- Freeze the pretrained generator and train only LoRA updates using `scripts/train_style_lora_distill.py`.
+- Save loss logs and checkpoints under `outputs/finetune_lora_200/`.
+
+Current status: completed for a 200-caption LoRA distillation run. The run trains 1,966,080 parameters out of 195,591,680 total parameters and writes `train_log.csv`, `style_lora_last.pth`, and epoch checkpoints.
 
 ### Stage 4: Evaluation
 
 - Generate baseline and adapted motions for the same style prompts.
-- Extract motion features using the selected evaluator.
-- Run `scripts/evaluate_motion_metrics.py` for FID and retrieval metrics.
-- Report full-test retention and style-subset improvement.
+- Render selected side-by-side qualitative comparisons.
+- Summarize LoRA loss and qualitative artifacts using `scripts/summarize_lora_results.py`.
+- Do not report FID or R-Precision until a compatible evaluator bridge is implemented.
+
+Current status: baseline and LoRA BVHs exist for the same ten prompts. Three baseline/LoRA video pairs, a qualitative frame grid, a loss curve, and an epoch summary table have been generated.
 
 ### Stage 5: Reporting
 
@@ -78,4 +82,4 @@ Current status: completed locally. The official pretrained files are present, to
 
 ## Current Local Workspace Status
 
-This workspace contains MoConVQ source code, `base.bvh`, `track.bvh`, official pretrained assets, and verified baseline outputs. It does not currently contain the external HumanML3D dataset. Therefore, this package avoids fabricated FID, R-Precision, or fine-tuning numbers and provides reproducible scripts plus report drafts that clearly mark the current diagnostic status.
+This workspace contains MoConVQ source code, `base.bvh`, `track.bvh`, official pretrained assets, HumanML3D parquet data, verified baseline outputs, and a measured LoRA distillation run. The package avoids fabricated FID and R-Precision values because the available HumanML3D parquet features are not direct MoConVQ token supervision and no compatible official evaluator bridge has been verified.
