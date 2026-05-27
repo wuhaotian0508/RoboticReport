@@ -1,0 +1,9 @@
+component,status,evidence
+MoConVQ environment,Completed,"uv .venv with Python 3.8.20, CUDA PyTorch, local extensions importable"
+Pretrained assets,Completed,"moconvq_base.data, simple_motion_data.h5, text_generation_GPT.pth, unconditional_GPT.pth present"
+Motion tokenization/decoding,Completed,"track.bvh tokenized and decoded to BVH outputs"
+Baseline text-to-motion,Completed,"10 prompts generated under MoConVQ/out/project_prompts"
+Style subset construction,Ready,"scripts/filter_style_subset.py preserves official HumanML3D splits"
+Manual audit,Ready,"data/manual_audit_sample.csv generated after style filtering"
+Fine-tuning,Diagnostic,"scripts/train_style_adapter.py checks for token targets before training"
+Quantitative metrics,Pending,"FID/R-Precision not run; do not report fabricated values"

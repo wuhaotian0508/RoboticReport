@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{guo2022humanml3d}
+Chuan Guo, Shihao Zou, Xinxin Zuo, Sen Wang, Wei Ji, Xingyu Li, and Li~Cheng.
+\newblock Generating diverse and natural 3d human motions from text.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 5152--5161, 2022.
+
+\bibitem{tevet2023mdm}
+Guy Tevet, Sigal Raab, Brian Gordon, Yonatan Shafir, Daniel Cohen-Or, and
+  Amit~H. Bermano.
+\newblock Human motion diffusion model.
+\newblock In {\em International Conference on Learning Representations}, 2023.
+
+\bibitem{yao2024moconvq}
+Heyuan Yao, Zhenhua Song, Yuxuan Zhou, Tenglong Ao, Baoquan Chen, and Libin
+  Liu.
+\newblock Moconvq: Unified physics-based motion control via scalable discrete
+  representations.
+\newblock In {\em International Conference on Learning Representations}, 2024.
+
+\bibitem{zhang2023t2mgpt}
+Jianrong Zhang, Yangsong Zhang, Xiaodong Cun, Shaoli Huang, Yong Zhang, Hongwei
+  Zhao, Hongtao Lu, and Xi~Shen.
+\newblock Generating human motion from textual descriptions with discrete
+  representations.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 14730--14740, 2023.
+
+\end{thebibliography}
