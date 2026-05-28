@@ -1,6 +1,0 @@
-checkpoint,epoch,train_examples,train_loss,val_examples,val_loss
-style_lora_epoch0.pth,0,200,0.089231,40,0.057752
-style_lora_epoch1.pth,1,200,0.093179,40,0.061253
-style_lora_epoch2.pth,2,200,0.111030,40,0.066706
-style_lora_epoch3.pth,3,200,0.090085,40,0.063811
-style_lora_epoch4.pth,4,200,0.101861,40,0.069298

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 19:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 19:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,6 +504,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+\OT1/ptm/m/n/8 qual-i-ta-tive com-par-i-son
+ []
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <../../outputs/figures/lora_loss_curve.png, id=73, 578.16pt x 303.534pt>
@@ -555,7 +560,7 @@ Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/16831/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/16831/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/16831/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on midterm.pdf (3 pages, 296931 bytes).
+Output written on midterm.pdf (3 pages, 296864 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  26 named destinations out of 1000 (max. 500000)

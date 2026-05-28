@@ -63,8 +63,9 @@
   - `outputs/figures/lora_qualitative_frames.png`
 - [x] Loss curve and epoch summary:
   - `outputs/figures/lora_loss_curve.png`
-  - `outputs/figures/lora_train_val_loss.png`
+  - `outputs/figures/lora_refinement_loss.png`
   - `outputs/tables/lora_training_summary.csv`
+  - `outputs/tables/lora_refinement_loss.csv`
 - [x] BVH motion-style proxy metrics:
   - `outputs/metrics_lora_200/bvh_proxy_metrics.csv`
   - `outputs/metrics_lora_200/bvh_proxy_comparison.csv`
@@ -72,12 +73,8 @@
   - `outputs/metrics_lora_200_cont_lr5e5_seed7_styles/style_proxy_scores.csv`
 - [x] Continued-LoRA train/validation loss:
   - `outputs/tables/lora_cont_train_val_loss.csv`
-- [x] Empty blind human evaluation template:
-  - `data/human_pairwise_eval_template.csv`
 
 ## Not Claimed
 
 - [ ] FID and R-Precision on the official HumanML3D evaluator.
-- [ ] Filled blind human evaluation scores.
-
 Reason: the available HumanML3D parquet data contains processed 263-D motion features, while MoConVQ fine-tuning and generation operate on MoConVQ discrete motion tokens and BVH/controller outputs. This workspace therefore reports measured LoRA distillation loss and qualitative comparisons, but does not fabricate incompatible FID or R-Precision values.
