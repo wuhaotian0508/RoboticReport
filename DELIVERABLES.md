@@ -69,6 +69,7 @@
 - [x] Final-report diagnostic figures:
   - `outputs/figures/style_subset_distribution.png`
   - `outputs/figures/style_proxy_win_rate.png`
+  - `outputs/figures/style_proxy_delta_heatmap.png`
 - [x] BVH motion-style proxy metrics:
   - `outputs/metrics_lora_200/bvh_proxy_metrics.csv`
   - `outputs/metrics_lora_200/bvh_proxy_comparison.csv`
