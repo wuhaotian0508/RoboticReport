@@ -1,0 +1,19 @@
+split,style_group,matched_caption_rows,matched_motion_ids,total_motion_ids,total_caption_rows
+train,ALL,3332,2682,23384,69896
+train,Controlled motion,510,486,23384,69896
+train,Graceful smooth,32,32,23384,69896
+train,Dance expressive,1256,854,23384,69896
+train,Energetic dynamic,1360,1206,23384,69896
+train,Heavy awkward,254,230,23384,69896
+val,ALL,214,168,1460,4362
+val,Controlled motion,32,32,1460,4362
+val,Graceful smooth,6,6,1460,4362
+val,Dance expressive,88,54,1460,4362
+val,Energetic dynamic,66,58,1460,4362
+val,Heavy awkward,24,24,1460,4362
+test,ALL,586,486,4384,13114
+test,Controlled motion,120,114,4384,13114
+test,Graceful smooth,8,8,4384,13114
+test,Dance expressive,192,136,4384,13114
+test,Energetic dynamic,204,176,4384,13114
+test,Heavy awkward,74,70,4384,13114
