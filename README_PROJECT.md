@@ -27,7 +27,7 @@ The implemented final method is therefore a parameter-efficient backup:
 1. Filter style-related HumanML3D captions without crossing train/val/test splits.
 2. Use pretrained MoConVQ/MoConGPT as a teacher to generate pseudo token targets.
 3. Freeze the pretrained generator and train only LoRA updates in the text-conditioned transformer.
-4. Generate BVH outputs for the same prompts as the baseline.
+4. Continue the selected LoRA adapter with a lower learning rate and generate deterministic style-prompt BVH outputs.
 5. Report measured training loss, train/validation pseudo-token loss, BVH kinematic proxy metrics, and qualitative comparisons. Do not claim FID or R-Precision without a compatible evaluator.
 
 ## Conda Environment
@@ -64,12 +64,17 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distil
 # Generate adapted BVH outputs
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py --checkpoint outputs\finetune_lora_200\style_lora_last.pth --prompt-file data\prompts\baseline_and_style_prompts.txt --output-dir outputs\finetune_lora_200_samples --max-length 50
 
+# Optional final refinement selected for the report
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distill.py --output-dir outputs\finetune_lora_200_cont_lr5e5 --cache-path outputs\finetune_lora_200\distill_cache.pt --train-only --epochs 2 --lora-rank 8 --lora-alpha 16 --lr 5e-5 --resume-lora outputs\finetune_lora_200\style_lora_epoch4.pth
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py --checkpoint outputs\finetune_lora_200_cont_lr5e5\style_lora_last.pth --prompt-file data\prompts\baseline_and_style_prompts.txt --output-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles --max-length 50 --seed 7 --start-index 5 --end-index 9
+
 # Render selected baseline/LoRA comparisons and summarize figures/tables
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_lora_results.py --run-dir outputs\finetune_lora_200 --comparison-dir outputs\comparison_lora_200
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_lora_results.py --run-dir outputs\finetune_lora_200 --comparison-dir outputs\comparison_lora_200_cont
 
 # Evaluate checkpoint-level pseudo-token loss and BVH style proxy metrics
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py --run-dir outputs\finetune_lora_200 --val-cache outputs\finetune_lora_val\distill_cache.pt --output-csv outputs\tables\lora_train_val_loss.csv
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py --baseline-dir outputs\baseline\project_prompts --lora-dir outputs\finetune_lora_200_samples --output-dir outputs\metrics_lora_200
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py --checkpoint-dir outputs\finetune_lora_200 --train-cache outputs\finetune_lora_200\distill_cache.pt --val-cache outputs\finetune_lora_val\distill_cache.pt --output outputs\tables\lora_train_val_loss.csv
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py --checkpoint-dir outputs\finetune_lora_200_cont_lr5e5 --train-cache outputs\finetune_lora_200\distill_cache.pt --val-cache outputs\finetune_lora_val\distill_cache.pt --output outputs\tables\lora_cont_train_val_loss.csv
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py --baseline-dir outputs\baseline\project_prompts --lora-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles --output-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles
 ```
 
 ## Report Compilation
@@ -83,8 +88,8 @@ Compiled PDFs are written next to their `.tex` sources if LaTeX succeeds.
 ## Integrity Note
 
 This workspace reports only measured results: HumanML3D style subset counts,
-baseline BVH outputs, LoRA distillation loss, checkpoint-level train/validation
-pseudo-token loss, LoRA checkpoints, generated BVHs, BVH style proxy metrics,
+baseline BVH outputs, LoRA distillation loss, continued-LoRA refinement loss,
+checkpoint-level train/validation pseudo-token loss, LoRA checkpoints, generated BVHs, BVH style proxy metrics,
 and rendered qualitative comparisons. It does not report official FID or
 R-Precision because the current data/model formats are not compatible with that
 evaluation without additional conversion or an official evaluator bridge.

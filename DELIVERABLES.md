@@ -31,8 +31,11 @@
 - [x] Output directory structure:
   - `outputs/baseline/`
   - `outputs/finetune_lora_200/`
+  - `outputs/finetune_lora_200_cont_lr5e5/`
   - `outputs/finetune_lora_200_samples/`
+  - `outputs/finetune_lora_200_cont_lr5e5_seed7_styles/`
   - `outputs/comparison_lora_200/`
+  - `outputs/comparison_lora_200_cont/`
   - `outputs/figures/`
   - `outputs/logs/`
 - [x] Clear external-asset and environment checklist
@@ -46,10 +49,15 @@
 - [x] LoRA fine-tuning loss CSV and checkpoints:
   - `outputs/finetune_lora_200/train_log.csv`
   - `outputs/finetune_lora_200/style_lora_last.pth`
+- [x] Continued LoRA refinement run:
+  - `outputs/finetune_lora_200_cont_lr5e5/train_log.csv`
+  - `outputs/finetune_lora_200_cont_lr5e5/style_lora_last.pth`
 - [x] LoRA-generated BVH outputs for ten prompts:
   - `outputs/finetune_lora_200_samples/`
+- [x] Selected continued-LoRA style prompt BVH outputs:
+  - `outputs/finetune_lora_200_cont_lr5e5_seed7_styles/`
 - [x] Side-by-side qualitative comparison videos and figure:
-  - `outputs/comparison_lora_200/`
+  - `outputs/comparison_lora_200_cont/`
   - `outputs/figures/lora_qualitative_frames.png`
 - [x] Loss curve and epoch summary:
   - `outputs/figures/lora_loss_curve.png`
@@ -59,6 +67,9 @@
   - `outputs/metrics_lora_200/bvh_proxy_metrics.csv`
   - `outputs/metrics_lora_200/bvh_proxy_comparison.csv`
   - `outputs/metrics_lora_200/style_proxy_scores.csv`
+  - `outputs/metrics_lora_200_cont_lr5e5_seed7_styles/style_proxy_scores.csv`
+- [x] Continued-LoRA train/validation loss:
+  - `outputs/tables/lora_cont_train_val_loss.csv`
 - [x] Empty blind human evaluation template:
   - `data/human_pairwise_eval_template.csv`
 

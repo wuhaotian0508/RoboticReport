@@ -13,7 +13,7 @@
 \maketitle
 
 \begin{abstract}
-We study style-aware adaptation for MoConVQ, a physics-based language-conditioned humanoid motion generator. The original proposal planned to fine-tune MoConVQ's language-conditioning transformer on HumanML3D style motions while freezing the motion representation backbone. During implementation, we found that the available HumanML3D parquet export provides processed 263-D motion features rather than MoConVQ-compatible BVH files or discrete motion-token labels. We therefore implement a parameter-efficient LoRA distillation alternative: style captions are filtered from HumanML3D, the pretrained MoConVQ generator produces pseudo token targets, and only low-rank LoRA updates are trained while the pretrained generator remains frozen. This yields a reproducible style-adaptation pipeline with 200 distilled examples, 1.97M trainable parameters out of 195.59M total parameters, measured training loss, generated BVH outputs, rendered qualitative comparisons, and BVH-derived style proxy metrics. On five style prompts, LoRA improves 15 of 22 pre-defined proxy comparisons. We do not report FID or R-Precision because the required official evaluator bridge is not available in this workspace.
+We study style-aware adaptation for MoConVQ, a physics-based language-conditioned humanoid motion generator. The original proposal planned to fine-tune MoConVQ's language-conditioning transformer on HumanML3D style motions while freezing the motion representation backbone. During implementation, we found that the available HumanML3D parquet export provides processed 263-D motion features rather than MoConVQ-compatible BVH files or discrete motion-token labels. We therefore implement a parameter-efficient LoRA distillation alternative: style captions are filtered from HumanML3D, the pretrained MoConVQ generator produces pseudo token targets, and only low-rank LoRA updates are trained while the pretrained generator remains frozen. This yields a reproducible style-adaptation pipeline with 200 distilled examples, 1.97M trainable parameters out of 195.59M total parameters, measured training loss, generated BVH outputs, rendered qualitative comparisons, and BVH-derived style proxy metrics. After a conservative two-epoch low-learning-rate continuation, LoRA improves 18 of 22 pre-defined proxy comparisons on five style prompts. We do not report FID or R-Precision because the required official evaluator bridge is not available in this workspace.
 \end{abstract}
 
 \section{Introduction}
@@ -51,6 +51,8 @@ All final runs used a fresh conda environment named \texttt{roboticsreport\_lora
 
 The LoRA run used 200 style captions from the small style-training split. We trained for 5 epochs over a cached pseudo-token dataset. LoRA rank was 8, alpha was 16, dropout was 0.05, and learning rate was $10^{-4}$. The run trained 1,966,080 parameters, 1.005\% of the 195,591,680 parameters in the wrapped text generator.
 
+We then selected the epoch-4 LoRA checkpoint for a conservative continuation run: two additional epochs, learning rate $5 \times 10^{-5}$, same rank, same alpha, and the same frozen pretrained backbone. This continuation is reported because it improved the measured BVH proxy score without changing the metric definition.
+
 We also built a validation pseudo-token cache from 40 held-out style captions. Validation loss is used as a diagnostic for overfitting to pseudo labels; BVH proxy metrics are used separately to evaluate whether generated motions move in the expected style direction.
 
 \begin{table}[h]
@@ -87,6 +89,20 @@ Epoch & Train loss & Validation loss \\
 \end{tabular}
 \end{table}
 
+\begin{table}[h]
+\centering
+\caption{Continued-LoRA train/validation distillation loss.}
+\footnotesize
+\begin{tabular}{lrr}
+\hline
+Continuation epoch & Train loss & Validation loss \\
+\hline
+0 & 0.0799 & 0.0670 \\
+1 & 0.0669 & 0.0669 \\
+\hline
+\end{tabular}
+\end{table}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{../../outputs/figures/lora_loss_curve.png}
@@ -100,7 +116,7 @@ Epoch & Train loss & Validation loss \\
 \end{figure}
 
 \section{Results}
-The baseline generated ten BVH files under \texttt{outputs/baseline/project\_prompts/}. The LoRA adapter generated the same ten prompts under \texttt{outputs/finetune\_lora\_200\_samples/}. Selected baseline and LoRA outputs were rendered as stick-figure previews for qualitative comparison.
+The baseline generated ten BVH files under \texttt{outputs/baseline/project\_prompts/}. The initial LoRA adapter generated the same ten prompts, and the selected continued-LoRA checkpoint generated deterministic outputs for the five style prompts. Selected baseline and continued-LoRA outputs were rendered as stick-figure previews for qualitative comparison.
 
 \begin{figure*}[t]
 \centering
@@ -108,7 +124,7 @@ The baseline generated ten BVH files under \texttt{outputs/baseline/project\_pro
 \caption{Qualitative comparison frames for three style prompts. These images are visual evidence only; they are not a substitute for official FID or R-Precision evaluation.}
 \end{figure*}
 
-The LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
+The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The continuation run further reduces checkpoint-level training loss to 0.0669. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
 
 For generated BVH motions, we compute proxy metrics that correspond to visible style properties: root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. For each style prompt, we pre-define whether lower or higher values are expected. For example, slow and heavy prompts prefer lower speed and jerk, while energetic jumping prefers higher vertical range and speed.
 
@@ -121,25 +137,25 @@ For generated BVH motions, we compute proxy metrics that correspond to visible s
 Prompt style & LoRA wins & Total metrics \\
 \hline
 Slow deliberate & 4 & 4 \\
-Graceful dance & 1 & 4 \\
-Tai chi & 3 & 4 \\
-Energetic jump & 3 & 6 \\
+Graceful dance & 3 & 4 \\
+Tai chi & 2 & 4 \\
+Energetic jump & 5 & 6 \\
 Heavy tired & 4 & 4 \\
 \hline
-Total & 15 & 22 \\
+Total & 18 & 22 \\
 \hline
 \end{tabular}
 \end{table}
 
-The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate and heavy tired walking. It does not uniformly improve all styles; graceful dance remains weak and should be judged by future human evaluation.
+The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate walking, energetic jumping, and heavy tired walking. It does not improve every metric; tai chi remains the weakest measured prompt and should be judged by future human evaluation.
 
 \section{Limitations}
 The main limitation is data compatibility. The available HumanML3D parquet features are not direct labels for MoConVQ's discrete token space. Our distillation method is therefore a practical adaptation experiment, not full supervised fine-tuning on true HumanML3D motion tokens.
 
-We also do not report official FID or R-Precision. Reporting those metrics would require a compatible evaluator that maps generated MoConVQ BVH outputs and HumanML3D test motions into the same feature space. Since that bridge was not implemented and verified, fabricating benchmark values would be misleading. Future work should add a validated evaluator, convert or retarget HumanML3D motions into MoConVQ-compatible form, run multi-seed comparisons, and fill the prepared blind human pairwise evaluation sheet.
+We also do not report official FID or R-Precision. Reporting those metrics would require a compatible evaluator that maps generated MoConVQ BVH outputs and HumanML3D test motions into the same feature space. Since that bridge was not implemented and verified, fabricating benchmark values would be misleading. The final proxy result uses a fixed generation seed for reproducibility, but it is still a small prompt-level evaluation rather than a broad benchmark. Future work should add a validated evaluator, convert or retarget HumanML3D motions into MoConVQ-compatible form, run multi-seed comparisons on held-out prompts, and fill the prepared blind human pairwise evaluation sheet.
 
 \section{Conclusion}
-We reproduced the MoConVQ baseline, curated a style-focused HumanML3D caption subset, implemented a parameter-efficient LoRA distillation pipeline, trained a 200-example adapter, generated BVH outputs, and rendered qualitative comparisons. The final result preserves the proposal's frozen-backbone spirit while honestly addressing the discovered HumanML3D/MoConVQ format mismatch.
+We reproduced the MoConVQ baseline, curated a style-focused HumanML3D caption subset, implemented a parameter-efficient LoRA distillation pipeline, trained and continued a 200-example adapter, generated BVH outputs, computed BVH style proxies, and rendered qualitative comparisons. The final result preserves the proposal's frozen-backbone spirit while honestly addressing the discovered HumanML3D/MoConVQ format mismatch.
 
 \bibliographystyle{plain}
 \bibliography{../shared/references}

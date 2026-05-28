@@ -64,8 +64,9 @@ Current status: completed locally. The official pretrained files are present, to
 - Use pretrained MoConVQ as a teacher to create pseudo token targets when true MoConVQ token labels are unavailable.
 - Freeze the pretrained generator and train only LoRA updates using `scripts/train_style_lora_distill.py`.
 - Save loss logs and checkpoints under `outputs/finetune_lora_200/`.
+- Continue the selected LoRA checkpoint with a lower learning rate when measured proxy metrics improve without changing the evaluation rule.
 
-Current status: completed for a 200-caption LoRA distillation run. The run trains 1,966,080 parameters out of 195,591,680 total parameters and writes `train_log.csv`, `style_lora_last.pth`, and epoch checkpoints.
+Current status: completed for a 200-caption LoRA distillation run plus a two-epoch low-learning-rate continuation. The run trains 1,966,080 parameters out of 195,591,680 total parameters and writes `train_log.csv`, `style_lora_last.pth`, and epoch checkpoints.
 
 ### Stage 4: Evaluation
 
@@ -76,7 +77,7 @@ Current status: completed for a 200-caption LoRA distillation run. The run train
 - Compare generated BVH files with kinematic proxy metrics using `scripts/compute_bvh_proxy_metrics.py`.
 - Do not report FID or R-Precision until a compatible evaluator bridge is implemented.
 
-Current status: baseline and LoRA BVHs exist for the same ten prompts. Three baseline/LoRA video pairs, a qualitative frame grid, a loss curve, an epoch summary table, train/validation pseudo-token loss, and BVH style proxy metrics have been generated. The final selected LoRA run improves 15 of 22 predefined style-direction proxy comparisons, but does not improve every style case.
+Current status: baseline and LoRA BVHs exist for the same ten prompts, and the selected continued-LoRA run has deterministic BVHs for the five style prompts. Three updated baseline/LoRA video pairs, a qualitative frame grid, a loss curve, an epoch summary table, train/validation pseudo-token loss, and BVH style proxy metrics have been generated. The final selected LoRA run improves 18 of 22 predefined style-direction proxy comparisons, but does not improve every metric.
 
 ### Stage 5: Reporting
 
