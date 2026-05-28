@@ -99,14 +99,43 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lor
   --max-length 50
 ```
 
-## 6. Summarize Report Artifacts
+## 6. Continued Refinement Used in the Final Report
+
+The final reported proxy metrics use a conservative two-epoch continuation from
+the epoch-4 checkpoint with a lower learning rate:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distill.py `
+  --output-dir outputs\finetune_lora_200_cont_lr5e5 `
+  --cache-path outputs\finetune_lora_200\distill_cache.pt `
+  --train-only `
+  --epochs 2 `
+  --lora-rank 8 `
+  --lora-alpha 16 `
+  --lr 5e-5 `
+  --resume-lora outputs\finetune_lora_200\style_lora_epoch4.pth
+
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py `
+  --checkpoint outputs\finetune_lora_200_cont_lr5e5\style_lora_last.pth `
+  --prompt-file data\prompts\baseline_and_style_prompts.txt `
+  --output-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles `
+  --max-length 50 `
+  --seed 7 `
+  --start-index 5 `
+  --end-index 9
+```
+
+This improves the style proxy score from 15/22 to 18/22 on the five style
+prompts. This is still a proxy metric, not an official HumanML3D benchmark.
+
+## 7. Summarize Report Artifacts
 
 Render selected BVH files with `scripts/render_bvh_video.py`, then summarize:
 
 ```powershell
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_lora_results.py `
   --run-dir outputs\finetune_lora_200 `
-  --comparison-dir outputs\comparison_lora_200
+  --comparison-dir outputs\comparison_lora_200_cont
 ```
 
 Expected report artifacts:
@@ -115,34 +144,41 @@ Expected report artifacts:
 outputs/tables/lora_training_summary.csv
 outputs/figures/lora_loss_curve.png
 outputs/figures/lora_qualitative_frames.png
-outputs/comparison_lora_200/comparison_manifest.csv
+outputs/comparison_lora_200_cont/comparison_manifest.csv
 ```
 
-## 7. Quantitative Proxy Evaluation
+## 8. Quantitative Proxy Evaluation
 
 Measure whether the adapter learned the teacher pseudo-token distribution:
 
 ```powershell
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py `
-  --run-dir outputs\finetune_lora_200 `
+  --checkpoint-dir outputs\finetune_lora_200 `
+  --train-cache outputs\finetune_lora_200\distill_cache.pt `
   --val-cache outputs\finetune_lora_val\distill_cache.pt `
-  --output-csv outputs\tables\lora_train_val_loss.csv
+  --output outputs\tables\lora_train_val_loss.csv
 ```
+
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py `
+  --checkpoint-dir outputs\finetune_lora_200_cont_lr5e5 `
+  --train-cache outputs\finetune_lora_200\distill_cache.pt `
+  --val-cache outputs\finetune_lora_val\distill_cache.pt `
+  --output outputs\tables\lora_cont_train_val_loss.csv
 
 Measure BVH style-direction proxy metrics for baseline and LoRA outputs:
 
 ```powershell
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py `
   --baseline-dir outputs\baseline\project_prompts `
-  --lora-dir outputs\finetune_lora_200_samples `
-  --output-dir outputs\metrics_lora_200
+  --lora-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles `
+  --output-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles
 ```
 
 Measured final proxy result:
 
 ```text
-outputs/metrics_lora_200/style_proxy_scores.csv
-total LoRA wins: 15 / 22 predefined style-direction comparisons
+outputs/metrics_lora_200_cont_lr5e5_seed7_styles/style_proxy_scores.csv
+total LoRA wins: 18 / 22 predefined style-direction comparisons
 ```
 
 This is a project-specific proxy evaluation, not official HumanML3D FID or

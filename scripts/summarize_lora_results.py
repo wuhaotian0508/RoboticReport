@@ -143,23 +143,42 @@ def main() -> int:
         args.figures_dir / "lora_train_val_loss.png",
     )
 
-    pairs = [
-        (
-            "Slow deliberate walk",
-            args.comparison_dir / "baseline_slow.mp4",
-            args.comparison_dir / "lora_slow.mp4",
-        ),
-        (
-            "Tai chi style",
-            args.comparison_dir / "baseline_taichi.mp4",
-            args.comparison_dir / "lora_taichi.mp4",
-        ),
-        (
-            "Heavy tired walk",
-            args.comparison_dir / "baseline_heavy.mp4",
-            args.comparison_dir / "lora_heavy.mp4",
-        ),
-    ]
+    if (args.comparison_dir / "baseline_dance.mp4").exists():
+        pairs = [
+            (
+                "Slow deliberate walk",
+                args.comparison_dir / "baseline_slow.mp4",
+                args.comparison_dir / "lora_slow.mp4",
+            ),
+            (
+                "Graceful dance",
+                args.comparison_dir / "baseline_dance.mp4",
+                args.comparison_dir / "lora_dance.mp4",
+            ),
+            (
+                "Energetic jump",
+                args.comparison_dir / "baseline_jump.mp4",
+                args.comparison_dir / "lora_jump.mp4",
+            ),
+        ]
+    else:
+        pairs = [
+            (
+                "Slow deliberate walk",
+                args.comparison_dir / "baseline_slow.mp4",
+                args.comparison_dir / "lora_slow.mp4",
+            ),
+            (
+                "Tai chi style",
+                args.comparison_dir / "baseline_taichi.mp4",
+                args.comparison_dir / "lora_taichi.mp4",
+            ),
+            (
+                "Heavy tired walk",
+                args.comparison_dir / "baseline_heavy.mp4",
+                args.comparison_dir / "lora_heavy.mp4",
+            ),
+        ]
     write_manifest(pairs, args.comparison_dir / "comparison_manifest.csv")
     make_qualitative_grid(pairs, args.figures_dir / "lora_qualitative_frames.png")
 

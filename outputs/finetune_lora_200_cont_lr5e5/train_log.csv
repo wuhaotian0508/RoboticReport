@@ -1,0 +1,401 @@
+epoch,step,loss,caption
+0,1,0.0045689791440963745,a person is dancing quickly and having fun.
+0,2,0.007240759674459696,a person is moving around dancing with their arms.
+0,3,0.3093867599964142,someone seems to be dancing
+0,4,0.01159731112420559,a person walks with a limp
+0,5,0.9579604268074036,a person running and then crawling before returning to a run.
+0,6,0.025184089317917824,a person is jogging / walking fast but not running in circles
+0,7,0.020425943657755852,a man stands casually with his arms to his sides than takes 4 slow steps backwards starting with his left and then stops.
+0,8,0.01032447163015604,a person readies their jump rope and then begins skipping rope.
+0,9,0.006950646638870239,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+0,10,0.3975882828235626,"imitates a ballet dance. right hand steps behind left, hands cur under than both lifts poisely."
+0,11,0.04712195694446564,a person bends over and does a standing jump forward.
+0,12,0.008625514805316925,a man is dancing around in a circle.
+0,13,0.028281595557928085,a person walking forward in a steady pace
+0,14,0.011624127626419067,"a person walks in a slow clockwise circle, stopping in a standing position."
+0,15,0.007078186608850956,the man raises his hands and waves then fast in the air.
+0,16,0.015014388598501682,"a person walks downstairs, before making a little jump at the bottom."
+0,17,1.6552841663360596,a person dancing with left arm in the air and bouncing back and forth
+0,18,0.010344639420509338,a person walks forward and then starts dancing.
+0,19,0.012426428496837616,a person is salsa dancing.
+0,20,0.00473941583186388,a person struggles to hold a heavy object before dropping it.
+0,21,2.1527161598205566,a person sets something down on the ground and then walks with big hip sway in a diaganol direction.
+0,22,0.029977351427078247,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+0,23,0.1716386377811432,a person is sprinting fast
+0,24,0.008402206934988499,"a person walks forward at a slow pace and stops, holding position."
+0,25,0.3165768086910248,a person taking a huge jump forward
+0,26,1.917101263999939,the man is jumping jump
+0,27,0.020446961745619774,he uplift his right hand and moving it fast again and again.
+0,28,0.03252671658992767,obstacle courses sometimes require an athlete to run in a backwards motion.
+0,29,0.007406887598335743,walking forward then the body twirls around fast and keeps walking.
+0,30,1.270543098449707,"a man is standing up, then bends down to take a big jump forward, leaps forward, and then stands back up straight."
+0,31,0.026304839178919792,a person takes three quick steps backward.
+0,32,0.00569567596539855,person facing forward does 5 small slow steps to the left then 5 slow steps to the  right
+0,33,0.009551930241286755,a man dancing to salsa music
+0,34,0.1458883285522461,a person takes a couple quick steps forward.
+0,35,0.024238096550107002,"a man shakes his wrists, jumps backwards with a spin, and then finishes by spreading his arms."
+0,36,0.010728196240961552,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+0,37,0.004177362658083439,the person is doing awkward arm movements to the head and then down in front.
+0,38,0.012554928660392761,"person is dancing by bending right arm and right leg lifting and bending at the same time a few times, they repeat this on the left, they jump to the side and kick the left leg back, and then jump to the left"
+0,39,0.03976680710911751,the person is  slow punching the air.
+0,40,0.012812837027013302,"a figure gestures as though it is digging with a shovel. the figure stops dancing around 7 second mark, and seems to place a plant or tree into the hole it has dug."
+0,41,0.006960059516131878,a person throws their body forward and then to the side in an expressive way
+0,42,0.017344214022159576,person walks fast on the spot
+0,43,0.5302226543426514,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+0,44,2.136150360107422,a person sets something down on the ground and then walks with big hip sway in a diaganol direction.
+0,45,0.006229060236364603,the person walks forward at a steady pace while moving most of their left hand side of their body compared to their right
+0,46,0.008117175661027431,a person is ballroom dancing with someone.
+0,47,0.0056914049200713634,a person takes a jump rope and starts jumping rope.
+0,48,0.009204565547406673,he is jumping very fast.
+0,49,0.01686687581241131,"a person jumps and spins in place, then when they land they run forward, stop, and run backwards"
+0,50,0.004851920995861292,"a person waddles around like a penguin, then waves with their left hand, their right hand, and then a quick wave with both hands."
+0,51,0.009398594498634338,"starting with their right foot, a person sidesteps fast back and forth."
+0,52,0.005183672998100519,the person seems to be 'beat boxing' and drops to the ground swinging his left foot over in a circular direction and using that momentum to to propel himself to spin over his right shoulder first then his left so he ends up seated again.
+0,53,0.01747809536755085,"a person jumps repeatedly, throwing their arms above their head and stretching their legs with each jump."
+0,54,0.015533124096691608,a a person practices a salsa dance routine by themselves
+0,55,0.026837697252631187,the person is doing the chicken dance.
+0,56,0.05472562462091446,the person took a small jump forward.
+0,57,0.02442181296646595,this person holds his arms up as if to dance with a partner.
+0,58,0.4891403019428253,"the person steps into a martial arts stance, kicks and thrusts its right leg forward, bring itself back into a martial arts stance."
+0,59,0.01158108189702034,the person is doing a russian dance
+0,60,0.47438427805900574,the person is running forward very fast.
+0,61,0.03675930202007294,a person is dancing and waving their arms
+0,62,1.4900776147842407,"a person reaches back with their right arm and throws something forward with a lot of force, then they steady themselves to remain balanced."
+0,63,0.01218640897423029,the person is doing a fancy dance.
+0,64,0.01801198720932007,a fast pace stepping forward with dribble hands then takes a shot.
+0,65,0.00958018098026514,a person scamps around as if doing a victory dance.
+0,66,0.05168785899877548,"person squats with both knees bent, bringing hands together at chest, then straightens legs to jump straight upwards but lands slightly to their left considering their beginning position"
+0,67,0.008951079100370407,"the person does a little side to side dance, barely lifting its legs and bringing them down quickly, while shimmying its shoulders up and down slightly."
+0,68,0.00792977400124073,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+0,69,0.02176390215754509,person is doing a dance
+0,70,0.024584509432315826,the person is jumping rope very fast.
+0,71,0.055138565599918365,the person is standing up. they raise their hands up with fingers spread like jazz hands. hands and hips move back and forth like it is dancing.
+0,72,0.012619069777429104,a fast limp on the right foot.
+0,73,0.01210214663296938,a person takes a quick step forward.
+0,74,0.02025696635246277,a person is doing the waltz dance
+0,75,0.005830763373523951,this person is jumping up and down as if to jump rope.
+0,76,2.7096431255340576,a person is dancing while running.
+0,77,0.017227906733751297,person takes fast steps forwards
+0,78,0.016610445454716682,"a person takes two slow steps forward, pivots on their right foot 180deg, then takes two more slow steps forward."
+0,79,0.004395462106913328,"a person turns towards to the right, picks up a heavy object and turns and set it down in front of him."
+0,80,0.0132376067340374,"person does light bouncy jump, skips forward with left leg swinging forward"
+0,81,0.00967403780668974,person bends down and keeps legs straight flowing arms left to right before turning around and doing same back
+0,82,0.611892819404602,a person lifts something heavy with their right arm.
+0,83,1.3647984266281128,a man walks backwards and then makes a large leap forward.
+0,84,0.05816379934549332,the person is walking very slow
+0,85,0.049347348511219025,"a person squats deeply, then swings themselves into a forward leap."
+0,86,0.025972440838813782,the man is doing dance waltz
+0,87,0.9960526823997498,a person walks forward at fast pace.
+0,88,0.007651421707123518,a person walking in fast pace.
+0,89,0.012948496267199516,person moves body in fast turn then rights something out of left hand very fast
+0,90,0.023415638133883476,a person swings their arms and body around as if they are dancing.
+0,91,0.011062487959861755,"a person makes slow, wide steps forward."
+0,92,0.02066679857671261,"person walks fast in a semi circular motion clockwise, then rapidly in a straight line."
+0,93,0.056833188980817795,a person run fast across a room
+0,94,2.5384161472320557,the figure appears to step over something with a slightly awkward walk before turning so that we are seeing their back.
+0,95,1.1468780040740967,a person runs forwards and comes to a slow stop.
+0,96,0.1779334396123886,"a person takes some purposeful and quick strides forward, then starts to slow down."
+0,97,0.014812443405389786,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+0,98,0.33749595284461975,a figure take 2 quick steps forwards
+0,99,0.014814257621765137,person is dancing arounds arms up.
+0,100,0.014790162444114685,robot turned back and climb on to something and jump started rolling on the ground and stands up.
+0,101,0.04027443379163742,he does a walk run
+0,102,0.012424406595528126,a person doing the i'm a little tea pot dance.
+0,103,0.003005525330081582,"a person leans over and uses their arms to carry something heavy, stumbling forward with small steps."
+0,104,0.015872323885560036,"a person lifts his arms up in front of him, then mimics punching the air a few times. he then lowers his arms, and trots in a quick clockwise circle."
+0,105,0.012804443947970867,the man is dancing using both legs and arms
+0,106,0.9636914730072021,person walks slowly from upper left to bottom right using handrails to steady their steps.
+0,107,0.0818689689040184,a man walks forward fast.
+0,108,0.01248433068394661,person is hopping slightly up and down very fast with their hands up in the air
+0,109,0.11688433587551117,the person is doing a quick punch kick.
+0,110,0.004654729273170233,"a person is with their hands on their legs, knees slightly bent, and they sway from side to side and then straighten arms out to the side."
+0,111,0.01788449101150036,the person is dancing the cha cha .
+0,112,0.02020386792719364,a colorful animated drawing moving around as if it is dancing.
+0,113,0.011863429099321365,a person is performing a dance
+0,114,1.521073579788208,the person took one jump down.
+0,115,0.007470317184925079,the figure takes a few steps forward and does a quick spin (180 degrees) on their left heel and swaying as they step out of the turn.
+0,116,0.009822136722505093,a person throws an object with a fast arm motion.
+0,117,0.011002370156347752,"a person is dancing, arms held up as to hold another person's shoulders, moving back and forth in a counterclockwise pattern."
+0,118,0.011702519841492176,"a person does jumping jacks, spreading their arms and legs out and in with each jump"
+0,119,0.01601112075150013,a person does a small 180 degree jump turn then turns back around to the front.
+0,120,0.012246604077517986,person is doing different dance moves
+0,121,2.9021756649017334,dancing backward moving both arms.
+0,122,0.011175386607646942,a person who is standing with his hands by his sides takes deliberate steps on a treadmill.
+0,123,0.11160086840391159,a person appears to be dancing like a chicken
+0,124,0.02387860231101513,a person picks up a heavy object and throws it with both hands.
+0,125,0.01935715042054653,he does a run on the spot
+0,126,0.009140967391431332,the person moves his arms around in a dancing motion.
+0,127,0.04554558917880058,the person was walking really fast.
+0,128,0.018551016226410866,"person shakes hands as if playing a drum, it begins fast and ends slow."
+0,129,0.05441589653491974,"a person is dancing and moving towards left, raising hands"
+0,130,0.01511326339095831,the person jumped with the kick spin.
+0,131,0.005180981941521168,"a person holds their arms in front of them, and makes a quick punch with their left arm."
+0,132,0.006609824951738119,a person walks forward careful to avoid something that is on the ground.
+0,133,0.01081943977624178,a person is running a steady pace on a treadmill.
+0,134,0.024240177124738693,"a person walks backwards, lifts their arms up, then down, then up agiain, then bends down, places hands on the ground amd dows a jump on to their knees. then they stamd up and step backwards"
+0,135,0.03414634242653847,moving fast on the at front
+0,136,1.2203229665756226,person faces forward then jumps to their right then they bend they knees and jump spin twice before standing still
+0,137,0.10309652239084244,a person is running forward at a steady pace.
+0,138,0.021250344812870026,a person who is standing with his hands by his sides takes four slow steps forward.
+0,139,0.02706235833466053,"the man is walking steadily not fast but not slow ,swinging his arms down word right to left right to left one foot in front of the other now one foot in front of the other."
+0,140,0.014713993296027184,"a man dances throwing both arms up, takes a step to the right and then a step to the back whilst continuing to dance with his arms."
+0,141,0.03902072459459305,a person walks forward at a slow pace.
+0,142,0.812228262424469,"a man is hunched over, and he brings his right hand over to join his left as he makes slow stirring motions."
+0,143,0.006019391119480133,a person takes a quick step backwards towards their right hand side
+0,144,0.010536636225879192,"a person jogs forward, does a little dance then jogs back."
+0,145,1.3030169010162354,"a person walks forward then steps to the right with a quick little stutter-step further to right, then immediately to the left and continues to walk in their original path."
+0,146,0.007893109694123268,a person walks side to side with arms extended as if dancing
+0,147,0.1206418126821518,a lowers their arms and uses their left and right hands to steady themselves as they walk forward
+0,148,0.061133548617362976,rising the hands and like tired.
+0,149,0.8061895966529846,someone is doing jumping jacks in slow motion.
+0,150,0.02701602876186371,"a person takes slow, wide steps forward."
+0,151,0.009755566716194153,a person bends down to pick up a heavy item from the ground using both hands and gives it to another person.
+0,152,0.011554856784641743,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+0,153,0.1628669649362564,a person squats down and then quickly makes a small jump straight up.
+0,154,0.008971929550170898,"a man stands up straight, then lifts both arms up over his head and bats them forward in a tired manner."
+0,155,0.007100734394043684,a person kicking with their right leg twice then kicking once with their left leg in a fast pace.
+0,156,0.010040288791060448,"a person walked backwards, and grabbed something and start jump"
+0,157,0.009513210505247116,a person jump once on the spot.
+0,158,2.2227330207824707,the person jump and punching back and forth at the same time using his left hands nine times and stop.
+0,159,0.02142779342830181,a person walks straight forward at a fast pace.
+0,160,0.14227108657360077,a person doing a fun dance.
+0,161,0.029442254453897476,a person breaks into an enthusiastic dance.
+0,162,0.009514840319752693,"someone starts stumbling towards the left, then starts to stumble in a figure eight position to realign and halt before completing the figure eight."
+0,163,2.5028634071350098,coming forward with small dance.
+0,164,0.019038239493966103,a red and blue stick figure is standing and mimics the “walk like and egyptian” dance.
+0,165,0.765811026096344,the person is doing the lambada dance.
+0,166,0.07820703834295273,a man does a little dance.
+0,167,0.016014592722058296,a person squats then stands up and dances then spins in a circle while dancing
+0,168,0.008360568434000015,a person does a dance move by twisting to the right and then extending the right arm into the arm.
+0,169,0.026341935619711876,a person walks forward really fast.
+0,170,0.007617241702973843,"a person does the ""i'm a little teapot"" dance, making a handle with his left arm and a spout with his right arm."
+0,171,0.012168046087026596,robot is performing different step of dance and moving left right.
+0,172,0.036664362996816635,"a person walks forward, then dances backwards and then begins a spin in a clockwise direction with arms raising"
+0,173,0.003450027434155345,"a person dancing in certain rotating motion, then raising his or her hand up"
+0,174,0.014968487434089184,the man takes a quick step forward starting with his right foot.
+0,175,0.019971663132309914,a man performs one quick jump into the air and lands on his feet.
+0,176,0.006624285131692886,a person walks forward with stiff legs.
+0,177,0.048134151846170425,a person walks forward fast.
+0,178,0.009455489926040173,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+0,179,1.408380150794983,a person lifting one leg bent at the knee then the other the same way in a fast running in place motion.
+0,180,0.00860004685819149,the person is moving someone or hands around dancing.
+0,181,0.021653221920132637,"person starts running very quickly while swinging arms right and left in front of him in a very fast, violent manner, then speeding up before stopping."
+0,182,0.010674521327018738,a person walks forward at a fast pace with hands moving at the wrist
+0,183,0.006941069848835468,this person appears to stumble as if fleftened.
+0,184,0.004171949811279774,moving the hips and shoulders side to side making it a little dance.
+0,185,0.018315158784389496,a person appears to be doing a dance.
+0,186,0.06420741230249405,a person walks forward at a steady pace
+0,187,0.01395423524081707,a person does broad jumps back and forth with a quick stretch in between jumps.
+0,188,1.1297911405563354,"a person walks forward at a leisurely, somewhat slow pace."
+0,189,0.028631919994950294,a person walks forward at a relatively fast pace.
+0,190,0.008106276392936707,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+0,191,0.012506118975579739,person is slow walking down.
+0,192,0.008360379375517368,a person doing a jump pose.
+0,193,0.017503000795841217,a man walks backwards and the starts jump roping.
+0,194,0.05096568912267685,a person who is standing with his arms by his sides takes four very slow steps forward.
+0,195,0.016948215663433075,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+0,196,0.016346456483006477,a person does tricks while jump roping and then stops
+0,197,0.026430319994688034,a person holds their arms out and makes steps as if dancing.
+0,198,0.016972152516245842,a person practice ballroom dancing by themselves
+0,199,0.02187325432896614,a person made a quick jump forward
+0,200,0.1950983703136444,a person does a small jump
+1,201,0.025471748784184456,the person is walking very slow
+1,202,0.013666532933712006,he uplift his right hand and moving it fast again and again.
+1,203,0.020132005214691162,a person does a small 180 degree jump turn then turns back around to the front.
+1,204,0.013904711231589317,a fast limp on the right foot.
+1,205,1.1199525594711304,person faces forward then jumps to their right then they bend they knees and jump spin twice before standing still
+1,206,0.006390081252902746,the person seems to be 'beat boxing' and drops to the ground swinging his left foot over in a circular direction and using that momentum to to propel himself to spin over his right shoulder first then his left so he ends up seated again.
+1,207,0.25780582427978516,a person does a small jump
+1,208,0.01589376851916313,"a person dancing in certain rotating motion, then raising his or her hand up"
+1,209,0.008921127766370773,"a person turns towards to the right, picks up a heavy object and turns and set it down in front of him."
+1,210,0.012784509919583797,person moves body in fast turn then rights something out of left hand very fast
+1,211,0.04372289031744003,a man walks forward fast.
+1,212,0.01642759144306183,a man stands casually with his arms to his sides than takes 4 slow steps backwards starting with his left and then stops.
+1,213,0.015868596732616425,a person walks forward with stiff legs.
+1,214,0.007165141403675079,"someone starts stumbling towards the left, then starts to stumble in a figure eight position to realign and halt before completing the figure eight."
+1,215,0.005442080553621054,a person is ballroom dancing with someone.
+1,216,0.015199227258563042,"a person takes slow, wide steps forward."
+1,217,0.008577988483011723,a person bends down to pick up a heavy item from the ground using both hands and gives it to another person.
+1,218,0.0229154285043478,a person takes three quick steps backward.
+1,219,0.009367364458739758,the man is doing dance waltz
+1,220,0.00785662978887558,a person kicking with their right leg twice then kicking once with their left leg in a fast pace.
+1,221,0.0176602341234684,a person is salsa dancing.
+1,222,0.006089257542043924,the person is moving someone or hands around dancing.
+1,223,0.014362473040819168,person is hopping slightly up and down very fast with their hands up in the air
+1,224,0.1006886437535286,a person appears to be dancing like a chicken
+1,225,1.6300532817840576,the person jump and punching back and forth at the same time using his left hands nine times and stop.
+1,226,0.019257478415966034,a person doing a jump pose.
+1,227,0.005525304935872555,"a person does the ""i'm a little teapot"" dance, making a handle with his left arm and a spout with his right arm."
+1,228,0.015626942738890648,a person made a quick jump forward
+1,229,0.03229900822043419,"a person walks downstairs, before making a little jump at the bottom."
+1,230,0.016514096409082413,a person takes a couple quick steps forward.
+1,231,0.019448095932602882,a person walks forward at a fast pace with hands moving at the wrist
+1,232,0.01933733932673931,a man performs one quick jump into the air and lands on his feet.
+1,233,0.011496390216052532,the man takes a quick step forward starting with his right foot.
+1,234,0.0032176401000469923,"a person holds their arms in front of them, and makes a quick punch with their left arm."
+1,235,0.013641463592648506,the person is dancing the cha cha .
+1,236,0.010569068603217602,a person breaks into an enthusiastic dance.
+1,237,0.0124636460095644,this person holds his arms up as if to dance with a partner.
+1,238,1.3152378797531128,"a person reaches back with their right arm and throws something forward with a lot of force, then they steady themselves to remain balanced."
+1,239,0.0543537475168705,a person who is standing with his arms by his sides takes four very slow steps forward.
+1,240,0.00795272272080183,a person is performing a dance
+1,241,0.3569110929965973,someone seems to be dancing
+1,242,0.010568005964159966,"a figure gestures as though it is digging with a shovel. the figure stops dancing around 7 second mark, and seems to place a plant or tree into the hole it has dug."
+1,243,0.10865676403045654,"a person takes some purposeful and quick strides forward, then starts to slow down."
+1,244,0.0591718815267086,the person is standing up. they raise their hands up with fingers spread like jazz hands. hands and hips move back and forth like it is dancing.
+1,245,0.0056292833760380745,the figure takes a few steps forward and does a quick spin (180 degrees) on their left heel and swaying as they step out of the turn.
+1,246,0.02055227942764759,person walks fast on the spot
+1,247,0.016910720616579056,a person is dancing quickly and having fun.
+1,248,0.007394780870527029,"a person walks forward at a slow pace and stops, holding position."
+1,249,2.628796339035034,the figure appears to step over something with a slightly awkward walk before turning so that we are seeing their back.
+1,250,0.013695811852812767,a person doing the i'm a little tea pot dance.
+1,251,0.025330131873488426,person is slow walking down.
+1,252,0.015932783484458923,he is jumping very fast.
+1,253,0.011398366652429104,a person walks forward at a steady pace
+1,254,0.011872367933392525,this person is jumping up and down as if to jump rope.
+1,255,0.2711377441883087,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+1,256,0.010896711610257626,a person who is standing with his hands by his sides takes four slow steps forward.
+1,257,0.015141495503485203,a person walking in fast pace.
+1,258,0.0624132864177227,person takes fast steps forwards
+1,259,0.0198706965893507,a person picks up a heavy object and throws it with both hands.
+1,260,0.0016579845687374473,a person takes a quick step backwards towards their right hand side
+1,261,0.6522273421287537,a person lifts something heavy with their right arm.
+1,262,0.15116223692893982,a person run fast across a room
+1,263,0.016732050105929375,"a person walks forward, then dances backwards and then begins a spin in a clockwise direction with arms raising"
+1,264,0.04189734160900116,a person appears to be doing a dance.
+1,265,0.007976588793098927,the person is doing a fancy dance.
+1,266,2.8699283599853516,dancing backward moving both arms.
+1,267,0.011623215861618519,a person struggles to hold a heavy object before dropping it.
+1,268,0.0187306459993124,a person takes a jump rope and starts jumping rope.
+1,269,0.00629234965890646,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+1,270,0.019513942301273346,a person squats then stands up and dances then spins in a circle while dancing
+1,271,0.010645224712789059,"a person walks in a slow clockwise circle, stopping in a standing position."
+1,272,0.019016150385141373,"a person takes two slow steps forward, pivots on their right foot 180deg, then takes two more slow steps forward."
+1,273,0.02505822665989399,the person is doing a quick punch kick.
+1,274,0.007882343605160713,a person walking forward in a steady pace
+1,275,0.01621037907898426,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+1,276,0.010719248093664646,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+1,277,2.4595861434936523,a person is dancing while running.
+1,278,0.05218878015875816,a person bends over and does a standing jump forward.
+1,279,0.9857556223869324,"a person walks forward at a leisurely, somewhat slow pace."
+1,280,1.297499179840088,a man walks backwards and then makes a large leap forward.
+1,281,0.18059442937374115,"the person steps into a martial arts stance, kicks and thrusts its right leg forward, bring itself back into a martial arts stance."
+1,282,2.009843111038208,coming forward with small dance.
+1,283,0.025590095669031143,"a person jumps repeatedly, throwing their arms above their head and stretching their legs with each jump."
+1,284,0.00661988602951169,a person walks forward and then starts dancing.
+1,285,0.006172696594148874,a person does a dance move by twisting to the right and then extending the right arm into the arm.
+1,286,0.022404970601201057,the person took a small jump forward.
+1,287,0.009467837400734425,"a person walked backwards, and grabbed something and start jump"
+1,288,0.04412224516272545,a person walks forward really fast.
+1,289,0.016700945794582367,a colorful animated drawing moving around as if it is dancing.
+1,290,0.8723434805870056,person walks slowly from upper left to bottom right using handrails to steady their steps.
+1,291,0.009886941872537136,"a person jogs forward, does a little dance then jogs back."
+1,292,0.007492748089134693,a red and blue stick figure is standing and mimics the “walk like and egyptian” dance.
+1,293,0.02447931468486786,robot is performing different step of dance and moving left right.
+1,294,1.7121199369430542,a person sets something down on the ground and then walks with big hip sway in a diaganol direction.
+1,295,1.796891689300537,the man is jumping jump
+1,296,0.013586044311523438,a person walks with a limp
+1,297,0.03444361314177513,he does a walk run
+1,298,0.020018506795167923,a man walks backwards and the starts jump roping.
+1,299,0.09607333689928055,a person doing a fun dance.
+1,300,0.02921224758028984,a person walks forward careful to avoid something that is on the ground.
+1,301,0.010897727683186531,rising the hands and like tired.
+1,302,0.007078099530190229,a person jump once on the spot.
+1,303,0.013578993268311024,"a man stands up straight, then lifts both arms up over his head and bats them forward in a tired manner."
+1,304,0.010530272498726845,"a person makes slow, wide steps forward."
+1,305,0.011228583753108978,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+1,306,0.05267980322241783,"a person jumps and spins in place, then when they land they run forward, stop, and run backwards"
+1,307,0.015349728986620903,a person holds their arms out and makes steps as if dancing.
+1,308,0.056947529315948486,the person is doing the chicken dance.
+1,309,1.0496459007263184,a person running and then crawling before returning to a run.
+1,310,0.003891522530466318,"a man dances throwing both arms up, takes a step to the right and then a step to the back whilst continuing to dance with his arms."
+1,311,0.01035066694021225,person is doing different dance moves
+1,312,1.725610375404358,a person sets something down on the ground and then walks with big hip sway in a diaganol direction.
+1,313,0.009274422191083431,a person walks side to side with arms extended as if dancing
+1,314,0.014255084097385406,a person is moving around dancing with their arms.
+1,315,0.01064478512853384,person facing forward does 5 small slow steps to the left then 5 slow steps to the  right
+1,316,0.012837144546210766,the person walks forward at a steady pace while moving most of their left hand side of their body compared to their right
+1,317,0.004801543429493904,walking forward then the body twirls around fast and keeps walking.
+1,318,0.021080102771520615,the person is jumping rope very fast.
+1,319,0.007784851361066103,a person swings their arms and body around as if they are dancing.
+1,320,1.1714903116226196,"a person walks forward then steps to the right with a quick little stutter-step further to right, then immediately to the left and continues to walk in their original path."
+1,321,0.011924494057893753,a person scamps around as if doing a victory dance.
+1,322,0.03210533782839775,a person walks forward at a slow pace.
+1,323,0.027801692485809326,a person throws an object with a fast arm motion.
+1,324,0.028337007388472557,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+1,325,0.09464818984270096,a person squats down and then quickly makes a small jump straight up.
+1,326,0.027698615565896034,"a person squats deeply, then swings themselves into a forward leap."
+1,327,0.014600036665797234,"person squats with both knees bent, bringing hands together at chest, then straightens legs to jump straight upwards but lands slightly to their left considering their beginning position"
+1,328,0.05907686427235603,a person takes a quick step forward.
+1,329,0.011089344508945942,moving fast on the at front
+1,330,0.02090202271938324,the person is  slow punching the air.
+1,331,0.00543003948405385,"person does light bouncy jump, skips forward with left leg swinging forward"
+1,332,0.010065512731671333,"starting with their right foot, a person sidesteps fast back and forth."
+1,333,0.04048246890306473,"a person is dancing and moving towards left, raising hands"
+1,334,0.013011512346565723,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+1,335,0.5019672513008118,"a man is hunched over, and he brings his right hand over to join his left as he makes slow stirring motions."
+1,336,0.005501310341060162,person bends down and keeps legs straight flowing arms left to right before turning around and doing same back
+1,337,0.04622733220458031,a person is running forward at a steady pace.
+1,338,0.011978046037256718,a man does a little dance.
+1,339,0.00614415155723691,a person throws their body forward and then to the side in an expressive way
+1,340,0.0152011439204216,"a man shakes his wrists, jumps backwards with a spin, and then finishes by spreading his arms."
+1,341,0.009171804413199425,"a person is with their hands on their legs, knees slightly bent, and they sway from side to side and then straighten arms out to the side."
+1,342,0.0054794312454760075,"person walks fast in a semi circular motion clockwise, then rapidly in a straight line."
+1,343,0.03061077371239662,a person is doing the waltz dance
+1,344,1.4667623043060303,the person took one jump down.
+1,345,0.006516892462968826,this person appears to stumble as if fleftened.
+1,346,0.011138899251818657,"person is dancing by bending right arm and right leg lifting and bending at the same time a few times, they repeat this on the left, they jump to the side and kick the left leg back, and then jump to the left"
+1,347,1.215719223022461,a person lifting one leg bent at the knee then the other the same way in a fast running in place motion.
+1,348,0.014528172090649605,the person moves his arms around in a dancing motion.
+1,349,0.39047375321388245,"imitates a ballet dance. right hand steps behind left, hands cur under than both lifts poisely."
+1,350,0.009504284709692001,"the man is walking steadily not fast but not slow ,swinging his arms down word right to left right to left one foot in front of the other now one foot in front of the other."
+1,351,0.008039607666432858,a person does broad jumps back and forth with a quick stretch in between jumps.
+1,352,0.008266602642834187,the person is doing awkward arm movements to the head and then down in front.
+1,353,0.6044378876686096,someone is doing jumping jacks in slow motion.
+1,354,0.0030027078464627266,a person walks forward at a relatively fast pace.
+1,355,0.006112124305218458,a person is running a steady pace on a treadmill.
+1,356,0.011310413479804993,"person shakes hands as if playing a drum, it begins fast and ends slow."
+1,357,0.009116584435105324,a person walks forward fast.
+1,358,0.03755743056535721,a person is dancing and waving their arms
+1,359,1.0042587518692017,a person walks forward at fast pace.
+1,360,0.010266340337693691,the man raises his hands and waves then fast in the air.
+1,361,0.029743175953626633,obstacle courses sometimes require an athlete to run in a backwards motion.
+1,362,0.006018159911036491,a person practice ballroom dancing by themselves
+1,363,0.026403317227959633,a person walks straight forward at a fast pace.
+1,364,0.01536587718874216,person is dancing arounds arms up.
+1,365,1.0336412191390991,a person dancing with left arm in the air and bouncing back and forth
+1,366,0.26239386200904846,a person taking a huge jump forward
+1,367,0.0462968610227108,"the person does a little side to side dance, barely lifting its legs and bringing them down quickly, while shimmying its shoulders up and down slightly."
+1,368,1.2857427597045898,"a man is standing up, then bends down to take a big jump forward, leaps forward, and then stands back up straight."
+1,369,0.502074122428894,a figure take 2 quick steps forwards
+1,370,0.011762959882616997,a person who is standing with his hands by his sides takes deliberate steps on a treadmill.
+1,371,0.010497814044356346,the man is dancing using both legs and arms
+1,372,0.02068949304521084,"a person walks backwards, lifts their arms up, then down, then up agiain, then bends down, places hands on the ground amd dows a jump on to their knees. then they stamd up and step backwards"
+1,373,0.030056675896048546,person is doing a dance
+1,374,0.007300748489797115,a person is jogging / walking fast but not running in circles
+1,375,0.19995631277561188,the person is running forward very fast.
+1,376,0.008950706571340561,moving the hips and shoulders side to side making it a little dance.
+1,377,0.05823008343577385,a person is sprinting fast
+1,378,0.006531212478876114,"a person lifts his arms up in front of him, then mimics punching the air a few times. he then lowers his arms, and trots in a quick clockwise circle."
+1,379,0.013396568596363068,a person does tricks while jump roping and then stops
+1,380,0.16574810445308685,a lowers their arms and uses their left and right hands to steady themselves as they walk forward
+1,381,0.034837402403354645,the person was walking really fast.
+1,382,0.019232412800192833,robot turned back and climb on to something and jump started rolling on the ground and stands up.
+1,383,0.009684104472398758,"a person is dancing, arms held up as to hold another person's shoulders, moving back and forth in a counterclockwise pattern."
+1,384,0.013106703758239746,he does a run on the spot
+1,385,0.005726132076233625,"a person does jumping jacks, spreading their arms and legs out and in with each jump"
+1,386,0.007679235190153122,a person readies their jump rope and then begins skipping rope.
+1,387,0.563642680644989,the person is doing the lambada dance.
+1,388,0.0038423817604780197,"a person leans over and uses their arms to carry something heavy, stumbling forward with small steps."
+1,389,0.014245200902223587,a a person practices a salsa dance routine by themselves
+1,390,0.07729694992303848,the person jumped with the kick spin.
+1,391,0.010621079243719578,a fast pace stepping forward with dribble hands then takes a shot.
+1,392,0.005048864055424929,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+1,393,0.01450304314494133,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+1,394,0.007484493777155876,a man is dancing around in a circle.
+1,395,0.0072587160393595695,"person starts running very quickly while swinging arms right and left in front of him in a very fast, violent manner, then speeding up before stopping."
+1,396,0.005638764705508947,"a person waddles around like a penguin, then waves with their left hand, their right hand, and then a quick wave with both hands."
+1,397,0.01076735369861126,a man dancing to salsa music
+1,398,0.011889639310538769,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+1,399,1.4476779699325562,a person runs forwards and comes to a slow stop.
+1,400,0.01097306702286005,the person is doing a russian dance
