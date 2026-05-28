@@ -66,6 +66,9 @@
   - `outputs/figures/lora_refinement_loss.png`
   - `outputs/tables/lora_training_summary.csv`
   - `outputs/tables/lora_refinement_loss.csv`
+- [x] Final-report diagnostic figures:
+  - `outputs/figures/style_subset_distribution.png`
+  - `outputs/figures/style_proxy_win_rate.png`
 - [x] BVH motion-style proxy metrics:
   - `outputs/metrics_lora_200/bvh_proxy_metrics.csv`
   - `outputs/metrics_lora_200/bvh_proxy_comparison.csv`
