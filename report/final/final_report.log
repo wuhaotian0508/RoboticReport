@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 21:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 21:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -449,14 +449,14 @@ File: ../../outputs/figures/lora_qualitative_frames.png Graphic file (type png)
 Package pdftex.def Info: ../../outputs/figures/lora_qualitative_frames.png  use
 d on input line 147.
 (pdftex.def)             Requested size: 252.0pt x 378.00064pt.
-<../../outputs/figures/baseline_lora_key_metrics.png, id=88, 510.40688pt x 197.
-538pt>
+<../../outputs/figures/baseline_lora_key_metrics.png, id=88, 510.708pt x 197.53
+8pt>
 File: ../../outputs/figures/baseline_lora_key_metrics.png Graphic file (type pn
 g)
 <use ../../outputs/figures/baseline_lora_key_metrics.png>
 Package pdftex.def Info: ../../outputs/figures/baseline_lora_key_metrics.png  u
 sed on input line 158.
-(pdftex.def)             Requested size: 485.04126pt x 187.72934pt.
+(pdftex.def)             Requested size: 485.04126pt x 187.6148pt.
 <../../outputs/figures/style_proxy_win_rate.png, id=89, 382.0455pt x 186.9165pt
 >
 File: ../../outputs/figures/style_proxy_win_rate.png Graphic file (type png)
@@ -507,7 +507,7 @@ Package rerunfilecheck Info: File `final_report.out' has not changed.
 Here is how much of TeX's memory you used:
  9735 strings out of 467871
  157047 string characters out of 5418376
- 588597 words of memory out of 5000000
+ 588547 words of memory out of 5000000
  38493 multiletter control sequences out of 15000+600000
  661150 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -525,7 +525,7 @@ ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/16831/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/16831/
 AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/16831/
 AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on final_report.pdf (5 pages, 939597 bytes).
+Output written on final_report.pdf (5 pages, 941928 bytes).
 PDF statistics:
  178 PDF objects out of 1000 (max. 8388607)
  34 named destinations out of 1000 (max. 500000)
