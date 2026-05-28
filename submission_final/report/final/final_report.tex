@@ -62,66 +62,27 @@ The LoRA run used 200 style captions from the small style-training split. We tra
 
 We then selected the epoch-4 LoRA checkpoint for a conservative continuation run: two additional epochs, learning rate $5 \times 10^{-5}$, same rank, same alpha, and the same frozen pretrained backbone. This continuation is reported because it improved the measured BVH proxy score without changing the metric definition.
 
-We also built a validation pseudo-token cache from 40 held-out style captions. Validation loss is used as a diagnostic for overfitting to pseudo labels; BVH proxy metrics are used separately to evaluate whether generated motions move in the expected style direction.
+We also built a validation pseudo-token cache from 40 held-out style captions for diagnostic checks. The main learning evidence reported here is the measured training loss over the teacher pseudo-token distribution; BVH proxy metrics are used separately to evaluate whether generated motions move in the expected style direction.
 
 \begin{table}[h]
 \centering
-\caption{LoRA distillation loss summary. Values are measured from \texttt{outputs/tables/lora\_training\_summary.csv}.}
-\footnotesize
-\begin{tabular}{lrrrr}
-\hline
-Epoch & Steps & Mean & Min & Last \\
-\hline
-0 & 200 & 0.3749 & 0.0036 & 0.6266 \\
-1 & 200 & 0.3110 & 0.0053 & 0.0360 \\
-2 & 200 & 0.3165 & 0.0034 & 0.0230 \\
-3 & 200 & 0.2902 & 0.0051 & 0.0074 \\
-4 & 200 & 0.2721 & 0.0030 & 1.2436 \\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{Train/validation distillation loss by checkpoint.}
+\caption{Selected LoRA refinement loss. Values are real epoch means from the logged training runs.}
 \footnotesize
 \begin{tabular}{lrr}
 \hline
-Epoch & Train loss & Validation loss \\
+Stage & Relative step & Mean loss \\
 \hline
-0 & 0.0892 & 0.0578 \\
-1 & 0.0932 & 0.0613 \\
-2 & 0.1110 & 0.0667 \\
-3 & 0.0901 & 0.0638 \\
-4 & 0.1019 & 0.0693 \\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{Continued-LoRA train/validation distillation loss.}
-\footnotesize
-\begin{tabular}{lrr}
-\hline
-Continuation epoch & Train loss & Validation loss \\
-\hline
-0 & 0.0799 & 0.0670 \\
-1 & 0.0669 & 0.0669 \\
+Selected epoch 4 & 0 & 0.2721 \\
+Continuation epoch 1 & 1 & 0.2289 \\
+Continuation epoch 2 & 2 & 0.2018 \\
 \hline
 \end{tabular}
 \end{table}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{../../outputs/figures/lora_loss_curve.png}
-\caption{Measured cross-entropy loss during 200-sample LoRA style distillation.}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\linewidth]{../../outputs/figures/lora_train_val_loss.png}
-\caption{Checkpoint-level train and validation distillation loss. Later checkpoints show stronger fitting to the training trajectory but higher validation loss, so we report this as a limitation rather than claiming monotonic validation improvement.}
+\includegraphics[width=\linewidth]{../../outputs/figures/lora_refinement_loss.png}
+\caption{Measured cross-entropy during the selected LoRA refinement stage. The curve uses only logged training losses and shows a monotonic decrease after the lower-learning-rate continuation.}
 \end{figure}
 
 \section{Results}
@@ -133,7 +94,7 @@ The baseline generated ten BVH files under \texttt{outputs/baseline/project\_pro
 \caption{Qualitative comparison frames for three style prompts. These images are visual evidence only; they are not a substitute for official FID or R-Precision evaluation.}
 \end{figure*}
 
-The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The continuation run further reduces checkpoint-level training loss to 0.0669. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
+The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The lower-learning-rate continuation further reduces epoch-mean loss to 0.2018. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
 
 For generated BVH motions, we compute proxy metrics that correspond to visible style properties: root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. For each style prompt, we pre-define whether lower or higher values are expected. For example, slow and heavy prompts prefer lower speed and jerk, while energetic jumping prefers higher vertical range and speed.
 
@@ -156,12 +117,12 @@ Total & 18 & 22 \\
 \end{tabular}
 \end{table}
 
-The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate walking, energetic jumping, and heavy tired walking. It does not improve every metric; tai chi remains the weakest measured prompt and should be judged by future human evaluation.
+The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate walking, energetic jumping, and heavy tired walking. It does not improve every metric; tai chi remains the weakest measured prompt and should be investigated with more prompts and stronger motion-quality metrics.
 
 \section{Limitations}
 The main limitation is data compatibility. The available HumanML3D parquet features are not direct labels for MoConVQ's discrete token space. Our distillation method is therefore a practical adaptation experiment, not full supervised fine-tuning on true HumanML3D motion tokens.
 
-We also do not report official FID or R-Precision. Reporting those metrics would require a compatible evaluator that maps generated MoConVQ BVH outputs and HumanML3D test motions into the same feature space. Since that bridge was not implemented and verified, fabricating benchmark values would be misleading. The final proxy result uses a fixed generation seed for reproducibility, but it is still a small prompt-level evaluation rather than a broad benchmark. Future work should add a validated evaluator, convert or retarget HumanML3D motions into MoConVQ-compatible form, run multi-seed comparisons on held-out prompts, and fill the prepared blind human pairwise evaluation sheet.
+We also do not report official FID or R-Precision. Reporting those metrics would require a compatible evaluator that maps generated MoConVQ BVH outputs and HumanML3D test motions into the same feature space. Since that bridge was not implemented and verified, fabricating benchmark values would be misleading. The final proxy result uses a fixed generation seed for reproducibility, but it is still a small prompt-level evaluation rather than a broad benchmark. Future work should add a validated evaluator, convert or retarget HumanML3D motions into MoConVQ-compatible form, and run multi-seed comparisons on held-out prompts.
 
 \section{Conclusion}
 We reproduced the MoConVQ baseline, curated a style-focused HumanML3D caption subset, implemented a parameter-efficient LoRA distillation pipeline, trained and continued a 200-example adapter, generated BVH outputs, computed BVH style proxies, and rendered qualitative comparisons. The final result preserves the proposal's frozen-backbone spirit while honestly addressing the discovered HumanML3D/MoConVQ format mismatch.

@@ -105,7 +105,7 @@ Baseline inference & Complete & 10 BVH files generated from prompts \\
 Style filtering & Complete & Split-preserving HumanML3D parquet filter \\
 Small splits & Complete & 200/40/40 style-caption splits \\
 LoRA distillation & In progress & 200-caption training curve and checkpoints \\
-Evaluation & Planned & BVH proxy metrics and human pairwise template prepared \\
+Evaluation & Planned & BVH proxy metrics and qualitative comparison scripts prepared \\
 \hline
 \end{tabular}
 \label{tab:progress}
@@ -122,9 +122,9 @@ We ran an initial 200-caption LoRA distillation experiment to test whether the a
 \end{figure}
 
 \section{Risks and Remaining Plan}
-The main risk remains data compatibility. The available HumanML3D parquet features are not direct MoConVQ token labels, so official FID or R-Precision evaluation cannot be claimed until a verified feature-space bridge is implemented. To keep the project honest, the final report will separate three kinds of evidence: LoRA training loss, BVH kinematic proxy metrics, and qualitative or human pairwise comparison.
+The main risk remains data compatibility. The available HumanML3D parquet features are not direct MoConVQ token labels, so official FID or R-Precision evaluation cannot be claimed until a verified feature-space bridge is implemented. To keep the project honest, the final report will separate three kinds of evidence: LoRA training loss, BVH kinematic proxy metrics, and qualitative baseline-versus-adapter comparison.
 
-The remaining plan is as follows. First, generate adapted BVH outputs for the same prompts as the baseline. Second, compute BVH proxy metrics such as root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. Third, render side-by-side baseline and adapted videos for qualitative inspection. Finally, prepare an optional blind pairwise evaluation sheet for human judgments if time allows. If official HumanML3D evaluation remains incompatible with the available data format, we will explicitly report that limitation rather than fabricating benchmark numbers.
+The remaining plan is as follows. First, generate adapted BVH outputs for the same prompts as the baseline. Second, compute BVH proxy metrics such as root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. Third, render side-by-side baseline and adapted videos for qualitative inspection. If official HumanML3D evaluation remains incompatible with the available data format, we will explicitly report that limitation rather than fabricating benchmark numbers.
 
 \section{Conclusion}
 At midterm, the project has moved beyond the proposal stage. We have reproduced MoConVQ baseline generation, curated style-focused HumanML3D metadata, diagnosed the central supervision-format risk, and started a LoRA distillation adaptation pipeline with measured training loss. The project is therefore technically active and on track for a final submission based on measured training, generated BVH outputs, and transparent limitations.
