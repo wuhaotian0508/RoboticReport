@@ -2,7 +2,8 @@
 
 ## Batch 1: Midterm Submission
 
-- [x] RSS-style report source: `report/midterm/midterm.tex`
+- [x] Strict RSS/IEEEtran report source: `report/midterm/midterm.tex`
+- [x] RSS template class copied for reproducible compilation: `report/midterm/IEEEtran.cls`
 - [x] Shared bibliography: `report/shared/references.bib`
 - [x] Pipeline figure in the report
 - [x] Implementation progress table in the report
@@ -19,6 +20,7 @@
 ## Batch 2: Final Submission
 
 - [x] Final report source: `report/final/final_report.tex`
+- [x] RSS template class copied for reproducible compilation: `report/final/IEEEtran.cls`
 - [x] Reproducible data curation pipeline
 - [x] Reproducible baseline generation pipeline
 - [x] Parameter-efficient LoRA distillation pipeline:
