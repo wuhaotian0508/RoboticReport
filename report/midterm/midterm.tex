@@ -1,13 +1,20 @@
-\documentclass[10pt,twocolumn]{article}
-
-\usepackage[margin=0.72in]{geometry}
+\documentclass[conference]{IEEEtran}
 \usepackage{times}
+\usepackage[numbers]{natbib}
+\usepackage{multicol}
+\usepackage[bookmarks=true]{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
 
+\pdfinfo{
+   /Author (Haotian Wu, Yuhua Luo, Xuyang Yuan)
+   /Title  (Style-Aware Adaptation for Language-Conditioned Humanoid Motion Generation)
+   /Subject (Language-guided humanoid motion generation)
+   /Keywords (MoConVQ; HumanML3D; LoRA; humanoid motion generation)
+}
+
 \title{Style-Aware Adaptation for Language-Conditioned Humanoid Motion Generation}
-\author{Haotian Wu \and Yuhua Luo \and Xuyang Yuan}
-\date{}
+\author{\IEEEauthorblockN{Haotian Wu, Yuhua Luo, and Xuyang Yuan}}
 
 \begin{document}
 \maketitle
@@ -15,6 +22,8 @@
 \begin{abstract}
 This midterm report summarizes progress toward style-aware adaptation of MoConVQ for language-conditioned humanoid motion generation. We reproduced the pretrained MoConVQ inference pipeline, generated ten baseline BVH motions, built split-preserving HumanML3D style-subset tooling, and identified a key practical constraint: the available HumanML3D parquet export contains processed motion features rather than MoConVQ-compatible token targets. The next phase therefore uses parameter-efficient LoRA distillation as a faithful backup to the proposal's frozen-backbone adaptation plan.
 \end{abstract}
+
+\IEEEpeerreviewmaketitle
 
 \section{Problem and Motivation}
 The goal is to generate humanoid motion from natural language while preserving both action semantics and requested style. MoConVQ is a strong robotics baseline because it uses discrete motion representations and physics-based tracking control \cite{yao2024moconvq}. However, style-specific prompts such as slow deliberate walking, tai chi-like movement, graceful dance, and heavy tired walking may be underrepresented in general text-to-motion training data.
@@ -76,7 +85,7 @@ The main technical risk is format mismatch. The available HumanML3D parquet expo
 
 The final-stage plan is therefore to use a parameter-efficient backup: pretrained MoConVQ serves as a teacher to generate pseudo token targets for style captions, and a student trains only LoRA updates in the language-conditioned transformer. We will report only measured loss, generated BVH outputs, and qualitative comparisons unless a compatible FID/R-Precision evaluator is implemented.
 
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 \bibliography{../shared/references}
 
 \end{document}
