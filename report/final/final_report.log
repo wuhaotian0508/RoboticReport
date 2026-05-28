@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 20:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 21:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,69 +403,88 @@ g)
 Package pdftex.def Info: ../../outputs/figures/style_subset_distribution.png  u
 sed on input line 64.
 (pdftex.def)             Requested size: 252.0pt x 132.82811pt.
+<../../outputs/figures/method_pipeline_diagram.png, id=52, 395.076pt x 134.0006
+3pt>
+File: ../../outputs/figures/method_pipeline_diagram.png Graphic file (type png)
+
+<use ../../outputs/figures/method_pipeline_diagram.png>
+Package pdftex.def Info: ../../outputs/figures/method_pipeline_diagram.png  use
+d on input line 74.
+(pdftex.def)             Requested size: 485.04126pt x 164.5192pt.
  [1{C:/Users/16831/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/1
 6831/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 76.
+(Font)              <7> on input line 83.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-04.
+11.
 
 (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-<../../outputs/figures/lora_refinement_loss.png, id=65, 419.166pt x 260.172pt>
+<../../outputs/figures/lora_refinement_loss.png, id=67, 419.166pt x 260.172pt>
 File: ../../outputs/figures/lora_refinement_loss.png Graphic file (type png)
 <use ../../outputs/figures/lora_refinement_loss.png>
 Package pdftex.def Info: ../../outputs/figures/lora_refinement_loss.png  used o
-n input line 131.
+n input line 138.
 (pdftex.def)             Requested size: 252.0pt x 156.41403pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 []\OT1/ptm/m/n/10 The base-line gen-er-ated ten BVH files un-der
  []
 
 
-Underfull \hbox (badness 5771) in paragraph at lines 136--137
+Underfull \hbox (badness 5771) in paragraph at lines 143--144
 \OT1/ptm/m/n/10 continued-LoRA out-puts were ren-dered as stick-figure
  []
 
 [2 <../../outputs/figures/style_subset_distribution.png>]
-<../../outputs/figures/lora_qualitative_frames.png, id=84, 578.16pt x 867.24pt>
+<../../outputs/figures/lora_qualitative_frames.png, id=87, 578.16pt x 867.24pt>
 
 File: ../../outputs/figures/lora_qualitative_frames.png Graphic file (type png)
 
 <use ../../outputs/figures/lora_qualitative_frames.png>
 Package pdftex.def Info: ../../outputs/figures/lora_qualitative_frames.png  use
-d on input line 140.
+d on input line 147.
 (pdftex.def)             Requested size: 252.0pt x 378.00064pt.
-<../../outputs/figures/style_proxy_win_rate.png, id=85, 382.0455pt x 186.9165pt
+<../../outputs/figures/baseline_lora_key_metrics.png, id=88, 510.40688pt x 197.
+538pt>
+File: ../../outputs/figures/baseline_lora_key_metrics.png Graphic file (type pn
+g)
+<use ../../outputs/figures/baseline_lora_key_metrics.png>
+Package pdftex.def Info: ../../outputs/figures/baseline_lora_key_metrics.png  u
+sed on input line 158.
+(pdftex.def)             Requested size: 485.04126pt x 187.72934pt.
+<../../outputs/figures/style_proxy_win_rate.png, id=89, 382.0455pt x 186.9165pt
 >
 File: ../../outputs/figures/style_proxy_win_rate.png Graphic file (type png)
 <use ../../outputs/figures/style_proxy_win_rate.png>
 Package pdftex.def Info: ../../outputs/figures/style_proxy_win_rate.png  used o
-n input line 170.
+n input line 184.
 (pdftex.def)             Requested size: 252.0pt x 123.29396pt.
-<../../outputs/figures/style_proxy_delta_heatmap.png, id=86, 470.412pt x 203.67
+<../../outputs/figures/style_proxy_delta_heatmap.png, id=90, 470.412pt x 203.67
 pt>
 File: ../../outputs/figures/style_proxy_delta_heatmap.png Graphic file (type pn
 g)
 <use ../../outputs/figures/style_proxy_delta_heatmap.png>
 Package pdftex.def Info: ../../outputs/figures/style_proxy_delta_heatmap.png  u
-sed on input line 177.
+sed on input line 191.
 (pdftex.def)             Requested size: 252.0pt x 109.10687pt.
 
-Underfull \vbox (badness 2318) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3 <../../outputs/figures/lora_refinement_loss.png> <../../outputs/figures/lor
-a_qualitative_frames.png> <../../outputs/figures/style_proxy_win_rate.png>]
-Underfull \hbox (badness 6708) in paragraph at lines 208--209
+ [3 <../../outputs/figures/method_pipeline_diagram.png> <../../outputs/figures/
+lora_refinement_loss.png> <../../outputs/figures/lora_qualitative_frames.png>] 
+[4 <../../outputs/figures/baseline_lora_key_metrics.png> <../../outputs/figures
+/style_proxy_win_rate.png> <../../outputs/figures/style_proxy_delta_heatmap.png
+>]
+Underfull \hbox (badness 6708) in paragraph at lines 222--223
 []\OT1/ptm/m/n/10 We re-pro-duced the Mo-ConVQ base-line, cu-rated a
  []
 
-[4 <../../outputs/figures/style_proxy_delta_heatmap.png>] (final_report.bbl)
+(final_report.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -477,9 +496,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (final_report.aux)
+[5] (final_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -488,13 +505,13 @@ Package rerunfilecheck Info: File `final_report.out' has not changed.
 (rerunfilecheck)             Checksum: 323FEB33F2CA8F3C312027DBDCB713FA;1178.
  ) 
 Here is how much of TeX's memory you used:
- 9715 strings out of 467871
- 156139 string characters out of 5418376
- 585587 words of memory out of 5000000
- 38475 multiletter control sequences out of 15000+600000
+ 9735 strings out of 467871
+ 157047 string characters out of 5418376
+ 588597 words of memory out of 5000000
+ 38493 multiletter control sequences out of 15000+600000
  661150 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,79p,1277b,438s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,1277b,462s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmex10.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -508,9 +525,9 @@ ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/16831/A
 ppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/16831/
 AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/16831/
 AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on final_report.pdf (5 pages, 830018 bytes).
+Output written on final_report.pdf (5 pages, 939597 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 34 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -67,6 +67,8 @@
   - `outputs/tables/lora_training_summary.csv`
   - `outputs/tables/lora_refinement_loss.csv`
 - [x] Final-report diagnostic figures:
+  - `outputs/figures/method_pipeline_diagram.png`
+  - `outputs/figures/baseline_lora_key_metrics.png`
   - `outputs/figures/style_subset_distribution.png`
   - `outputs/figures/style_proxy_win_rate.png`
   - `outputs/figures/style_proxy_delta_heatmap.png`
