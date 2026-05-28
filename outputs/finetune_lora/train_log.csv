@@ -1,0 +1,101 @@
+epoch,step,loss,caption
+0,1,0.004960556980222464,this person appears to stumble as if fleftened.
+0,2,0.06202169880270958,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+0,3,1.5056921243667603,the person is doing the lambada dance.
+0,4,0.012235810048878193,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+0,5,0.03501725196838379,a person swings their arms and body around as if they are dancing.
+0,6,0.06935397535562515,a person walking forward in a steady pace
+0,7,0.10507702827453613,a person throws an object with a fast arm motion.
+0,8,0.029586659744381905,"a person walks downstairs, before making a little jump at the bottom."
+0,9,0.009758375585079193,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+0,10,0.9454972147941589,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+0,11,0.019603516906499863,a person does broad jumps back and forth with a quick stretch in between jumps.
+0,12,0.08162300288677216,a person is performing a dance
+0,13,0.047331489622592926,a person walks side to side with arms extended as if dancing
+0,14,0.016879161819815636,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+0,15,0.013264000415802002,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+0,16,0.6260578632354736,a person lifts something heavy with their right arm.
+0,17,0.02976074628531933,"a person walks forward at a slow pace and stops, holding position."
+0,18,0.011319693177938461,a person does tricks while jump roping and then stops
+0,19,0.046381428837776184,a person is moving around dancing with their arms.
+0,20,0.010230375453829765,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+1,21,0.026620475575327873,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+1,22,0.02570682391524315,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+1,23,0.08304768800735474,a person does tricks while jump roping and then stops
+1,24,0.023193087428808212,"a person walks forward at a slow pace and stops, holding position."
+1,25,0.717803955078125,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+1,26,0.057529326528310776,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+1,27,0.03717641159892082,a person walking forward in a steady pace
+1,28,1.941810965538025,a person lifts something heavy with their right arm.
+1,29,0.012327250093221664,a person does broad jumps back and forth with a quick stretch in between jumps.
+1,30,0.018555520102381706,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+1,31,0.03211483359336853,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+1,32,1.2226862907409668,the person is doing the lambada dance.
+1,33,0.06256907433271408,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+1,34,0.030745934695005417,this person appears to stumble as if fleftened.
+1,35,0.014134271070361137,a person is moving around dancing with their arms.
+1,36,0.07201666384935379,a person throws an object with a fast arm motion.
+1,37,0.04517141357064247,a person swings their arms and body around as if they are dancing.
+1,38,0.0019615869969129562,a person walks side to side with arms extended as if dancing
+1,39,0.061093609780073166,a person is performing a dance
+1,40,0.022471655160188675,"a person walks downstairs, before making a little jump at the bottom."
+2,41,0.020047109574079514,a person does tricks while jump roping and then stops
+2,42,0.04823104292154312,"a person walks downstairs, before making a little jump at the bottom."
+2,43,0.005287884268909693,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+2,44,0.032901693135499954,"a person walks forward at a slow pace and stops, holding position."
+2,45,0.049409378319978714,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+2,46,0.09748776257038116,a person walking forward in a steady pace
+2,47,0.040135812014341354,a person swings their arms and body around as if they are dancing.
+2,48,0.04474318400025368,a person is performing a dance
+2,49,0.04057346284389496,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+2,50,1.2335920333862305,a person lifts something heavy with their right arm.
+2,51,0.011739728972315788,a person walks side to side with arms extended as if dancing
+2,52,0.05943072587251663,a person throws an object with a fast arm motion.
+2,53,0.03417443856596947,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+2,54,0.04856555908918381,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+2,55,0.01772252656519413,this person appears to stumble as if fleftened.
+2,56,0.060823217034339905,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+2,57,0.9282163381576538,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+2,58,0.0036027347669005394,a person does broad jumps back and forth with a quick stretch in between jumps.
+2,59,0.9060249328613281,the person is doing the lambada dance.
+2,60,0.02565259486436844,a person is moving around dancing with their arms.
+3,61,0.015720203518867493,this person appears to stumble as if fleftened.
+3,62,0.022748563438653946,a person throws an object with a fast arm motion.
+3,63,0.07754337042570114,a person walking forward in a steady pace
+3,64,0.03138897567987442,a person swings their arms and body around as if they are dancing.
+3,65,0.026233216747641563,a person is moving around dancing with their arms.
+3,66,0.003940466325730085,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+3,67,2.5985562801361084,a person lifts something heavy with their right arm.
+3,68,0.04513506591320038,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+3,69,0.6823740601539612,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+3,70,0.020275956019759178,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+3,71,0.00998021475970745,a person walks side to side with arms extended as if dancing
+3,72,0.027874043211340904,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+3,73,0.04231337457895279,a person does broad jumps back and forth with a quick stretch in between jumps.
+3,74,0.021923530846834183,a person is performing a dance
+3,75,0.012395242229104042,"a person walks forward at a slow pace and stops, holding position."
+3,76,0.03831908851861954,a person does tricks while jump roping and then stops
+3,77,0.010001269169151783,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+3,78,0.036968182772397995,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+3,79,0.036884717643260956,"a person walks downstairs, before making a little jump at the bottom."
+3,80,0.8433160185813904,the person is doing the lambada dance.
+4,81,0.030077332630753517,a person is moving around dancing with their arms.
+4,82,0.08509829640388489,a person does tricks while jump roping and then stops
+4,83,0.0351174920797348,a person bends forward with left/left hands quickly to touch left/left toes directly in front of hands. a person twists torso left/left with waist fast facing left/left. a person lifts left/left hands fast above left/left shoulder at the same time. a person bends torso left/left hand sides fast facing forward
+4,84,0.020084256306290627,this person appears to stumble as if fleftened.
+4,85,0.13954393565654755,"a man bends his legs slightly then takes a medium-length jump forward, raising his forearms slightly then letting them hang loose on landing."
+4,86,0.015254577621817589,a person is performing a dance
+4,87,0.06140744686126709,a person swings their arms and body around as if they are dancing.
+4,88,0.11688109487295151,a person throws an object with a fast arm motion.
+4,89,0.02855171635746956,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+4,90,0.04074741154909134,"a person makes small steps foward, turns around, makes quick small steps back, then stops and turns around."
+4,91,0.03290782868862152,a person walks side to side with arms extended as if dancing
+4,92,0.0557716004550457,the man is walking at a quick pace with his hands and feet swinging and appears to be in a hurry.
+4,93,0.7145357728004456,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+4,94,0.026674270629882812,a person does broad jumps back and forth with a quick stretch in between jumps.
+4,95,0.03660360723733902,a person walking forward in a steady pace
+4,96,0.832976758480072,a person lifts something heavy with their right arm.
+4,97,0.04052611067891121,"a person walks downstairs, before making a little jump at the bottom."
+4,98,0.9213904738426208,the person is doing the lambada dance.
+4,99,0.03727521747350693,a person is walking forward and dancing at the same time. they are throwing their limbs out in sudden movements and shaking their legs.
+4,100,0.007188298273831606,"a person walks forward at a slow pace and stops, holding position."
