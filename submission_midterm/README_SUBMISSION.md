@@ -11,6 +11,7 @@ Source and reproducibility files:
 - `report/shared/references.bib`
 - `scripts/`
 - `data/`
+- `outputs/figures/`
 - `outputs/baseline/project_prompts/`
 
 The report is compiled with the provided RSS/IEEEtran template.
