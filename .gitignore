@@ -17,24 +17,3 @@ dist/
 *.log.tmp
 *.tmp
 *.bak
-
-# Training outputs / checkpoints / datasets
-# outputs/
-data/
-HumanML3D/
-HumanML3D/data/
-*.pth
-*.pt
-*.ckpt
-*.parquet
-*.zip
-
-# IDE / OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-# *.data
-# MoConVQ/out/
-MoConVQ/Data/
-MoConVQ/_extract_opensource/
