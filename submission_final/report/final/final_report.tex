@@ -69,9 +69,16 @@ Test & 586 & 486 \\
 \section{Method}
 The baseline pipeline maps a prompt to text features, predicts a sequence of discrete motion codes, decodes those codes into motion latents, and tracks them with the MoConVQ controller to produce BVH output.
 
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.94\textwidth]{../../outputs/figures/method_pipeline_diagram.png}
+\caption{Final adaptation and evaluation pipeline. HumanML3D style captions define the language conditions; MoConVQ teacher outputs provide pseudo-token targets; only LoRA parameters in the student generator are trained; generated BVH files are rendered and parsed for proxy metrics.}
+\label{fig:method_pipeline}
+\end{figure*}
+
 For the final adaptation, the pretrained MoConVQ text generator acts as a teacher. Given a style caption, it deterministically samples pseudo token targets. A student model starts from the same pretrained weights, but all pretrained parameters are frozen. We inject LoRA modules into selected linear layers of the text-conditioned temporal transformer and optimize only those low-rank updates. This keeps the implementation close to the proposal's parameter-efficient frozen-backbone design while avoiding unsupported HumanML3D-to-MoConVQ conversion.
 
-The adapter is deliberately placed before motion decoding. This choice preserves the pretrained quantizer, decoder, and physics controller, so changes in the final BVH output come from altered text-conditioned token prediction rather than from retraining the lower-level motion execution stack. In robotics terms, the project adapts the high-level language-to-motion interface while leaving the motion representation and controller stable.
+The adapter is deliberately placed before motion decoding, as summarized in Fig.~\ref{fig:method_pipeline}. This choice preserves the pretrained quantizer, decoder, and physics controller, so changes in the final BVH output come from altered text-conditioned token prediction rather than from retraining the lower-level motion execution stack. In robotics terms, the project adapts the high-level language-to-motion interface while leaving the motion representation and controller stable.
 
 The learning objective is cross-entropy against teacher-generated token sequences. If $z_{1:T}^{\mathrm{teach}}$ denotes the cached pseudo-token sequence and $p_\theta(z_t|z_{<t}, c)$ is the LoRA-adapted generator conditioned on caption $c$, the optimized loss is
 \begin{equation}
@@ -146,6 +153,13 @@ The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. Th
 
 For generated BVH motions, we compute proxy metrics that correspond to visible style properties: root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. For each style prompt, we pre-define whether lower or higher values are expected. For example, slow and heavy prompts prefer lower speed and jerk, while energetic jumping prefers higher vertical range and speed.
 
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.94\textwidth]{../../outputs/figures/baseline_lora_key_metrics.png}
+\caption{Baseline-normalized BVH metrics for representative prompts. Baseline is fixed at 100\% for each metric and prompt; LoRA bars show measured values relative to the corresponding baseline output. This visualization uses raw BVH proxy values and is intended to show how the adapted model changes interpretable motion attributes.}
+\label{fig:key_metrics}
+\end{figure*}
+
 \begin{table}[!t]
 \centering
 \caption{BVH style proxy comparison. Wins count metrics where LoRA moves in the expected style direction relative to baseline.}
@@ -184,7 +198,7 @@ The proxy metrics therefore support a limited claim: LoRA improves most measured
 \section{Result Interpretation}
 The strongest prompt-level evidence appears in styles whose intended change can be described by simple kinematic quantities. For the slow deliberate walking prompt, the continued-LoRA output reduces root speed, mean joint velocity, acceleration, and jerk relative to the baseline. These four changes are directionally consistent with slower and smoother motion. For the heavy tired walking prompt, the adapter also reduces speed-related and smoothness-related quantities while producing a longer motion duration, which is consistent with a slower and heavier style interpretation.
 
-The energetic jump prompt has the clearest positive change in vertical motion. The LoRA output increases root vertical range and all-joint vertical range while also increasing root speed. These changes are visible in the rendered comparison and explain why this prompt receives five wins out of six proxy checks. This does not mean the motion is universally better; it means the chosen proxy metrics detect stronger energetic and vertical motion under the same prompt.
+Figure~\ref{fig:key_metrics} shows these changes in a baseline-normalized form for representative prompts. The energetic jump prompt has the clearest positive change in vertical motion. The LoRA output increases root vertical range and all-joint vertical range while also increasing root speed. These changes are visible in the rendered comparison and explain why this prompt receives five wins out of six proxy checks. This does not mean the motion is universally better; it means the chosen proxy metrics detect stronger energetic and vertical motion under the same prompt.
 
 Dance and tai chi are more ambiguous. Dance obtains improvements in arm range, body rotation, and vertical range, but not every smoothness metric improves. Tai chi obtains only two wins out of four. This is an important negative result because it shows the proxy evaluation is not simply marking every LoRA output as better. The likely reason is that tai chi style requires coordinated slow rotation, balance, and continuous limb trajectories, while our current distillation signal only teaches the generator to reproduce teacher pseudo tokens for filtered captions. A stronger final system would need either true MoConVQ-compatible paired motion labels or a style-specific reward/evaluator that directly measures smooth coordinated motion.
 
