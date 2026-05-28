@@ -1,28 +1,19 @@
-# Python
+MoConVQ/.venv/
+
 __pycache__/
-*.pyc
-.venv/
-venv/
-.env
-.env.*
+*.py[cod]
+*.pyd
+*.so
+*.dll
 
-# Training outputs / checkpoints / datasets
-# outputs/
-data/
-HumanML3D/
-HumanML3D/data/
-*.pth
-*.pt
-*.ckpt
-*.parquet
-*.zip
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# IDE / OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-# *.data
-# MoConVQ/out/
-MoConVQ/Data/
-MoConVQ/_extract_opensource/
+build/
+dist/
+*.egg-info/
+
+*.log.tmp
+*.tmp
+*.bak
