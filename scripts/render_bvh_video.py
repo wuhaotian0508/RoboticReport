@@ -230,7 +230,13 @@ def main() -> int:
         if args.output.suffix.lower() == ".gif":
             imageio.mimsave(args.output, images, fps=args.fps)
         else:
-            imageio.mimsave(args.output, images, fps=args.fps, codec="libx264", quality=8)
+            try:
+                imageio.mimsave(args.output, images, fps=args.fps, codec="libx264", quality=8)
+            except Exception as exc:  # noqa: BLE001
+                fallback = args.output.with_suffix(".gif")
+                print(f"mp4 encode failed ({exc}); writing {fallback}")
+                imageio.mimsave(fallback, images, fps=args.fps)
+                args.output = fallback
 
     print(f"wrote {args.output}")
     return 0
