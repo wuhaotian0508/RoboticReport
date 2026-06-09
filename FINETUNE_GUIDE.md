@@ -184,6 +184,27 @@ total LoRA wins: 18 / 22 predefined style-direction comparisons
 This is a project-specific proxy evaluation, not official HumanML3D FID or
 R-Precision.
 
+## 8.1 Paper-Ready Evaluation Figure Pack
+
+Generate the final report figures and one-row evaluation summary from the
+measured proxy/loss CSV files:
+
+```powershell
+uv run --python .\MoConVQ\.venv\Scripts\python.exe python scripts\make_evaluation_figure_pack.py `
+  --metrics-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles `
+  --tables-dir outputs\tables `
+  --figures-dir outputs\figures
+```
+
+Expected outputs:
+
+```text
+outputs/figures/eval_style_proxy_scorecard.png
+outputs/figures/eval_metric_delta_heatmap.png
+outputs/figures/eval_distill_loss_comparison.png
+outputs/tables/evaluation_summary.csv
+```
+
 ## 9. Blind Human Pairwise Evaluation
 
 This optional evaluation compares baseline MoConGPT outputs against LoRA outputs

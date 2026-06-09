@@ -1,0 +1,2 @@
+style_proxy_cases,total_style_proxy_wins,total_style_proxy_checks,overall_style_proxy_win_rate,mean_case_style_proxy_win_rate,best_case,best_case_win_rate,weakest_case,weakest_case_win_rate,main_final_train_loss,main_final_val_loss,continued_final_train_loss,continued_final_val_loss
+5,18,22,0.818182,0.816667,slow_deliberate,1.000000,tai_chi,0.500000,0.101861,0.069298,0.066938,0.066859

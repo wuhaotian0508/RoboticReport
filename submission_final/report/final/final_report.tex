@@ -135,8 +135,9 @@ Continuation epoch 2 & 2 & 0.2018 \\
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\linewidth]{../../outputs/figures/lora_refinement_loss.png}
-\caption{Measured cross-entropy during the selected LoRA refinement stage. The curve uses only logged training losses and shows a monotonic decrease after the lower-learning-rate continuation.}
+\includegraphics[width=\linewidth]{../../outputs/figures/eval_distill_loss_comparison.png}
+\caption{Train and validation pseudo-token loss for the main LoRA run and the lower-learning-rate continuation. The continued checkpoint ends with lower train and validation losses than the selected main-run epoch.}
+\label{fig:distill_loss_pack}
 \end{figure}
 
 \section{Results}
@@ -149,7 +150,7 @@ The baseline generated ten BVH files under \texttt{outputs/baseline/project\_pro
 \label{fig:qualitative}
 \end{figure}
 
-The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The lower-learning-rate continuation further reduces epoch-mean loss to 0.2018. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
+The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The lower-learning-rate continuation further reduces epoch-mean loss to 0.2018. The held-out pseudo-token diagnostic in Fig.~\ref{fig:distill_loss_pack} gives the same practical signal: the continued checkpoint ends at 0.0669 train loss and 0.0669 validation loss, compared with 0.1019 train loss and 0.0693 validation loss for the selected main-run epoch. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
 
 For generated BVH motions, we compute proxy metrics that correspond to visible style properties: root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. For each style prompt, we pre-define whether lower or higher values are expected. For example, slow and heavy prompts prefer lower speed and jerk, while energetic jumping prefers higher vertical range and speed.
 
@@ -181,19 +182,19 @@ Total & 18 & 22 \\
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\linewidth]{../../outputs/figures/style_proxy_win_rate.png}
-\caption{Per-style BVH proxy win rate. The labels above each bar show the number of expected-direction improvements over the number of pre-defined proxy checks for that prompt.}
+\includegraphics[width=\linewidth]{../../outputs/figures/eval_style_proxy_scorecard.png}
+\caption{Paper-ready BVH proxy scorecard generated from the continued-LoRA metric CSV. Labels show expected-direction wins over the number of pre-defined proxy checks for each style prompt.}
 \label{fig:proxy_win_rate}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\linewidth]{../../outputs/figures/style_proxy_delta_heatmap.png}
-\caption{Detailed expected-direction proxy changes. Each annotated cell is a measured percentage change in the pre-defined desired direction; blank cells indicate metrics that were not used for that prompt.}
+\includegraphics[width=\linewidth]{../../outputs/figures/eval_metric_delta_heatmap.png}
+\caption{Paper-ready expected-direction proxy changes generated from the metric CSV. Each annotated cell is a measured percentage change in the pre-defined desired direction; blank cells indicate metrics that were not used for that prompt.}
 \label{fig:proxy_delta_heatmap}
 \end{figure}
 
-The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate walking, energetic jumping, and heavy tired walking. It does not improve every metric; tai chi remains the weakest measured prompt and should be investigated with more prompts and stronger motion-quality metrics.
+The generated evaluation summary reports 18 wins out of 22 pre-defined proxy checks, an overall win rate of 0.818 and a mean per-case win rate of 0.817. The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate walking, energetic jumping, and heavy tired walking. It does not improve every metric; tai chi remains the weakest measured prompt and should be investigated with more prompts and stronger motion-quality metrics.
 
 \section{Result Interpretation}
 The strongest prompt-level evidence appears in styles whose intended change can be described by simple kinematic quantities. For the slow deliberate walking prompt, the continued-LoRA output reduces root speed, mean joint velocity, acceleration, and jerk relative to the baseline. These four changes are directionally consistent with slower and smoother motion. For the heavy tired walking prompt, the adapter also reduces speed-related and smoothness-related quantities while producing a longer motion duration, which is consistent with a slower and heavier style interpretation.

@@ -75,6 +75,9 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_lora_results.
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py --checkpoint-dir outputs\finetune_lora_200 --train-cache outputs\finetune_lora_200\distill_cache.pt --val-cache outputs\finetune_lora_val\distill_cache.pt --output outputs\tables\lora_train_val_loss.csv
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py --checkpoint-dir outputs\finetune_lora_200_cont_lr5e5 --train-cache outputs\finetune_lora_200\distill_cache.pt --val-cache outputs\finetune_lora_val\distill_cache.pt --output outputs\tables\lora_cont_train_val_loss.csv
 D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py --baseline-dir outputs\baseline\project_prompts --lora-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles --output-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles
+
+# Build paper-ready evaluation figure pack
+uv run --python .\MoConVQ\.venv\Scripts\python.exe python scripts\make_evaluation_figure_pack.py --metrics-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles --tables-dir outputs\tables --figures-dir outputs\figures
 ```
 
 ## Report Compilation

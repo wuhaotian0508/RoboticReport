@@ -30,6 +30,7 @@
 - [x] LoRA result summarizer: `scripts/summarize_lora_results.py`
 - [x] BVH proxy metric script: `scripts/compute_bvh_proxy_metrics.py`
 - [x] LoRA train/validation loss evaluator: `scripts/evaluate_lora_distill_loss.py`
+- [x] Paper-ready evaluation figure pack generator: `scripts/make_evaluation_figure_pack.py`
 - [x] Output directory structure:
   - `outputs/baseline/`
   - `outputs/finetune_lora_200/`
@@ -79,6 +80,11 @@
   - `outputs/metrics_lora_200_cont_lr5e5_seed7_styles/style_proxy_scores.csv`
 - [x] Continued-LoRA train/validation loss:
   - `outputs/tables/lora_cont_train_val_loss.csv`
+- [x] Paper-ready evaluation figure pack:
+  - `outputs/figures/eval_style_proxy_scorecard.png`
+  - `outputs/figures/eval_metric_delta_heatmap.png`
+  - `outputs/figures/eval_distill_loss_comparison.png`
+  - `outputs/tables/evaluation_summary.csv`
 
 ## Not Claimed
 
