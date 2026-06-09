@@ -1,14 +1,11 @@
-\documentclass[conference]{IEEEtran}
+﻿\documentclass[conference]{IEEEtran}
 \usepackage{times}
 \usepackage[numbers]{natbib}
 \usepackage{multicol}
 \usepackage[bookmarks=true]{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
-<<<<<<< HEAD
 \usepackage{amsmath}
-=======
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 \pdfinfo{
    /Author (Haotian Wu, Yuhua Luo, Xuyang Yuan)
@@ -24,16 +21,11 @@
 \maketitle
 
 \begin{abstract}
-<<<<<<< HEAD
 This midterm report summarizes concrete progress on style-aware adaptation of MoConVQ for language-conditioned humanoid motion generation. Our project follows the language-guided motion generation direction: reproduce a recent physics-based text-to-motion baseline, identify a limitation in fine-grained style control, and adapt the language-conditioned generator while keeping the motion representation and controller frozen. Since the proposal, we have reproduced pretrained MoConVQ inference, generated ten BVH baseline rollouts, curated a split-preserving HumanML3D style-caption subset, diagnosed a format mismatch between the available HumanML3D parquet data and MoConVQ token supervision, and started a parameter-efficient LoRA distillation pipeline. Preliminary results include baseline motion snapshots, dataset statistics, and an initial 200-caption LoRA training curve. The remaining work is to complete adapted generation, compare baseline and LoRA BVH outputs, and report only measured metrics that are compatible with the generated files.
-=======
-This midterm report summarizes progress toward style-aware adaptation of MoConVQ for language-conditioned humanoid motion generation. We reproduced the pretrained MoConVQ inference pipeline, generated ten baseline BVH motions, built split-preserving HumanML3D style-subset tooling, and identified a key practical constraint: the available HumanML3D parquet export contains processed motion features rather than MoConVQ-compatible token targets. The next phase therefore uses parameter-efficient LoRA distillation as a faithful backup to the proposal's frozen-backbone adaptation plan.
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
 
-<<<<<<< HEAD
 \section{Problem Statement and Motivation}
 The target problem is text-conditioned humanoid motion generation with explicit style control. Given a natural-language instruction such as ``walk forward slowly'' or ``move like doing tai chi,'' the system should generate a physically plausible humanoid motion that preserves both the requested action and the requested style. This is relevant to intelligent robotics because natural language is a convenient high-level command interface for humanoid robots, simulated characters, and embodied agents.
 
@@ -48,16 +40,6 @@ Our contribution is not a new motion backbone. Instead, we implement a project-s
 
 \section{Technical Approach}
 The full pipeline is shown in Fig.~\ref{fig:pipeline}. A prompt is encoded by the text encoder, passed to the MoConVQ language-conditioned transformer, converted into discrete motion codes, decoded into motion latents, and tracked by the physics controller to produce BVH output. Our adaptation is restricted to the language-conditioned generator; the VQ codebooks, decoder, and controller remain frozen.
-=======
-\section{Problem and Motivation}
-The goal is to generate humanoid motion from natural language while preserving both action semantics and requested style. MoConVQ is a strong robotics baseline because it uses discrete motion representations and physics-based tracking control \cite{yao2024moconvq}. However, style-specific prompts such as slow deliberate walking, tai chi-like movement, graceful dance, and heavy tired walking may be underrepresented in general text-to-motion training data.
-
-\section{Related Work}
-HumanML3D provides paired motion and text descriptions for text-driven motion generation \cite{guo2022humanml3d}. MDM models raw motion with diffusion \cite{tevet2023mdm}, while T2M-GPT demonstrates the effectiveness of discrete motion tokens for text-to-motion generation \cite{zhang2023t2mgpt}. Our project follows the discrete-token direction but keeps MoConVQ's motion representation and controller frozen.
-
-\section{Technical Approach}
-The intended proposal pipeline freezes the VQ representation, codebook, decoder, and controller, while adapting only the language-conditioned code generator.
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 \begin{figure}[h]
 \centering
@@ -65,7 +47,6 @@ The intended proposal pipeline freezes the VQ representation, codebook, decoder,
 \centering
 Text prompt $\rightarrow$ text encoder $\rightarrow$ language transformer $\rightarrow$ discrete motion codes $\rightarrow$ MoConVQ decoder/controller $\rightarrow$ BVH humanoid motion
 \end{minipage}}
-<<<<<<< HEAD
 \caption{Project pipeline. The midterm implementation has reproduced the baseline path and started LoRA adaptation inside the language-conditioned transformer.}
 \label{fig:pipeline}
 \end{figure}
@@ -91,32 +72,6 @@ The pretrained MoConVQ assets were installed and verified locally. We generated 
 \caption{Baseline MoConVQ BVH snapshots generated from text prompts. These outputs verify that the pretrained inference, decoding, and BVH export pipeline are working before adaptation.}
 \label{fig:baseline}
 \end{figure}
-=======
-\caption{Project pipeline. Adaptation is restricted to the language-conditioned generator; the motion backbone remains frozen.}
-\end{figure}
-
-For data curation, we filter style-related captions independently within each HumanML3D split using five keyword groups: controlled motion, graceful smooth motion, expressive dance, energetic dynamics, and heavy/awkward motion. This prevents leakage across train, validation, and test sets.
-
-\section{Midterm Progress}
-Baseline reproduction is complete. The official pretrained MoConVQ assets are present locally, tokenization and decoding have been verified, and ten prompts have produced BVH files under \texttt{outputs/baseline/project\_prompts/}.
-
-\begin{table}[h]
-\centering
-\caption{Implementation progress at midterm.}
-\footnotesize
-\begin{tabular}{p{0.30\linewidth}p{0.17\linewidth}p{0.31\linewidth}}
-\hline
-Component & Status & Evidence \\
-\hline
-Environment & Complete & CUDA PyTorch and local extensions verified \\
-Baseline inference & Complete & 10 BVH files generated \\
-Style filtering & Complete & Split-preserving parquet filter \\
-Small splits & Complete & 200/40/40 style subset files \\
-Fine-tuning & Planned & LoRA distillation selected after format diagnosis \\
-\hline
-\end{tabular}
-\end{table}
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 \begin{table}[h]
 \centering
@@ -131,7 +86,6 @@ Validation & 214 & 168 \\
 Test & 586 & 486 \\
 \hline
 \end{tabular}
-<<<<<<< HEAD
 \label{tab:subset}
 \end{table}
 
@@ -174,14 +128,6 @@ The remaining plan is as follows. First, generate adapted BVH outputs for the sa
 
 \section{Conclusion}
 At midterm, the project has moved beyond the proposal stage. We have reproduced MoConVQ baseline generation, curated style-focused HumanML3D metadata, diagnosed the central supervision-format risk, and started a LoRA distillation adaptation pipeline with measured training loss. The project is therefore technically active and on track for a final submission based on measured training, generated BVH outputs, and transparent limitations.
-=======
-\end{table}
-
-\section{Risk and Next Step}
-The main technical risk is format mismatch. The available HumanML3D parquet export contains processed 263-D features, while MoConVQ supervised fine-tuning requires discrete token sequences in its own representation. A direct conversion is nontrivial and could introduce invalid supervision.
-
-The final-stage plan is therefore to use a parameter-efficient backup: pretrained MoConVQ serves as a teacher to generate pseudo token targets for style captions, and a student trains only LoRA updates in the language-conditioned transformer. We will report only measured loss, generated BVH outputs, and qualitative comparisons unless a compatible FID/R-Precision evaluator is implemented.
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 \bibliographystyle{plainnat}
 \bibliography{../shared/references}

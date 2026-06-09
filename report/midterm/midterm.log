@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 19:38
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 12:53
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
+﻿This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 19:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -336,7 +332,6 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen176
 \Gin@req@width=\dimen177
-<<<<<<< HEAD
 ) (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip57
@@ -403,13 +398,10 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
-=======
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 )
 (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-<<<<<<< HEAD
 \l__color_backend_stack_int=\count323
 ) (midterm.aux)
 \openout1 = `midterm.aux'.
@@ -433,31 +425,6 @@ LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 Package hyperref Info: Link coloring OFF on input line 20.
-=======
-\l__color_backend_stack_int=\count311
-) (midterm.aux)
-\openout1 = `midterm.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-Package hyperref Info: Link coloring OFF on input line 19.
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
  (midterm.out) (midterm.out)
 \@outlinefile=\write3
 \openout3 = `midterm.out'.
@@ -466,7 +433,6 @@ Package hyperref Info: Link coloring OFF on input line 19.
 (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-<<<<<<< HEAD
 \scratchcounter=\count324
 \scratchdimen=\dimen187
 \scratchbox=\box102
@@ -478,19 +444,6 @@ ii
 \MPnumerator=\count328
 \makeMPintoPDFobject=\count329
 \everyMPtoPDFconversion=\toks25
-=======
-\scratchcounter=\count312
-\scratchdimen=\dimen178
-\scratchbox=\box100
-\nofMPsegments=\count313
-\nofMParguments=\count314
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count315
-\MPscratchDim=\dimen179
-\MPnumerator=\count316
-\makeMPintoPDFobject=\count317
-\everyMPtoPDFconversion=\toks20
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 )
 (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -509,7 +462,6 @@ G,.JBIG2,.JB2,.eps]
 (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-<<<<<<< HEAD
 )) [1{C:/Users/16831/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users
 /16831/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
@@ -567,32 +519,6 @@ ut line 119.
 (pdftex.def)             Requested size: 252.0pt x 132.30022pt.
 [2 <../../outputs/figures/midterm_baseline_demo.png> <../../outputs/figures/lor
 a_loss_curve.png>] (midterm.bbl)
-=======
-))
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 42.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 42.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-9.
- (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 55.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 55.
-
-Underfull \hbox (badness 5203) in paragraph at lines 63--64
-[]\OT1/ptm/m/n/8 LoRA dis-til-la-tion se-
- []
-
-(midterm.bbl [1{C:/Users/16831/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map
-}{C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
-
-
-])
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -604,11 +530,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-<<<<<<< HEAD
 [3
-=======
-[2
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 ] (midterm.aux)
  ***********
@@ -616,7 +538,6 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `midterm.out' has not changed.
-<<<<<<< HEAD
 (rerunfilecheck)             Checksum: D4DE575E7560D4C367CE8928FC74250C;1784.
  ) 
 Here is how much of TeX's memory you used:
@@ -644,28 +565,4 @@ PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  26 named destinations out of 1000 (max. 500000)
  99 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
-(rerunfilecheck)             Checksum: 9C34783AF7DB024ADA2D9BC1F50EA851;669.
- ) 
-Here is how much of TeX's memory you used:
- 9651 strings out of 467871
- 153728 string characters out of 5418376
- 585884 words of memory out of 5000000
- 38427 multiletter control sequences out of 15000+600000
- 661150 words of font info for 98 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,10n,79p,600b,539s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
-r/ucrr8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmb8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmbi8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
-es/utmr8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on midterm.pdf (2 pages, 84728 bytes).
-PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 16 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 

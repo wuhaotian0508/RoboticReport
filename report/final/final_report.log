@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 21:12
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 12:53
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
+﻿This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.19)  28 MAY 2026 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -394,7 +390,6 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-<<<<<<< HEAD
 (Font)              <8> on input line 51.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 51.
@@ -437,68 +432,21 @@ n input line 138.
 (pdftex.def)             Requested size: 252.0pt x 156.41403pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 143--144
-=======
-(Font)              <8> on input line 42.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 42.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 42.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-9.
- (C:\Users\16831\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 61.
-
-[1{C:/Users/16831/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/16
-831/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
-
-
-]
-<../../outputs/figures/lora_loss_curve.png, id=49, 578.16pt x 303.534pt>
-File: ../../outputs/figures/lora_loss_curve.png Graphic file (type png)
-<use ../../outputs/figures/lora_loss_curve.png>
-Package pdftex.def Info: ../../outputs/figures/lora_loss_curve.png  used on inp
-ut line 117.
-(pdftex.def)             Requested size: 252.0pt x 132.30022pt.
-<../../outputs/figures/lora_train_val_loss.png, id=51, 433.62pt x 289.08pt>
-File: ../../outputs/figures/lora_train_val_loss.png Graphic file (type png)
-<use ../../outputs/figures/lora_train_val_loss.png>
-Package pdftex.def Info: ../../outputs/figures/lora_train_val_loss.png  used on
- input line 123.
-(pdftex.def)             Requested size: 252.0pt x 168.00174pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 []\OT1/ptm/m/n/10 The base-line gen-er-ated ten BVH files un-der
  []
 
 
-<<<<<<< HEAD
 Underfull \hbox (badness 5771) in paragraph at lines 143--144
 \OT1/ptm/m/n/10 continued-LoRA out-puts were ren-dered as stick-figure
  []
 
 [2 <../../outputs/figures/style_subset_distribution.png>]
 <../../outputs/figures/lora_qualitative_frames.png, id=87, 578.16pt x 867.24pt>
-=======
-Underfull \hbox (badness 5771) in paragraph at lines 128--129
-\OT1/ptm/m/n/10 continued-LoRA out-puts were ren-dered as stick-figure
- []
-
-<../../outputs/figures/lora_qualitative_frames.png, id=52, 578.16pt x 867.24pt>
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 File: ../../outputs/figures/lora_qualitative_frames.png Graphic file (type png)
 
 <use ../../outputs/figures/lora_qualitative_frames.png>
 Package pdftex.def Info: ../../outputs/figures/lora_qualitative_frames.png  use
-<<<<<<< HEAD
 d on input line 147.
 (pdftex.def)             Requested size: 252.0pt x 378.00064pt.
 <../../outputs/figures/baseline_lora_key_metrics.png, id=88, 510.708pt x 197.53
@@ -537,24 +485,6 @@ Underfull \hbox (badness 6708) in paragraph at lines 222--223
  []
 
 (final_report.bbl [5])
-=======
-d on input line 132.
-(pdftex.def)             Requested size: 319.91748pt x 479.86827pt.
-[2 <../../outputs/figures/lora_loss_curve.png> <../../outputs/figures/lora_trai
-n_val_loss.png>]
-Underfull \hbox (badness 6708) in paragraph at lines 167--168
-[]\OT1/ptm/m/n/10 We re-pro-duced the Mo-ConVQ base-line, cu-rated a
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(final_report.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3 <../../outputs/figures/lora_qualitative_frames.png>])
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -566,11 +496,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-<<<<<<< HEAD
 [6
-=======
-[4
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
 ] (final_report.aux)
  ***********
@@ -578,7 +504,6 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `final_report.out' has not changed.
-<<<<<<< HEAD
 (rerunfilecheck)             Checksum: 323FEB33F2CA8F3C312027DBDCB713FA;1178.
  ) 
 Here is how much of TeX's memory you used:
@@ -607,31 +532,4 @@ PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
-(rerunfilecheck)             Checksum: 5DC8469DE2E513345002BBF964C2267A;725.
- ) 
-Here is how much of TeX's memory you used:
- 9679 strings out of 467871
- 154880 string characters out of 5418376
- 582756 words of memory out of 5000000
- 38445 multiletter control sequences out of 15000+600000
- 661965 words of font info for 101 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,9n,79p,1277b,540s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr7.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy7.pfb><C:/Users/16831/AppData/Local/Programs/MiKTeX
-/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKT
-eX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/16831/AppData/Local/Programs/MiKT
-eX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/16831/AppData/Local/Programs/MiK
-TeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/16831/AppData/Local/Programs/MiK
-TeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on final_report.pdf (4 pages, 778182 bytes).
-PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 500000)
- 72 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> 1922a3f (Add 0528 project code reports and figures)
 
