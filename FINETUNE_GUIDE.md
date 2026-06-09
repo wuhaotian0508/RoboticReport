@@ -184,6 +184,75 @@ total LoRA wins: 18 / 22 predefined style-direction comparisons
 This is a project-specific proxy evaluation, not official HumanML3D FID or
 R-Precision.
 
+## 9. Blind Human Pairwise Evaluation
+
+This optional evaluation compares baseline MoConGPT outputs against LoRA outputs
+with model identities hidden from the evaluator. It does not train a model and
+does not use multi-candidate preference fine-tuning.
+
+Export held-out style prompts from the small test split:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\export_eval_prompts.py `
+  --prompt-csv data\style_subset_small\style_test_small.csv `
+  --caption-column caption `
+  --max-items 40 `
+  --output outputs\human_pairwise_eval\test_prompts.txt
+```
+
+Generate baseline BVH outputs for the same prompts:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\run_baseline_prompts.py `
+  --prompt-file outputs\human_pairwise_eval\test_prompts.txt `
+  --output-dir outputs\human_pairwise_eval\baseline_bvh `
+  --python D:\anaconda3\envs\roboticsreport_lora\python.exe
+```
+
+Generate LoRA BVH outputs from the continued adapter:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py `
+  --checkpoint outputs\finetune_lora_200_cont_lr5e5\style_lora_last.pth `
+  --prompt-file outputs\human_pairwise_eval\test_prompts.txt `
+  --output-dir outputs\human_pairwise_eval\lora_bvh `
+  --max-length 50 `
+  --seed 7
+```
+
+Build the blind A/B review page:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\build_blind_pairwise_eval.py `
+  --prompt-file outputs\human_pairwise_eval\test_prompts.txt `
+  --baseline-dir outputs\human_pairwise_eval\baseline_bvh `
+  --lora-dir outputs\human_pairwise_eval\lora_bvh `
+  --output-dir outputs\human_pairwise_eval `
+  --seed 7
+```
+
+Open `outputs\human_pairwise_eval\review.html`, rate A/B for semantic match,
+style match, and plausibility, choose A/B/Tie, export `preference_labels.csv`,
+and place it in `outputs\human_pairwise_eval`.
+
+Summarize the blind labels:
+
+```powershell
+D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_blind_pairwise_eval.py `
+  --blind-key outputs\human_pairwise_eval\blind_key.csv `
+  --labels outputs\human_pairwise_eval\preference_labels.csv `
+  --output-dir outputs\human_pairwise_eval
+```
+
+Expected outputs:
+
+```text
+outputs/human_pairwise_eval/blind_key.csv
+outputs/human_pairwise_eval/review.html
+outputs/human_pairwise_eval/summary.csv
+outputs/human_pairwise_eval/per_item_results.csv
+```
+
 ## Report Wording
 
 Use this description:
