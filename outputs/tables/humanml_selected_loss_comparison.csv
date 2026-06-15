@@ -1,0 +1,13 @@
+run,epoch,mean_train_loss,steps,source
+Original LoRA,0,0.2289300669,200,outputs\finetune_lora_200_cont_lr5e5\train_log.csv
+Original LoRA,1,0.2017714427,200,outputs\finetune_lora_200_cont_lr5e5\train_log.csv
+HumanML deterministic,0,0.3749327524,200,outputs\finetune_lora_humanml_selected_200\train_log.csv
+HumanML deterministic,1,0.3110013695,200,outputs\finetune_lora_humanml_selected_200\train_log.csv
+HumanML deterministic,2,0.3165043137,200,outputs\finetune_lora_humanml_selected_200\train_log.csv
+HumanML deterministic,3,0.2901868228,200,outputs\finetune_lora_humanml_selected_200\train_log.csv
+HumanML deterministic,4,0.2720897407,200,outputs\finetune_lora_humanml_selected_200\train_log.csv
+HumanML top-k,0,0.4184289952,200,outputs\finetune_lora_humanml_selected_200_topk\train_log.csv
+HumanML top-k,1,0.4027115410,200,outputs\finetune_lora_humanml_selected_200_topk\train_log.csv
+HumanML top-k,2,0.3830554343,200,outputs\finetune_lora_humanml_selected_200_topk\train_log.csv
+HumanML top-k,3,0.3679823403,200,outputs\finetune_lora_humanml_selected_200_topk\train_log.csv
+HumanML top-k,4,0.3396246118,200,outputs\finetune_lora_humanml_selected_200_topk\train_log.csv

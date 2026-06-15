@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.31)  9 JUN 2026 21:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.31)  15 JUN 2026 21:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -389,13 +389,20 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 
+
+
+[1{d:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{d:/texlive/202
+5/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 51.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 51.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 51.
-<../../outputs/figures/style_subset_distribution.png, id=51, 382.0455pt x 201.3
+<../../outputs/figures/style_subset_distribution.png, id=64, 382.0455pt x 201.3
 705pt>
 File: ../../outputs/figures/style_subset_distribution.png Graphic file (type pn
 g)
@@ -403,7 +410,7 @@ g)
 Package pdftex.def Info: ../../outputs/figures/style_subset_distribution.png  u
 sed on input line 64.
 (pdftex.def)             Requested size: 252.0pt x 132.82811pt.
-<../../outputs/figures/method_pipeline_diagram.png, id=53, 395.076pt x 134.0006
+<../../outputs/figures/method_pipeline_diagram.png, id=66, 395.076pt x 134.0006
 3pt>
 File: ../../outputs/figures/method_pipeline_diagram.png Graphic file (type png)
 
@@ -413,99 +420,110 @@ d on input line 74.
 (pdftex.def)             Requested size: 485.04126pt x 164.5192pt.
 
 
-[1{d:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{d:/texlive/202
-5/texmf-dist/fonts/enc/dvips/base/8r.enc}
-
-
-]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 83.
+(Font)              <7> on input line 82.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-11.
-
+20.
 (d:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 
-<../../outputs/figures/eval_distill_loss_comparison.png, id=68, 505.89pt x 289.
-08pt>
-File: ../../outputs/figures/eval_distill_loss_comparison.png Graphic file (type
- png)
-<use ../../outputs/figures/eval_distill_loss_comparison.png>
-Package pdftex.def Info: ../../outputs/figures/eval_distill_loss_comparison.png
-  used on input line 138.
-(pdftex.def)             Requested size: 252.0pt x 144.0015pt.
+[2 <../../outputs/figures/style_subset_distribution.png>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+<../../outputs/figures/humanml_selected_loss_comparison.png, id=86, 1505.625pt 
+x 823.075pt>
+File: ../../outputs/figures/humanml_selected_loss_comparison.png Graphic file (
+type png)
+<use ../../outputs/figures/humanml_selected_loss_comparison.png>
+Package pdftex.def Info: ../../outputs/figures/humanml_selected_loss_comparison
+.png  used on input line 151.
+(pdftex.def)             Requested size: 252.0pt x 137.76073pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 []\OT1/ptm/m/n/10 The base-line gen-er-ated ten BVH files un-der
  []
 
 
-Underfull \hbox (badness 5771) in paragraph at lines 144--145
+Underfull \hbox (badness 5771) in paragraph at lines 157--158
 \OT1/ptm/m/n/10 continued-LoRA out-puts were ren-dered as stick-figure
  []
 
 
 
-[2 <../../outputs/figures/style_subset_distribution.png>]
-<../../outputs/figures/lora_qualitative_frames.png, id=88, 578.16pt x 867.24pt>
+[3 <../../outputs/figures/method_pipeline_diagram.png> <../../outputs/figures/h
+umanml_selected_loss_comparison.png (PNG copy)>]
+<../../outputs/figures/lora_qualitative_frames.png, id=95, 578.16pt x 867.24pt>
 
 File: ../../outputs/figures/lora_qualitative_frames.png Graphic file (type png)
 
 <use ../../outputs/figures/lora_qualitative_frames.png>
 Package pdftex.def Info: ../../outputs/figures/lora_qualitative_frames.png  use
-d on input line 148.
+d on input line 161.
 (pdftex.def)             Requested size: 252.0pt x 378.00064pt.
 
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2368) has occurred while \output is active []
 
 
 
-[3 <../../outputs/figures/method_pipeline_diagram.png> <../../outputs/figures/e
-val_distill_loss_comparison.png> <../../outputs/figures/lora_qualitative_frames
-.png>]
-<../../outputs/figures/baseline_lora_key_metrics.png, id=99, 510.708pt x 197.53
+<../../outputs/figures/baseline_lora_key_metrics.png, id=97, 510.708pt x 197.53
 8pt>
 File: ../../outputs/figures/baseline_lora_key_metrics.png Graphic file (type pn
 g)
 <use ../../outputs/figures/baseline_lora_key_metrics.png>
 Package pdftex.def Info: ../../outputs/figures/baseline_lora_key_metrics.png  u
-sed on input line 159.
+sed on input line 172.
 (pdftex.def)             Requested size: 485.04126pt x 187.6148pt.
-<../../outputs/figures/eval_style_proxy_scorecard.png, id=102, 520.344pt x 274.
+<../../outputs/figures/eval_style_proxy_scorecard.png, id=100, 520.344pt x 274.
 626pt>
 File: ../../outputs/figures/eval_style_proxy_scorecard.png Graphic file (type p
 ng)
 <use ../../outputs/figures/eval_style_proxy_scorecard.png>
 Package pdftex.def Info: ../../outputs/figures/eval_style_proxy_scorecard.png  
-used on input line 185.
+used on input line 198.
 (pdftex.def)             Requested size: 252.0pt x 133.00069pt.
-<../../outputs/figures/eval_metric_delta_heatmap.png, id=103, 592.2125pt x 281.
+<../../outputs/figures/eval_metric_delta_heatmap.png, id=101, 592.2125pt x 281.
 853pt>
 File: ../../outputs/figures/eval_metric_delta_heatmap.png Graphic file (type pn
 g)
 <use ../../outputs/figures/eval_metric_delta_heatmap.png>
 Package pdftex.def Info: ../../outputs/figures/eval_metric_delta_heatmap.png  u
-sed on input line 192.
+sed on input line 205.
 (pdftex.def)             Requested size: 252.0pt x 119.93431pt.
+<../../outputs/figures/humanml_selected_topk_200_comparison.png, id=103, 1084.0
+5pt x 346.896pt>
+File: ../../outputs/figures/humanml_selected_topk_200_comparison.png Graphic fi
+le (type png)
+<use ../../outputs/figures/humanml_selected_topk_200_comparison.png>
+Package pdftex.def Info: ../../outputs/figures/humanml_selected_topk_200_compar
+ison.png  used on input line 216.
+(pdftex.def)             Requested size: 485.04126pt x 155.2125pt.
 
 
+[4 <../../outputs/figures/lora_qualitative_frames.png>]
 
 
-[4]
-
-
-Underfull \hbox (badness 6708) in paragraph at lines 223--224
-[]\OT1/ptm/m/n/10 We re-pro-duced the Mo-ConVQ base-line, cu-rated a
- []
-
-(./final_report.bbl
 
 [5 <../../outputs/figures/baseline_lora_key_metrics.png> <../../outputs/figures
 /eval_style_proxy_scorecard.png> <../../outputs/figures/eval_metric_delta_heatm
-ap.png>])
+ap.png>]
+Underfull \hbox (badness 2573) in paragraph at lines 237--238
+\OT1/ptm/m/n/10 The de-ter-min-is-tic and top-k style-proxy sum-maries are
+ []
+
+
+
+
+Underfull \hbox (badness 6708) in paragraph at lines 251--252
+[]\OT1/ptm/m/n/10 We re-pro-duced the Mo-ConVQ base-line, cu-rated a
+ []
+
+
+Underfull \vbox (badness 1616) has occurred while \output is active []
+
+
+
+[6 <../../outputs/figures/humanml_selected_topk_200_comparison.png>]
+(./final_report.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -521,7 +539,7 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-[6
+[7
 
 ] (./final_report.aux)
  ***********
@@ -532,13 +550,13 @@ Package rerunfilecheck Info: File `final_report.out' has not changed.
 (rerunfilecheck)             Checksum: 323FEB33F2CA8F3C312027DBDCB713FA;1178.
  ) 
 Here is how much of TeX's memory you used:
- 9781 strings out of 475118
- 155818 string characters out of 5765020
- 571004 words of memory out of 5000000
- 32660 multiletter control sequences out of 15000+600000
+ 9792 strings out of 475118
+ 156379 string characters out of 5765020
+ 569235 words of memory out of 5000000
+ 32668 multiletter control sequences out of 15000+600000
  592266 words of font info for 94 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 75i,9n,79p,1275b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,1736b,438s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/tex
 live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2025
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2025/texmf-dis
@@ -550,10 +568,10 @@ cm/cmsy7.pfb><d:/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><d:
 f-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/texlive/2025/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb><d:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on final_report.pdf (6 pages, 958911 bytes).
+Output written on final_report.pdf (7 pages, 1085025 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 201 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

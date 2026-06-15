@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-We study style-aware adaptation for MoConVQ, a physics-based language-conditioned humanoid motion generator. The original proposal planned to fine-tune MoConVQ's language-conditioning transformer on HumanML3D style motions while freezing the motion representation backbone. During implementation, we found that the available HumanML3D parquet export provides processed 263-D motion features rather than MoConVQ-compatible BVH files or discrete motion-token labels. We therefore implement a parameter-efficient LoRA distillation alternative: style captions are filtered from HumanML3D, the pretrained MoConVQ generator produces pseudo token targets, and only low-rank LoRA updates are trained while the pretrained generator remains frozen. This yields a reproducible style-adaptation pipeline with 200 distilled examples, 1.97M trainable parameters out of 195.59M total parameters, measured training loss, generated BVH outputs, rendered qualitative comparisons, and BVH-derived style proxy metrics. After a conservative two-epoch low-learning-rate continuation, LoRA improves 18 of 22 pre-defined proxy comparisons on five style prompts. We do not report FID or R-Precision because the required official evaluator bridge is not available in this workspace.
+We study style-aware adaptation for MoConVQ, a physics-based language-conditioned humanoid motion generator. The original proposal planned to fine-tune MoConVQ's language-conditioning transformer on HumanML3D style motions while freezing the motion representation backbone. During implementation, we found that the available HumanML3D parquet export provides processed 263-D motion features rather than MoConVQ-compatible BVH files or discrete motion-token labels. We therefore implement a parameter-efficient LoRA distillation alternative: style captions are filtered from HumanML3D, the pretrained MoConVQ generator produces pseudo token targets, and only low-rank LoRA updates are trained while the pretrained generator remains frozen. We further extend the distillation cache with HumanML3D motion-guided teacher selection: multiple teacher candidates are decoded, scored against the paired HumanML3D motion statistics, and the closest pseudo-token sequence is cached for student training. This yields a reproducible style-adaptation pipeline with 200 distilled examples, 1.97M trainable parameters out of 195.59M total parameters, measured training loss, generated BVH outputs, rendered qualitative comparisons, BVH-derived style proxy metrics, and a motion-aware teacher-selection ablation. The original LoRA run improves 18 of 22 pre-defined proxy comparisons, while the HumanML-selected top-k run improves teacher-target alignment slightly but drops the old style-proxy score to 12 of 22, showing that HumanML closeness and the earlier hand-written style proxy are not identical objectives. We do not report FID or R-Precision because the required official evaluator bridge is not available in this workspace.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -30,7 +30,7 @@ Natural language is an intuitive interface for humanoid motion generation in ani
 
 Our proposal targeted style-aware fine-tuning under limited compute: keep the motion representation, codebook, decoder, and controller frozen, and adapt only the language-conditioned generator. This remains the organizing principle of the final implementation.
 
-The final project makes three concrete contributions. First, we reproduce the MoConVQ text-to-BVH inference path and package the outputs needed for inspection. Second, we identify a real supervision mismatch between the local HumanML3D parquet export and MoConVQ's discrete token format, then replace invalid supervised fine-tuning with a reproducible LoRA distillation route. Third, we evaluate the adapted model using logged training loss, rendered BVH comparisons, and kinematic proxy metrics computed directly from generated motion files.
+The final project makes four concrete contributions. First, we reproduce the MoConVQ text-to-BVH inference path and package the outputs needed for inspection. Second, we identify a real supervision mismatch between the local HumanML3D parquet export and MoConVQ's discrete token format, then replace invalid supervised fine-tuning with a reproducible LoRA distillation route. Third, we add a HumanML3D motion-aware cache construction step that uses paired motion statistics to choose among teacher-generated pseudo-token candidates before LoRA training. Fourth, we evaluate the adapted models using logged training loss, rendered BVH comparisons, kinematic proxy metrics computed directly from generated motion files, and teacher-target alignment against paired HumanML3D motions.
 
 \section{Related Work}
 MoConVQ is the primary baseline for this project because it connects discrete motion representations with physics-based humanoid control \cite{yao2024moconvq}. HumanML3D provides large-scale natural-language motion descriptions and is the dataset source for our style-caption subset \cite{guo2022humanml3d}. Text-to-motion systems such as MDM \cite{tevet2023mdm} and T2M-GPT \cite{zhang2023t2mgpt} show two common modeling directions: continuous diffusion over motion sequences and autoregressive prediction over discrete motion tokens. Our work follows the second direction because MoConVQ already exposes a pretrained text-to-token generator.
@@ -42,7 +42,7 @@ HumanML3D is widely used for text-driven human motion generation \cite{guo2022hu
 
 The available local dataset is the Hugging Face parquet export, which contains processed 263-D motion features and captions. MoConVQ fine-tuning expects its own discrete motion-token targets, generated by its VQ representation. Directly converting the available HumanML3D features into MoConVQ token labels would require a reliable skeleton, coordinate, frame-rate, and representation bridge that is not present in the release. To avoid fabricating supervision, we use pseudo-token distillation.
 
-This change narrows the claim of the project but makes the experimental pipeline technically defensible. The style subset is used to choose language conditions, not as direct motion-token supervision. The teacher model supplies pseudo tokens in MoConVQ's own output space, and the student is evaluated against both that teacher distribution and the final BVH motions that the adapted generator produces.
+This change narrows the claim of the project but makes the experimental pipeline technically defensible. The initial style-distillation run uses the style subset to choose language conditions, not as direct motion-token supervision. The later HumanML-selected cache uses the paired HumanML3D motion more directly: the motion is still not used as a discrete token label, but its measured kinematic profile selects which teacher-generated pseudo-token candidate is cached. The teacher model therefore supplies pseudo tokens in MoConVQ's own output space, while HumanML3D motion statistics can still constrain the choice of pseudo-label.
 
 \begin{table}[!t]
 \centering
@@ -78,6 +78,13 @@ The baseline pipeline maps a prompt to text features, predicts a sequence of dis
 
 For the final adaptation, the pretrained MoConVQ text generator acts as a teacher. Given a style caption, it deterministically samples pseudo token targets. A student model starts from the same pretrained weights, but all pretrained parameters are frozen. We inject LoRA modules into selected linear layers of the text-conditioned temporal transformer and optimize only those low-rank updates. This keeps the implementation close to the proposal's parameter-efficient frozen-backbone design while avoiding unsupported HumanML3D-to-MoConVQ conversion.
 
+After the first LoRA run, we add a motion-aware pseudo-token cache. For each HumanML3D training row, the teacher produces multiple candidate token sequences. Each candidate is decoded back into a BVH motion and summarized using the same family of kinematic statistics used by the proxy evaluator, including duration, root speed, path length, joint velocity, acceleration, jerk, root vertical range, and all-joint vertical range. We then compare each candidate profile with the paired HumanML3D motion profile for the same row. The selected pseudo-token sequence is the candidate with the smallest mean absolute log-ratio distance,
+\begin{equation}
+d_{\mathrm{HML}}(x,h) = \frac{1}{M}\sum_{m=1}^{M}
+\left|\log \frac{x_m + \epsilon}{h_m + \epsilon}\right|,
+\end{equation}
+where $x_m$ is a decoded candidate metric, $h_m$ is the paired HumanML3D metric, and $\epsilon$ prevents division by zero. This score rewards closeness to the paired HumanML3D motion rather than a fixed direction such as always reducing speed.
+
 The adapter is deliberately placed before motion decoding, as summarized in Fig.~\ref{fig:method_pipeline}. This choice preserves the pretrained quantizer, decoder, and physics controller, so changes in the final BVH output come from altered text-conditioned token prediction rather than from retraining the lower-level motion execution stack. In robotics terms, the project adapts the high-level language-to-motion interface while leaving the motion representation and controller stable.
 
 The learning objective is cross-entropy against teacher-generated token sequences. If $z_{1:T}^{\mathrm{teach}}$ denotes the cached pseudo-token sequence and $p_\theta(z_t|z_{<t}, c)$ is the LoRA-adapted generator conditioned on caption $c$, the optimized loss is
@@ -85,6 +92,8 @@ The learning objective is cross-entropy against teacher-generated token sequence
 \mathcal{L}_{\mathrm{distill}} = - \frac{1}{T}\sum_{t=1}^{T} \log p_\theta(z_t^{\mathrm{teach}}|z_{<t}^{\mathrm{teach}}, c).
 \end{equation}
 All non-LoRA parameters are frozen, so the experiment tests whether a small adapter can bias the pretrained language-to-token distribution toward the curated style captions without retraining the motion decoder or controller.
+
+For the HumanML-selected cache, the student objective is unchanged; only the cached target sequence $z_{1:T}^{\mathrm{teach}}$ changes. This distinction is important. HumanML3D motion is not converted into ground-truth MoConVQ tokens. Instead, it acts as a selector over teacher samples that are already valid in MoConVQ's token space.
 
 \begin{table}[!t]
 \centering
@@ -114,9 +123,13 @@ The LoRA run used 200 style captions from the small style-training split. We tra
 
 We then selected the epoch-4 LoRA checkpoint for a conservative continuation run: two additional epochs, learning rate $5 \times 10^{-5}$, same rank, same alpha, and the same frozen pretrained backbone. This continuation is reported because it improved the measured BVH proxy score without changing the metric definition.
 
-We also built a validation pseudo-token cache from 40 held-out style captions for diagnostic checks. The main learning evidence reported here is the measured training loss over the teacher pseudo-token distribution; BVH proxy metrics are used separately to evaluate whether generated motions move in the expected style direction.
+We also built a validation pseudo-token cache from 40 held-out style captions for diagnostic checks in the original LoRA run. The later HumanML-selected runs log training loss for each cached pseudo-token sequence but do not include a separate validation curve. The main learning evidence reported here is therefore the measured training loss over the selected teacher pseudo-token distribution; BVH proxy metrics and HumanML alignment metrics are used separately to evaluate what those learned targets imply for generated or selected motions.
+
+For the HumanML-selected cache, we first tried deterministic multi-candidate teacher sampling. This did not provide a meaningful candidate set: among 200 rows, candidate index 0 was selected 199 times and candidate index 1 was selected once. We therefore changed the teacher sampling to use top-k stochastic candidate generation. With four candidates per row, the selected candidate counts became 114, 31, 32, and 23 for candidate indices 0 through 3. Thus, 86 of 200 selected targets came from non-first candidates, which confirms that the HumanML motion-distance selector had a real choice after the top-k change.
 
 The final BVH evaluation uses paired prompts: each style prompt is generated once by the baseline and once by the selected continued-LoRA checkpoint under the same prompt set and deterministic generation setting. Before scoring, we define which direction is desirable for each metric. For example, slow and heavy styles should reduce speed-like and jerk-like measures, whereas energetic jumping should increase vertical range and root speed. We then count a win only when the LoRA output moves in the pre-defined direction. This protocol prevents choosing the direction after seeing the result.
+
+We report two different evaluation views. The original style proxy asks whether generated BVH metrics move in hand-defined style directions relative to baseline. The HumanML alignment proxy asks whether selected teacher candidates are statistically close to the paired HumanML3D motion for the same row. These two views answer different questions, so we report them separately rather than forcing them into a single score.
 
 \begin{table}[!t]
 \centering
@@ -135,8 +148,8 @@ Continuation epoch 2 & 2 & 0.2018 \\
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\linewidth]{../../outputs/figures/eval_distill_loss_comparison.png}
-\caption{Train and validation pseudo-token loss for the main LoRA run and the lower-learning-rate continuation. The continued checkpoint ends with lower train and validation losses than the selected main-run epoch.}
+\includegraphics[width=\linewidth]{../../outputs/figures/humanml_selected_loss_comparison.png}
+\caption{Epoch-mean LoRA distillation training loss under different pseudo-token caches. The HumanML-selected top-k cache remains learnable, but its final training loss is higher than the deterministic selected cache, consistent with a more diverse and harder pseudo-target distribution.}
 \label{fig:distill_loss_pack}
 \end{figure}
 
@@ -150,7 +163,7 @@ The baseline generated ten BVH files under \texttt{outputs/baseline/project\_pro
 \label{fig:qualitative}
 \end{figure}
 
-The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The lower-learning-rate continuation further reduces epoch-mean loss to 0.2018. The held-out pseudo-token diagnostic in Fig.~\ref{fig:distill_loss_pack} gives the same practical signal: the continued checkpoint ends at 0.0669 train loss and 0.0669 validation loss, compared with 0.1019 train loss and 0.0693 validation loss for the selected main-run epoch. This indicates that the adapter learns to reproduce the teacher's pseudo token targets. It does not prove improved HumanML3D motion fidelity, because the supervision comes from the teacher rather than ground-truth MoConVQ tokens.
+The initial LoRA training loss decreases in epoch mean from 0.3749 to 0.2721. The lower-learning-rate continuation further reduces epoch-mean loss to 0.2018. Figure~\ref{fig:distill_loss_pack} updates the loss evidence for the HumanML-selected cache experiments. The deterministic HumanML-selected run decreases from 0.3749 to 0.2721 over five epochs, while the top-k HumanML-selected run decreases from 0.4184 to 0.3396. This indicates that the student still learns the selected teacher pseudo-token targets, but the top-k selected cache is harder to fit. That is consistent with the top-k cache introducing more diverse teacher candidates and more target variability. It does not prove improved HumanML3D motion fidelity, because the supervision still comes from selected teacher pseudo tokens rather than ground-truth MoConVQ tokens.
 
 For generated BVH motions, we compute proxy metrics that correspond to visible style properties: root speed, mean joint velocity, acceleration, jerk, vertical range, arm motion range, rotation amount, and duration. For each style prompt, we pre-define whether lower or higher values are expected. For example, slow and heavy prompts prefer lower speed and jerk, while energetic jumping prefers higher vertical range and speed.
 
@@ -196,6 +209,15 @@ Total & 18 & 22 \\
 
 The generated evaluation summary reports 18 wins out of 22 pre-defined proxy checks, an overall win rate of 0.818 and a mean per-case win rate of 0.817. The proxy metrics therefore support a limited claim: LoRA improves most measured style-direction metrics on the tested prompts, especially slow deliberate walking, energetic jumping, and heavy tired walking. It does not improve every metric; tai chi remains the weakest measured prompt and should be investigated with more prompts and stronger motion-quality metrics.
 
+The HumanML-selected retraining runs change this picture. The deterministic HumanML-selected cache reaches 15 wins out of 22 style-proxy checks, while the top-k HumanML-selected cache reaches 12 out of 22. However, the selected teacher targets become slightly closer to paired HumanML3D motions under the top-k cache: mean alignment distance decreases from 1.9666 to 1.9419, and mean alignment score increases from 0.1443 to 0.1477. Figure~\ref{fig:humanml_selected_topk} summarizes this tradeoff. The result is not a failure of implementation; it shows that the old style-direction proxy and the new HumanML motion-closeness proxy are not measuring the same target.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.94\textwidth]{../../outputs/figures/humanml_selected_topk_200_comparison.png}
+\caption{HumanML motion-selected LoRA retraining comparison. The original LoRA run has the best old style-proxy score, while the top-k HumanML-selected cache produces a diverse selected-candidate distribution and slightly improves selected-teacher alignment to paired HumanML3D motion.}
+\label{fig:humanml_selected_topk}
+\end{figure*}
+
 \section{Result Interpretation}
 The strongest prompt-level evidence appears in styles whose intended change can be described by simple kinematic quantities. For the slow deliberate walking prompt, the continued-LoRA output reduces root speed, mean joint velocity, acceleration, and jerk relative to the baseline. These four changes are directionally consistent with slower and smoother motion. For the heavy tired walking prompt, the adapter also reduces speed-related and smoothness-related quantities while producing a longer motion duration, which is consistent with a slower and heavier style interpretation.
 
@@ -207,13 +229,19 @@ Figure~\ref{fig:proxy_delta_heatmap} gives a more granular view of the same resu
 
 The evaluation should therefore be read as a project-scale verification rather than a complete benchmark. The adapter demonstrates measurable learning and several style-consistent BVH changes, but the evidence is strongest for coarse kinematic styles such as slow, heavy, energetic, and dance-like motion. The current results are weaker for subtle semantic styles, and we explicitly preserve that limitation in the final claim.
 
+The HumanML-selected cache adds a second interpretation. The top-k change fixes a real sampling pathology: the selector is no longer forced to pick the first candidate almost every time. The selected teacher target is also slightly more aligned with the paired HumanML3D motion. Nevertheless, this does not automatically improve the final student under the old style proxy. There are two likely reasons. First, the HumanML alignment score is based on global motion statistics, so it can miss local semantic details such as hand gestures or complex dance identity. Second, stochastic teacher sampling introduces more diversity, and some diverse candidates may be less stable or less style-directional under the older proxy. The practical conclusion is that HumanML motion can guide teacher selection, but the final metric should compare generated student BVHs against paired HumanML3D motions, not only against a hand-written style-direction score.
+
 \section{Reproducibility and Artifacts}
 All reported numbers are derived from files saved in the project directory. The training-loss curve is computed from the initial and continuation LoRA \texttt{train\_log.csv} files. The subset counts come from the saved style-subset statistics CSV. BVH metrics are computed from baseline BVH files and continued-LoRA BVH files using the same parser and the same fixed metric definitions. The final comparison CSVs are stored with the continued-LoRA seed-7 style metrics.
+
+The HumanML-selected cache results are also file-backed. The deterministic and top-k style-proxy summaries are stored as saved CSV tables under \texttt{outputs/tables/}. The teacher-target HumanML alignment summaries are stored in the corresponding \texttt{outputs/humanml\_alignment\_*} result folders. The selected-candidate comparison figure is generated from these saved outputs and the top-k selected-cache metadata.
 
 The report therefore separates three evidence types. First, the distillation loss demonstrates that LoRA parameters learn the teacher token distribution. Second, proxy metrics quantify visible kinematic changes in generated BVH motions. Third, rendered frames and videos allow qualitative inspection of whether the metric changes correspond to visible motion differences. None of these are presented as official HumanML3D benchmark scores.
 
 \section{Limitations}
 The main limitation is data compatibility. The available HumanML3D parquet features are not direct labels for MoConVQ's discrete token space. Our distillation method is therefore a practical adaptation experiment, not full supervised fine-tuning on true HumanML3D motion tokens.
+
+The HumanML-selected cache reduces but does not remove this limitation. It uses HumanML3D motion to choose among MoConVQ-valid teacher candidates, but the student still learns pseudo tokens rather than true HumanML3D-derived MoConVQ token labels. This is why an improved teacher-target alignment score should be interpreted as better target selection, not as proof that the final student BVH is closer to HumanML3D.
 
 We also do not report official FID or R-Precision. Reporting those metrics would require a compatible evaluator that maps generated MoConVQ BVH outputs and HumanML3D test motions into the same feature space. Since that bridge was not implemented and verified, fabricating benchmark values would be misleading. The final proxy result uses a fixed generation seed for reproducibility, but it is still a small prompt-level evaluation rather than a broad benchmark. Future work should add a validated evaluator, convert or retarget HumanML3D motions into MoConVQ-compatible form, and run multi-seed comparisons on held-out prompts.
 
@@ -221,6 +249,8 @@ Another limitation is that the teacher and student share the same pretrained MoC
 
 \section{Conclusion}
 We reproduced the MoConVQ baseline, curated a style-focused HumanML3D caption subset, implemented a parameter-efficient LoRA distillation pipeline, trained and continued a 200-example adapter, generated BVH outputs, computed BVH style proxies, and rendered qualitative comparisons. The final result preserves the proposal's frozen-backbone spirit while honestly addressing the discovered HumanML3D/MoConVQ format mismatch.
+
+The final extension further shows how paired HumanML3D motion can be used without pretending it is already a MoConVQ token label: it can select among decoded teacher candidates before LoRA training. Top-k sampling makes this selection meaningful by producing diverse candidates, and the selected teacher targets become slightly closer to the paired HumanML3D motions. However, the final style-proxy score does not improve, so the strongest final claim is methodological rather than benchmark-level: the project moves from caption-only pseudo-token distillation toward data-grounded teacher selection, and the next experiment should close the loop by evaluating generated student BVHs directly against paired HumanML3D motion IDs.
 
 \bibliographystyle{plainnat}
 \bibliography{../shared/references}

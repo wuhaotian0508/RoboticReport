@@ -1,0 +1,4 @@
+run,wins,total,win_rate
+Original LoRA,18,22,0.8181818181818182
+HumanML selected deterministic,15,22,0.6818181818181818
+HumanML selected top-k,12,22,0.5454545454545454
