@@ -56,6 +56,12 @@ from moconvq_builder import build_agent  # noqa: E402
 from transformers import T5EncoderModel, T5Tokenizer  # noqa: E402
 
 from style_lora import inject_lora, load_lora_state_dict, lora_state_dict  # noqa: E402
+from humanml_motion_proxy import (  # noqa: E402
+    DEFAULT_SELECTION_METRICS,
+    HumanMLMotionStore,
+    read_style_rows,
+    select_best_candidate,
+)
 
 
 GPT_CONFIG = {
@@ -157,16 +163,49 @@ def make_teacher_example(
     encoder: T5EncoderModel,
     device: torch.device,
     max_length: int,
+    teacher_samples: int = 1,
+    target_metrics: dict[str, float] | None = None,
+    candidate_metric_fn=None,
+    selection_metrics: tuple[str, ...] = DEFAULT_SELECTION_METRICS,
+    teacher_categorical_sampling: bool = False,
+    teacher_top_k: int = 50,
+    teacher_temperature: float = 1.0,
+    sample_seed_base: int | None = None,
 ) -> dict[str, torch.Tensor | str] | None:
     bert_feature, bert_mask = text2bert([caption], tokenizer, encoder, device)
     clip_feature = torch.zeros((1, 512), device=device)
-    latents, idxs = teacher.sample(
-        clip_feature,
-        bert_feature,
-        bert_mask,
-        if_categorial=False,
-        max_length=max_length,
-    )
+    candidates = []
+    for sample_idx in range(max(1, teacher_samples)):
+        if sample_seed_base is not None:
+            torch.manual_seed(sample_seed_base + sample_idx)
+            if torch.cuda.is_available():
+                torch.cuda.manual_seed_all(sample_seed_base + sample_idx)
+        latents, idxs = teacher.sample(
+            clip_feature,
+            bert_feature,
+            bert_mask,
+            if_categorial=teacher_categorical_sampling,
+            max_length=max_length,
+            top_k=teacher_top_k,
+            temperature=teacher_temperature,
+        )
+        if latents.numel() == 0 or idxs.numel() == 0:
+            continue
+        metrics = None
+        if target_metrics is not None and candidate_metric_fn is not None:
+            metrics = candidate_metric_fn(latents, sample_idx)
+        candidates.append({"latents": latents, "idxs": idxs, "metrics": metrics or {}, "sample_idx": sample_idx})
+
+    if not candidates:
+        return None
+
+    if target_metrics is not None and candidate_metric_fn is not None and len(candidates) > 1:
+        selected = select_best_candidate(candidates, target_metrics, selection_metrics)
+    else:
+        selected = candidates[0]
+
+    latents = selected["latents"]
+    idxs = selected["idxs"]
     if latents.numel() == 0 or idxs.numel() == 0:
         return None
 
@@ -175,18 +214,65 @@ def make_teacher_example(
     if time_steps < 2:
         return None
 
-    return {
+    example = {
         "caption": caption,
         "bert_feature": bert_feature.detach().cpu(),
         "bert_mask": bert_mask.detach().cpu(),
         "latents": latents[:, :time_steps].detach().cpu(),
         "idxs": token_rows[:time_steps].unsqueeze(0).detach().cpu(),
     }
+    if target_metrics is not None:
+        example["humanml_metrics"] = target_metrics
+        example["teacher_samples"] = int(max(1, teacher_samples))
+        example["selected_sample_idx"] = int(selected.get("sample_idx", 0))
+        example["selection_score"] = float(selected.get("selection_score", 0.0))
+        example["candidate_metrics"] = selected.get("metrics", {})
+    return example
+
+
+def write_latents_bvh(agent, latents: torch.Tensor, output_file: Path) -> None:
+    dconv = agent.posterior.decoder.decode_dynamic(latents)
+
+    import VclSimuBackend
+
+    character_to_bvh = VclSimuBackend.ODESim.CharacterTOBVH
+    saver = character_to_bvh(agent.env.sim_character, 120)
+    saver.bvh_hierarchy_no_root()
+    observation, _ = agent.env.reset(0)
+
+    for frame_idx in range(dconv.shape[1]):
+        obs = observation["observation"]
+        action, _ = agent.act_tracking(
+            obs_history=[obs.reshape(1, 323)],
+            target_latent=dconv[:, frame_idx],
+        )
+        action = ptu.to_numpy(action).flatten()
+        for substep in range(6):
+            saver.append_no_root_to_buffer()
+            if substep == 0:
+                step_generator = agent.env.step_core(action, using_yield=True)
+            _ = next(step_generator)
+        try:
+            _ = next(step_generator)
+        except StopIteration as exc:
+            new_observation, _, _, _ = exc.value
+        observation = new_observation
+
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    saver.to_file(str(output_file))
+
+
+def measure_generated_latents(agent, latents: torch.Tensor, output_file: Path) -> dict[str, float]:
+    from compute_bvh_proxy_metrics import compute_metrics
+
+    write_latents_bvh(agent, latents, output_file)
+    metrics = compute_metrics(output_file)
+    return {key: float(value) for key, value in metrics.items() if isinstance(value, float)}
 
 
 def build_cache(args: argparse.Namespace, device: torch.device):
-    captions = read_captions(Path(args.train_csv), args.max_samples, args.seed)
-    if not captions:
+    rows = read_style_rows(Path(args.train_csv), args.max_samples, args.seed)
+    if not rows:
         raise RuntimeError(f"No captions found in {args.train_csv}")
 
     os.environ.setdefault("HF_ENDPOINT", "https://hf-mirror.com")
@@ -210,14 +296,59 @@ def build_cache(args: argparse.Namespace, device: torch.device):
     for param in encoder.parameters():
         param.requires_grad = False
 
+    motion_store = HumanMLMotionStore() if args.humanml_motion_selection else None
+    selection_metrics = tuple(
+        metric.strip()
+        for metric in args.selection_metrics.split(",")
+        if metric.strip()
+    )
+    candidate_bvh_dir = Path(args.candidate_bvh_dir) if args.candidate_bvh_dir else Path(args.output_dir) / "candidate_selection_bvh"
+
     examples = []
-    for i, caption in enumerate(captions, start=1):
+    for i, row in enumerate(rows, start=1):
+        caption = row["caption"]
+        target_metrics = None
+        candidate_metric_fn = None
+        if motion_store is not None and row.get("motion_id") and row.get("text_path"):
+            try:
+                target_metrics = motion_store.metrics_for(
+                    Path(row["text_path"]),
+                    row["motion_id"],
+                    fps=args.humanml_fps,
+                )
+            except Exception as exc:
+                print(f"warning: HumanML3D motion metrics unavailable for {row.get('motion_id')}: {exc}")
+
+        if target_metrics is not None and args.teacher_samples > 1:
+            def candidate_metric_fn(latents, sample_idx, *, row_index=i):
+                output_file = candidate_bvh_dir / f"candidate_{row_index:05d}_{sample_idx:02d}.bvh"
+                return measure_generated_latents(agent, latents, output_file)
+
         example = make_teacher_example(
-            teacher, caption, tokenizer, encoder, device, args.max_length
+            teacher,
+            caption,
+            tokenizer,
+            encoder,
+            device,
+            args.max_length,
+            teacher_samples=args.teacher_samples,
+            target_metrics=target_metrics,
+            candidate_metric_fn=candidate_metric_fn,
+            selection_metrics=selection_metrics,
+            teacher_categorical_sampling=args.teacher_categorical_sampling,
+            teacher_top_k=args.teacher_top_k,
+            teacher_temperature=args.teacher_temperature,
+            sample_seed_base=args.seed * 100000 + i * 1000,
         )
         if example is not None:
             examples.append(example)
-        print(f"cache {i}/{len(captions)} kept={len(examples)} caption={caption[:80]}")
+        detail = ""
+        if example is not None and "selection_score" in example:
+            detail = (
+                f" selected={example['selected_sample_idx']}"
+                f" score={float(example['selection_score']):.4f}"
+            )
+        print(f"cache {i}/{len(rows)} kept={len(examples)}{detail} caption={caption[:80]}")
 
     Path(args.cache_path).parent.mkdir(parents=True, exist_ok=True)
     torch.save(examples, args.cache_path)
@@ -276,6 +407,13 @@ def train_lora(args: argparse.Namespace, device: torch.device, examples) -> None
         "lr": args.lr,
         "weight_decay": args.weight_decay,
         "max_length": args.max_length,
+        "teacher_samples": args.teacher_samples,
+        "teacher_categorical_sampling": args.teacher_categorical_sampling,
+        "teacher_top_k": args.teacher_top_k,
+        "teacher_temperature": args.teacher_temperature,
+        "humanml_motion_selection": args.humanml_motion_selection,
+        "humanml_fps": args.humanml_fps,
+        "selection_metrics": args.selection_metrics,
         "lora_rank": args.lora_rank,
         "lora_alpha": args.lora_alpha,
         "lora_dropout": args.lora_dropout,
@@ -292,9 +430,15 @@ def train_lora(args: argparse.Namespace, device: torch.device, examples) -> None
                 "# LoRA Style Distillation",
                 "",
                 "This run freezes the pretrained MoConVQ text generator and trains only LoRA updates.",
-                "Pseudo token targets are distilled from the pretrained teacher, not from ground-truth HumanML3D motion tokens.",
+                "Pseudo token targets are distilled from the pretrained teacher.",
+                "When enabled, HumanML3D motion metrics select among multiple teacher samples before cache writing.",
                 "",
                 f"- Examples: {len(examples)}",
+                f"- Teacher samples per caption: {args.teacher_samples}",
+                f"- Teacher categorical sampling: {args.teacher_categorical_sampling}",
+                f"- Teacher top-k: {args.teacher_top_k}",
+                f"- Teacher temperature: {args.teacher_temperature}",
+                f"- HumanML3D motion selection: {args.humanml_motion_selection}",
                 f"- LoRA modules: {stats.modules}",
                 f"- Trainable parameters: {stats.trainable_params}",
                 f"- Total parameters: {stats.total_params}",
@@ -380,6 +524,14 @@ def main() -> int:
     parser.add_argument("--build-cache-only", action="store_true")
     parser.add_argument("--train-only", action="store_true")
     parser.add_argument("--resume-lora", default=None)
+    parser.add_argument("--teacher-samples", type=int, default=1)
+    parser.add_argument("--teacher-categorical-sampling", action="store_true")
+    parser.add_argument("--teacher-top-k", type=int, default=50)
+    parser.add_argument("--teacher-temperature", type=float, default=1.0)
+    parser.add_argument("--humanml-motion-selection", action="store_true")
+    parser.add_argument("--humanml-fps", type=float, default=20.0)
+    parser.add_argument("--selection-metrics", default=",".join(DEFAULT_SELECTION_METRICS))
+    parser.add_argument("--candidate-bvh-dir", default=None)
     parser.add_argument("--lora-rank", type=int, default=8)
     parser.add_argument("--lora-alpha", type=float, default=16.0)
     parser.add_argument("--lora-dropout", type=float, default=0.05)

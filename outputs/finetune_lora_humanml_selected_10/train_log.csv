@@ -1,0 +1,21 @@
+epoch,step,loss,caption
+0,1,0.03993133082985878,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+0,2,0.09392263740301132,"a person walks downstairs, before making a little jump at the bottom."
+0,3,0.06798654794692993,"a person walks forward at a slow pace and stops, holding position."
+0,4,0.05491170287132263,a person is moving around dancing with their arms.
+0,5,0.16093392670154572,a person swings their arms and body around as if they are dancing.
+0,6,1.4646943807601929,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+0,7,0.05785038694739342,a person does broad jumps back and forth with a quick stretch in between jumps.
+0,8,0.13941094279289246,a person walking forward in a steady pace
+0,9,1.6306627988815308,a person lifts something heavy with their right arm.
+0,10,0.02493007853627205,a person is performing a dance
+1,11,3.135873794555664,a person lifts something heavy with their right arm.
+1,12,0.04132566228508949,"a person walks forward at a slow pace and stops, holding position."
+1,13,0.06487708538770676,a person is performing a dance
+1,14,0.027842983603477478,a person swings their arms and body around as if they are dancing.
+1,15,0.017186326906085014,a man is holding both arms out and then pulling them back in right to left as if he is transferring something heavy.
+1,16,0.12254682183265686,a person walking forward in a steady pace
+1,17,0.062011949717998505,"a person walks downstairs, before making a little jump at the bottom."
+1,18,0.013051129877567291,a person does broad jumps back and forth with a quick stretch in between jumps.
+1,19,0.6657232046127319,"this person is walking forward at an easy but steady pace, starting with the right foot and completing 8 steps, ending with the right foot forward."
+1,20,0.03723949193954468,a person is moving around dancing with their arms.

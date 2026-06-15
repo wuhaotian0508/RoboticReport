@@ -1,0 +1,6 @@
+all_joint_vertical_range_delta_pct,arm_motion_range_delta_pct,case,duration_sec_delta_pct,mean_joint_acceleration_delta_pct,mean_joint_jerk_delta_pct,mean_joint_velocity_delta_pct,prompt,root_height_mean_delta_pct,root_rotation_amount_delta_pct,root_speed_mean_delta_pct,root_vertical_range_delta_pct,style_proxy_total,style_proxy_win_rate,style_proxy_wins
+,,slow_deliberate,,0.7163045787067971,1.292936814970206,-0.05398256568711065,A person walks forward slowly and deliberately.,,,-0.11492529725529917,,4,0.5,2
+,-2.032985430776429,graceful_dance,,,-12.258168445860225,,A person performs a graceful dance motion.,,59.19651900150586,,35.38867837868867,4,0.5,2
+,14.849647276687808,tai_chi,-26.923076923076934,,,,A person moves like doing tai chi.,,32.74848825183295,-51.29961873010627,,4,0.5,2
+3.9726170207042015,30.713740121691952,energetic_jump,,-14.133062557970488,,-12.473136643137089,A person jumps energetically.,,,38.183153161052196,42.38673632922009,6,0.6666666666666666,4
+,,heavy_tired,,,-3.4878315624003604,-10.33861851040414,A person walks in a tired and heavy style.,1.846816131297347,,-17.02323730776056,,4,0.25,1

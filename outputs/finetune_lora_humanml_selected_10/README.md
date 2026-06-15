@@ -1,0 +1,12 @@
+# LoRA Style Distillation
+
+This run freezes the pretrained MoConVQ text generator and trains only LoRA updates.
+Pseudo token targets are distilled from the pretrained teacher.
+When enabled, HumanML3D motion metrics select among multiple teacher samples before cache writing.
+
+- Examples: 10
+- Teacher samples per caption: 2
+- HumanML3D motion selection: True
+- LoRA modules: 132
+- Trainable parameters: 1966080
+- Total parameters: 195591680

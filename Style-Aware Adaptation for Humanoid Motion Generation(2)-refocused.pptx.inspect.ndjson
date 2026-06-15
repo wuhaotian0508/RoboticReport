@@ -1,0 +1,359 @@
+{"kind":"deck","id":"pr/rcrwgc","name":"Deck"}
+{"kind":"layout","layoutId":"03e65ce0-d466-4d77-95d2-8b755cc824b0","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"e747ea9d-5fcc-4f1a-8e39-fe129a2a826b","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/4vjcoa","slide":1,"title":"PROJECT THESIS","textShapes":17}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":1,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":1,"name":"kicker","text":"PROJECT THESIS","textPreview":"PROJECT THESIS","textChars":14,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":1,"name":"title","text":"HumanML3D-Guided Teacher Selection for MoConVQ LoRA Distillation","textPreview":"HumanML3D-Guided Teacher Selection for MoConVQ LoRA Distillation","textChars":64,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/47y1kre1","slide":1,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/tsvu9kni","slide":1,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":1,"name":"footer","text":"1 / 10 - Thesis Report","textPreview":"1 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"shape","id":"sh/bm58z25k","slide":1,"bbox":[72,224,1136,118]}
+{"kind":"textbox","id":"sh/4byhgn29","slide":1,"text":"The new contribution is not just LoRA distillation; it is using HumanML3D motion as a teacher-selection signal.","textPreview":"The new contribution is not just LoRA distillation; it is using HumanML3D motion as a teacher-selection signal.","textChars":111,"textLines":1,"bbox":[110,252,1040,52]}
+{"kind":"shape","id":"sh/twra5gbq","slide":1,"bbox":[96,410,320,98]}
+{"kind":"shape","id":"sh/1cfa9w3m","slide":1,"bbox":[96,410,8,98]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":1,"text":"Original bottleneck","textPreview":"Original bottleneck","textChars":19,"textLines":1,"bbox":[120,428,276,24]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":1,"text":"HumanML3D provided captions, but its real motions were not used to choose teacher tokens.","textPreview":"HumanML3D provided captions, but its real motions were not used to choose teacher tokens.","textChars":89,"textLines":1,"bbox":[120,458,276,42]}
+{"kind":"shape","id":"sh/ulwval87","slide":1,"bbox":[480,410,320,98]}
+{"kind":"shape","id":"sh/1kre1w7m","slide":1,"bbox":[480,410,8,98]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":1,"text":"New mechanism","textPreview":"New mechanism","textChars":13,"textLines":1,"bbox":[504,428,276,24]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":1,"text":"Generate multiple teacher candidates and select the one closest to the paired HumanML3D motion.","textPreview":"Generate multiple teacher candidates and select the one closest to the paired HumanML3D motion.","textChars":95,"textLines":1,"bbox":[504,458,276,42]}
+{"kind":"shape","id":"sh/uxc3ylc7","slide":1,"bbox":[864,410,320,98]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":1,"bbox":[864,410,8,98]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":1,"text":"Main finding","textPreview":"Main finding","textChars":12,"textLines":1,"bbox":[888,428,276,24]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":1,"text":"Candidate diversity is fixed, but alignment gains are small and do not yet improve final student style proxy.","textPreview":"Candidate diversity is fixed, but alignment gains are small and do not yet improve final student style proxy.","textChars":109,"textLines":1,"bbox":[888,458,276,42]}
+{"kind":"shape","id":"sh/dsji5sne","slide":1,"bbox":[96,548,320,76]}
+{"kind":"shape","id":"sh/61032lsz","slide":1,"bbox":[96,548,8,76]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":1,"text":"86/200","textPreview":"86/200","textChars":6,"textLines":1,"bbox":[120,566,276,24]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":1,"text":"Non-first top-k teacher candidates selected.","textPreview":"Non-first top-k teacher candidates selected.","textChars":44,"textLines":1,"bbox":[120,596,276,20]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":1,"bbox":[480,548,320,76]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":1,"bbox":[480,548,8,76]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":1,"text":"0.1477","textPreview":"0.1477","textChars":6,"textLines":1,"bbox":[504,566,276,24]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":1,"text":"Top-k selected teacher HumanML alignment score.","textPreview":"Top-k selected teacher HumanML alignment score.","textChars":47,"textLines":1,"bbox":[504,596,276,20]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":1,"bbox":[864,548,320,76]}
+{"kind":"shape","id":"sh/3ex0nuxc","slide":1,"bbox":[864,548,8,76]}
+{"kind":"textbox","id":"sh/at47y1kr","slide":1,"text":"12/22","textPreview":"12/22","textChars":5,"textLines":1,"bbox":[888,566,276,24]}
+{"kind":"textbox","id":"sh/lkjm1cfa","slide":1,"text":"Final top-k student style-proxy checks improved.","textPreview":"Final top-k student style-proxy checks improved.","textChars":48,"textLines":1,"bbox":[888,596,276,20]}
+{"kind":"notes","id":"nt/4vjcoa","slide":1,"text":"这一页把重点拉回来：这份报告的核心不再是泛泛介绍 LoRA，而是说明我们如何让 HumanML3D 的真实 motion 参与 teacher selection。原始方法主要使用 caption，student 模仿 teacher token；新方法是在同一个 caption 下生成多个 teacher candidate，再用 HumanML3D 对应 motion 的统计特征选择更接近的 candidate。关键结论是：多候选机制已经生效，但 teacher 与 HumanML 的对齐提升还比较小，并没有直接带来最终 student style proxy 的提升。"}
+{"kind":"slide","id":"sl/th8kxo","slide":2,"title":"MOTIVATION","textShapes":16}
+{"kind":"shape","id":"sh/6psfil0r","slide":2,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":2,"name":"kicker","text":"MOTIVATION","textPreview":"MOTIVATION","textChars":10,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":2,"name":"title","text":"The real gap: HumanML3D motion was available but underused","textPreview":"The real gap: HumanML3D motion was available but underused","textChars":58,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/vixczed8","slide":2,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":2,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":2,"name":"footer","text":"2 / 10 - Thesis Report","textPreview":"2 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":2,"text":"The project started from a format mismatch, but the deeper issue is supervision quality.","textPreview":"The project started from a format mismatch, but the deeper issue is supervision quality.","textChars":88,"textLines":1,"bbox":[72,164,920,30]}
+{"kind":"shape","id":"sh/vu9knih4","slide":2,"bbox":[80,240,250,118]}
+{"kind":"shape","id":"sh/29gr2p8n","slide":2,"bbox":[80,240,8,118]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":2,"text":"HumanML3D","textPreview":"HumanML3D","textChars":9,"textLines":1,"bbox":[100,256,214,26]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":2,"text":"caption + continuous 263-D motion features","textPreview":"caption + continuous 263-D motion features","textChars":42,"textLines":1,"bbox":[100,286,214,64]}
+{"kind":"shape","id":"sh/6psfil0r","slide":2,"bbox":[385,240,250,118]}
+{"kind":"shape","id":"sh/val87ed8","slide":2,"bbox":[385,240,8,118]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":2,"text":"MoConVQ GPT","textPreview":"MoConVQ GPT","textChars":11,"textLines":1,"bbox":[405,256,214,26]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":2,"text":"expects discrete token targets, not HumanML continuous features","textPreview":"expects discrete token targets, not HumanML continuous features","textChars":63,"textLines":1,"bbox":[405,286,214,64]}
+{"kind":"shape","id":"sh/2x4nap4r","slide":2,"bbox":[690,240,250,118]}
+{"kind":"shape","id":"sh/vixczed8","slide":2,"bbox":[690,240,8,118]}
+{"kind":"textbox","id":"sh/kf6dcbul","slide":2,"text":"Pseudo-token distillation","textPreview":"Pseudo-token distillation","textChars":25,"textLines":1,"bbox":[710,256,214,26]}
+{"kind":"textbox","id":"sh/d0z61032","slide":2,"text":"teacher samples tokens from caption; student learns CE loss","textPreview":"teacher samples tokens from caption; student learns CE loss","textChars":59,"textLines":1,"bbox":[710,286,214,64]}
+{"kind":"shape","id":"sh/dsji5sne","slide":2,"bbox":[995,240,160,118]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":2,"bbox":[995,240,8,118]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":2,"text":"Problem","textPreview":"Problem","textChars":7,"textLines":1,"bbox":[1015,256,124,26]}
+{"kind":"textbox","id":"sh/61032lsz","slide":2,"text":"motion ground truth does not steer which teacher sample is learned","textPreview":"motion ground truth does not steer which teacher sample is learned","textChars":66,"textLines":1,"bbox":[1015,286,124,64]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":2,"bbox":[330,299,55,0]}
+{"kind":"shape","id":"sh/oj2t83it","slide":2,"bbox":[635,299,55,0]}
+{"kind":"shape","id":"sh/vy90je9c","slide":2,"bbox":[940,299,55,0]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":2,"bbox":[92,438,9,9]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":2,"text":"Caption-only distillation can teach a plausible teacher sample even when it is not close to the paired HumanML3D motion.","textPreview":"Caption-only distillation can teach a plausible teacher sample even when it is not close to the paired HumanML3D motion.","textChars":120,"textLines":1,"bbox":[114,430,1040,48]}
+{"kind":"shape","id":"sh/onyd0z61","slide":2,"bbox":[92,496,9,9]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":2,"text":"The new question: can HumanML3D motion help choose a better teacher target before LoRA training?","textPreview":"The new question: can HumanML3D motion help choose a better teacher target before LoRA training?","textChars":96,"textLines":1,"bbox":[114,488,1040,48]}
+{"kind":"shape","id":"sh/r65wjudg","slide":2,"bbox":[92,554,9,9]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":2,"text":"This reframes the project from “style steering only” to “motion-aware teacher target selection.”","textPreview":"This reframes the project from “style steering only” to “motion-aware teacher target selection.”","textChars":96,"textLines":1,"bbox":[114,546,1040,48]}
+{"kind":"notes","id":"nt/th8kxo","slide":2,"text":"这一页解释为什么要重新组织 PPT。最早的问题看起来是格式不匹配：HumanML3D 是连续动作，MoConVQ GPT 需要离散 token。但更深层的问题是监督质量：如果 teacher 只根据 caption 生成一个样本，student 学到的就是这个样本，而这个样本未必接近 HumanML3D 的真实动作。因此新方法的动机是：让 HumanML3D 的真实 motion 不只是提供 caption，而是参与选择 teacher target。"}
+{"kind":"slide","id":"sl/f9xl45","slide":3,"title":"BASELINE METHOD","textShapes":17}
+{"kind":"shape","id":"sh/s36hcrmh","slide":3,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":3,"name":"kicker","text":"BASELINE METHOD","textPreview":"BASELINE METHOD","textChars":15,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":3,"name":"title","text":"Original LoRA distillation learns the teacher, not the dataset motion","textPreview":"Original LoRA distillation learns the teacher, not the dataset motion","textChars":69,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/hgn29gr2","slide":3,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/svu9knih","slide":3,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":3,"name":"footer","text":"3 / 10 - Thesis Report","textPreview":"3 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":3,"bbox":[72,164,1136,70]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":3,"text":"Student training loss is token-level cross entropy against selected teacher pseudo-tokens.","textPreview":"Student training loss is token-level cross entropy against selected teacher pseudo-tokens.","textChars":90,"textLines":1,"bbox":[110,184,1040,32]}
+{"kind":"shape","id":"sh/sji5snel","slide":3,"bbox":[120,305,210,104]}
+{"kind":"shape","id":"sh/qh0fepkz","slide":3,"bbox":[120,305,8,104]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":3,"text":"Caption","textPreview":"Caption","textChars":7,"textLines":1,"bbox":[140,321,174,26]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":3,"text":"“walk slowly”","textPreview":"“walk slowly”","textChars":13,"textLines":1,"bbox":[140,351,174,50]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":3,"bbox":[395,305,210,104]}
+{"kind":"shape","id":"sh/q5o7qpg3","slide":3,"bbox":[395,305,8,104]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":3,"text":"Frozen teacher","textPreview":"Frozen teacher","textChars":14,"textLines":1,"bbox":[415,321,174,26]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":3,"text":"pretrained MoConVQ GPT samples pseudo-tokens","textPreview":"pretrained MoConVQ GPT samples pseudo-tokens","textChars":44,"textLines":1,"bbox":[415,351,174,50]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":3,"bbox":[670,305,210,104]}
+{"kind":"shape","id":"sh/uxc3ylc7","slide":3,"bbox":[670,305,8,104]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":3,"text":"Student LoRA","textPreview":"Student LoRA","textChars":12,"textLines":1,"bbox":[690,321,174,26]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":3,"text":"learns selected token ids with CE / NLL","textPreview":"learns selected token ids with CE / NLL","textChars":39,"textLines":1,"bbox":[690,351,174,50]}
+{"kind":"shape","id":"sh/mp0bi9s3","slide":3,"bbox":[945,305,210,104]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":3,"bbox":[945,305,8,104]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":3,"text":"BVH output","textPreview":"BVH output","textChars":10,"textLines":1,"bbox":[965,321,174,26]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":3,"text":"decoded after training","textPreview":"decoded after training","textChars":22,"textLines":1,"bbox":[965,351,174,50]}
+{"kind":"shape","id":"sh/m1cfa9w3","slide":3,"bbox":[330,357,65,0]}
+{"kind":"shape","id":"sh/tsvu9kni","slide":3,"bbox":[605,357,65,0]}
+{"kind":"shape","id":"sh/47y1kre1","slide":3,"bbox":[880,357,65,0]}
+{"kind":"shape","id":"sh/bq1oryts","slide":3,"bbox":[140,500,440,94]}
+{"kind":"shape","id":"sh/m58z25kb","slide":3,"bbox":[140,500,8,94]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":3,"text":"Important limitation","textPreview":"Important limitation","textChars":20,"textLines":1,"bbox":[164,518,396,24]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":3,"text":"The training loss does not directly optimize HumanML distance, naturalness, or style-proxy score. It only asks the student to mimic the selected teacher token.","textPreview":"The training loss does not directly optimize HumanML distance, naturalness, or style-proxy score. It only asks the student to mimic the s...","textChars":159,"textLines":1,"bbox":[164,548,396,38]}
+{"kind":"shape","id":"sh/e1w7mp0b","slide":3,"bbox":[700,500,360,94]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":3,"bbox":[700,500,8,94]}
+{"kind":"textbox","id":"sh/wval87ed","slide":3,"text":"Implication","textPreview":"Implication","textChars":11,"textLines":1,"bbox":[724,518,316,24]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":3,"text":"Better teacher selection is the real control point before LoRA training.","textPreview":"Better teacher selection is the real control point before LoRA training.","textChars":72,"textLines":1,"bbox":[724,548,316,38]}
+{"kind":"notes","id":"nt/f9xl45","slide":3,"text":"这一页讲清楚 baseline 的含义。训练 LoRA 的 loss 是 cross entropy，也可以理解为 token-level negative log likelihood。它优化的是 student 对 teacher token 的预测概率，不直接优化 HumanML motion distance，也不直接优化人类观感。因此如果 teacher target 选得不好，student 会很认真地模仿一个不一定好的目标。这里自然引出后面的方法：真正要改的是 teacher candidate selection。"}
+{"kind":"slide","id":"sl/lssrq8","slide":4,"title":"PROPOSED METHOD","textShapes":21}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":4,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":4,"name":"kicker","text":"PROPOSED METHOD","textPreview":"PROPOSED METHOD","textChars":15,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":4,"name":"title","text":"Motion-aware teacher selection before LoRA training","textPreview":"Motion-aware teacher selection before LoRA training","textChars":51,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/kjm1cfa9","slide":4,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":4,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":4,"name":"footer","text":"4 / 10 - Thesis Report","textPreview":"4 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":4,"text":"For each HumanML3D row, generate several teacher candidates and select the one whose BVH metrics best match the paired HumanML3D motion.","textPreview":"For each HumanML3D row, generate several teacher candidates and select the one whose BVH metrics best match the paired HumanML3D motion.","textChars":136,"textLines":1,"bbox":[72,158,1080,48]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":4,"bbox":[80,255,190,104]}
+{"kind":"shape","id":"sh/9w3m94fu","slide":4,"bbox":[80,255,8,104]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":4,"text":"HumanML row","textPreview":"HumanML row","textChars":11,"textLines":1,"bbox":[100,271,154,26]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":4,"text":"caption + motion_id + true motion metrics","textPreview":"caption + motion_id + true motion metrics","textChars":41,"textLines":1,"bbox":[100,301,154,50]}
+{"kind":"shape","id":"sh/fa9w3m94","slide":4,"bbox":[325,255,190,104]}
+{"kind":"shape","id":"sh/qpg3ex0n","slide":4,"bbox":[325,255,8,104]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":4,"text":"Teacher top-k","textPreview":"Teacher top-k","textChars":13,"textLines":1,"bbox":[345,271,154,26]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":4,"text":"sample 4 stochastic candidates","textPreview":"sample 4 stochastic candidates","textChars":30,"textLines":1,"bbox":[345,301,154,50]}
+{"kind":"shape","id":"sh/fyxobm58","slide":4,"bbox":[570,255,190,104]}
+{"kind":"shape","id":"sh/qd4vmtwr","slide":4,"bbox":[570,255,8,104]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":4,"text":"Candidate BVHs","textPreview":"Candidate BVHs","textChars":14,"textLines":1,"bbox":[590,271,154,26]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"text":"decode each candidate for measurement","textPreview":"decode each candidate for measurement","textChars":37,"textLines":1,"bbox":[590,301,154,50]}
+{"kind":"shape","id":"sh/4fu18jqh","slide":4,"bbox":[815,255,190,104]}
+{"kind":"shape","id":"sh/x0nuxc3y","slide":4,"bbox":[815,255,8,104]}
+{"kind":"textbox","id":"sh/m94fu18j","slide":4,"text":"Selection score","textPreview":"Selection score","textChars":15,"textLines":1,"bbox":[835,271,154,26]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":4,"text":"mean log-ratio distance to HumanML metrics","textPreview":"mean log-ratio distance to HumanML metrics","textChars":42,"textLines":1,"bbox":[835,301,154,50]}
+{"kind":"shape","id":"sh/83itgfml","slide":4,"bbox":[1060,255,140,104]}
+{"kind":"shape","id":"sh/xobm58z2","slide":4,"bbox":[1060,255,8,104]}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":4,"text":"LoRA target","textPreview":"LoRA target","textChars":11,"textLines":1,"bbox":[1080,271,104,26]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":4,"text":"distill selected token ids","textPreview":"distill selected token ids","textChars":26,"textLines":1,"bbox":[1080,301,104,50]}
+{"kind":"shape","id":"sh/4zidonyd","slide":4,"bbox":[270,307,55,0]}
+{"kind":"shape","id":"sh/xkf6dcbu","slide":4,"bbox":[515,307,55,0]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":4,"bbox":[760,307,55,0]}
+{"kind":"shape","id":"sh/u18jqh0f","slide":4,"bbox":[1005,307,55,0]}
+{"kind":"shape","id":"sh/1orytsvu","slide":4,"bbox":[126,454,300,100]}
+{"kind":"shape","id":"sh/c7u54zid","slide":4,"bbox":[126,454,8,100]}
+{"kind":"textbox","id":"sh/judg7ads","slide":4,"text":"Uses HumanML3D motion","textPreview":"Uses HumanML3D motion","textChars":21,"textLines":1,"bbox":[150,472,256,24]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":4,"text":"The paired motion is no longer ignored; it becomes the reference profile for teacher selection.","textPreview":"The paired motion is no longer ignored; it becomes the reference profile for teacher selection.","textChars":95,"textLines":1,"bbox":[150,502,256,44]}
+{"kind":"shape","id":"sh/1032lszq","slide":4,"bbox":[490,454,300,100]}
+{"kind":"shape","id":"sh/cfa9w3m9","slide":4,"bbox":[490,454,8,100]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":4,"text":"Still keeps MoConVQ tokens","textPreview":"Still keeps MoConVQ tokens","textChars":26,"textLines":1,"bbox":[514,472,256,24]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":4,"text":"Student training remains compatible with the pretrained MoConVQ GPT token interface.","textPreview":"Student training remains compatible with the pretrained MoConVQ GPT token interface.","textChars":84,"textLines":1,"bbox":[514,502,256,44]}
+{"kind":"shape","id":"sh/ulwval87","slide":4,"bbox":[854,454,300,100]}
+{"kind":"shape","id":"sh/j6tovaho","slide":4,"bbox":[854,454,8,100]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":4,"text":"Selection is not final training","textPreview":"Selection is not final training","textChars":31,"textLines":1,"bbox":[878,472,256,24]}
+{"kind":"textbox","id":"sh/1cfa9w3m","slide":4,"text":"The score ranks candidates only; LoRA still trains with CE on the selected tokens.","textPreview":"The score ranks candidates only; LoRA still trains with CE on the selected tokens.","textChars":82,"textLines":1,"bbox":[878,502,256,44]}
+{"kind":"notes","id":"nt/lssrq8","slide":4,"text":"这一页是新方法的核心流程。对于每一条 HumanML3D 样本，我们有 caption、motion_id 和对应真实 motion。teacher 不再只采样一次，而是用 top-k 随机采样生成多个候选。每个候选被解码成 BVH，计算运动统计，然后和该 motion_id 对应的 HumanML3D 运动统计比较，选出距离最小的 candidate。最后 student 仍然用 cross entropy 学这个被选中的 token。这样既利用了 HumanML3D motion，又保持 MoConVQ token 训练路径不变。"}
+{"kind":"slide","id":"sl/0evfzf","slide":5,"title":"SELECTION SCORE","textShapes":18}
+{"kind":"shape","id":"sh/nih4byhg","slide":5,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":5,"name":"kicker","text":"SELECTION SCORE","textPreview":"SELECTION SCORE","textChars":15,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":5,"name":"title","text":"The candidate score measures closeness, not lower-is-better style","textPreview":"The candidate score measures closeness, not lower-is-better style","textChars":65,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":5,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":5,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":5,"name":"footer","text":"5 / 10 - Thesis Report","textPreview":"5 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"shape","id":"sh/9cvixcze","slide":5,"bbox":[72,162,1136,76]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":5,"text":"score = mean | log(candidate_metric / HumanML_metric) |   → lower is closer","textPreview":"score = mean | log(candidate_metric / HumanML_metric) |   → lower is closer","textChars":75,"textLines":1,"bbox":[110,187,1040,30]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":5,"text":"This is different from the old style proxy. If the HumanML speed is not zero, collapsing speed to zero is penalized, not rewarded.","textPreview":"This is different from the old style proxy. If the HumanML speed is not zero, collapsing speed to zero is penalized, not rewarded.","textChars":130,"textLines":1,"bbox":[92,274,1040,40]}
+{"kind":"shape","id":"sh/bi9s36hc","slide":5,"bbox":[98,362,245,48]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":5,"text":"duration_sec","textPreview":"duration_sec","textChars":12,"textLines":1,"bbox":[114,375,220,22]}
+{"kind":"shape","id":"sh/tovahoza","slide":5,"bbox":[383,362,245,48]}
+{"kind":"textbox","id":"sh/032lszqt","slide":5,"text":"root_speed_mean","textPreview":"root_speed_mean","textChars":15,"textLines":1,"bbox":[399,375,220,22]}
+{"kind":"shape","id":"sh/bulwval8","slide":5,"bbox":[668,362,245,48]}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":5,"text":"root_path_length","textPreview":"root_path_length","textChars":16,"textLines":1,"bbox":[684,375,220,22]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":5,"bbox":[953,362,245,48]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":5,"text":"mean_joint_velocity","textPreview":"mean_joint_velocity","textChars":19,"textLines":1,"bbox":[969,375,220,22]}
+{"kind":"shape","id":"sh/byhgn29g","slide":5,"bbox":[98,440,245,48]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":5,"text":"mean_joint_acceleration","textPreview":"mean_joint_acceleration","textChars":23,"textLines":1,"bbox":[114,453,220,22]}
+{"kind":"shape","id":"sh/65wjudg7","slide":5,"bbox":[383,440,245,48]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":5,"text":"mean_joint_jerk","textPreview":"mean_joint_jerk","textChars":15,"textLines":1,"bbox":[399,453,220,22]}
+{"kind":"shape","id":"sh/obm58z25","slide":5,"bbox":[668,440,245,48]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":5,"text":"root_vertical_range","textPreview":"root_vertical_range","textChars":19,"textLines":1,"bbox":[684,453,220,22]}
+{"kind":"shape","id":"sh/6xkf6dcb","slide":5,"bbox":[953,440,245,48]}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":5,"text":"all_joint_vertical_range","textPreview":"all_joint_vertical_range","textChars":24,"textLines":1,"bbox":[969,453,220,22]}
+{"kind":"shape","id":"sh/oza1gvy9","slide":5,"bbox":[150,550,430,70]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":5,"bbox":[150,550,8,70]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":5,"text":"Good for","textPreview":"Good for","textChars":8,"textLines":1,"bbox":[174,568,386,24]}
+{"kind":"textbox","id":"sh/z61032ls","slide":5,"text":"global speed, duration, vertical motion, and whole-body intensity.","textPreview":"global speed, duration, vertical motion, and whole-body intensity.","textChars":66,"textLines":1,"bbox":[174,598,386,14]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":5,"bbox":[700,550,430,70]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":5,"bbox":[700,550,8,70]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":5,"text":"Weak for","textPreview":"Weak for","textChars":8,"textLines":1,"bbox":[724,568,386,24]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":5,"text":"fine hand actions, object-like semantics, complex dance identities, and local motion order.","textPreview":"fine hand actions, object-like semantics, complex dance identities, and local motion order.","textChars":91,"textLines":1,"bbox":[724,598,386,14]}
+{"kind":"notes","id":"nt/0evfzf","slide":5,"text":"这一页重点澄清 scoring。新 selection score 不是 lower-is-better 风格得分，而是接近度得分。公式是 candidate metric 和 HumanML metric 的 log ratio distance 取平均，越小表示越接近。比如 HumanML 的速度是 0.5，candidate 速度变成 0 并不会得高分，反而会因为和目标差得远而被惩罚。这套指标适合捕捉速度、时长、整体幅度、竖直起伏等全局运动特征，但不擅长捕捉手部动作、复杂舞蹈语义或动作顺序。"}
+{"kind":"slide","id":"sl/rraxg1","slide":6,"title":"KEY FIX","textShapes":17}
+{"kind":"shape","id":"sh/9s36hcrm","slide":6,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":6,"name":"kicker","text":"KEY FIX","textPreview":"KEY FIX","textChars":7,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":6,"name":"title","text":"Top-k sampling makes multi-candidate selection real","textPreview":"Top-k sampling makes multi-candidate selection real","textChars":51,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/gfmlkjm1","slide":6,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":6,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":6,"name":"footer","text":"6 / 10 - Thesis Report","textPreview":"6 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":6,"text":"Before stochastic top-k sampling, multiple candidates were nearly identical. After the fix, non-first candidates were selected 86 times.","textPreview":"Before stochastic top-k sampling, multiple candidates were nearly identical. After the fix, non-first candidates were selected 86 times.","textChars":136,"textLines":1,"bbox":[72,158,1080,40]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":6,"text":"Deterministic teacher.sample","textPreview":"Deterministic teacher.sample","textChars":28,"textLines":1,"bbox":[120,238,420,28]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":6,"text":"Top-k stochastic teacher.sample","textPreview":"Top-k stochastic teacher.sample","textChars":31,"textLines":1,"bbox":[690,238,420,28]}
+{"kind":"shape","id":"sh/tovahoza","slide":6,"bbox":[120,320,360,28]}
+{"kind":"shape","id":"sh/032lszqt","slide":6,"bbox":[120,320,358,28]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":6,"text":"candidate 0: 199","textPreview":"candidate 0: 199","textChars":16,"textLines":1,"bbox":[500,314,150,34]}
+{"kind":"shape","id":"sh/ixczed8v","slide":6,"bbox":[120,372,360,28]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":6,"bbox":[120,372,2,28]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":6,"text":"candidate 1: 1","textPreview":"candidate 1: 1","textChars":14,"textLines":1,"bbox":[500,366,150,34]}
+{"kind":"shape","id":"sh/bulwval8","slide":6,"bbox":[690,310,360,28]}
+{"kind":"shape","id":"sh/i9s36hcr","slide":6,"bbox":[690,310,360,28]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":6,"text":"candidate 0: 114","textPreview":"candidate 0: 114","textChars":16,"textLines":1,"bbox":[1070,304,150,34]}
+{"kind":"shape","id":"sh/0je9cvix","slide":6,"bbox":[690,362,360,28]}
+{"kind":"shape","id":"sh/g7adsji5","slide":6,"bbox":[690,362,97.89,28]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":6,"text":"candidate 1: 31","textPreview":"candidate 1: 31","textChars":15,"textLines":1,"bbox":[1070,356,150,34]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":6,"bbox":[690,414,360,28]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":6,"bbox":[690,414,101.05,28]}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":6,"text":"candidate 2: 32","textPreview":"candidate 2: 32","textChars":15,"textLines":1,"bbox":[1070,408,150,34]}
+{"kind":"shape","id":"sh/90je9cvi","slide":6,"bbox":[690,466,360,28]}
+{"kind":"shape","id":"sh/yd0z6103","slide":6,"bbox":[690,466,72.63,28]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":6,"text":"candidate 3: 23","textPreview":"candidate 3: 23","textChars":15,"textLines":1,"bbox":[1070,460,150,34]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":6,"bbox":[188,510,360,90]}
+{"kind":"shape","id":"sh/9cvixcze","slide":6,"bbox":[188,510,8,90]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":6,"text":"Before","textPreview":"Before","textChars":6,"textLines":1,"bbox":[212,528,316,24]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":6,"text":"Multiple-sample filtering almost did not matter because the teacher output was effectively deterministic.","textPreview":"Multiple-sample filtering almost did not matter because the teacher output was effectively deterministic.","textChars":105,"textLines":1,"bbox":[212,558,316,34]}
+{"kind":"shape","id":"sh/dg7adsji","slide":6,"bbox":[732,510,360,90]}
+{"kind":"shape","id":"sh/ovahoza1","slide":6,"bbox":[732,510,8,90]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":6,"text":"After","textPreview":"After","textChars":5,"textLines":1,"bbox":[756,528,316,24]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":6,"text":"Top-k and temperature expose meaningful variation, so HumanML selection can actually choose among candidates.","textPreview":"Top-k and temperature expose meaningful variation, so HumanML selection can actually choose among candidates.","textChars":109,"textLines":1,"bbox":[756,558,316,34]}
+{"kind":"notes","id":"nt/rraxg1","slide":6,"text":"这一页展示第一个明确成果：原先虽然代码上生成多个 candidate，但 teacher.sample 在 if_categorial=False 时几乎确定性，200 个样本里 199 次都选第一个。这说明多候选筛选基本没有发挥作用。加入 top-k stochastic sampling 后，选择分布变成 0 号 114 次，1 号 31 次，2 号 32 次，3 号 23 次，非第一个 candidate 合计 86 次。也就是说，selection 机制终于有了真实选择空间。"}
+{"kind":"slide","id":"sl/gadifa","slide":7,"title":"EVALUATION RESET","textShapes":13}
+{"kind":"shape","id":"sh/0fepkzup","slide":7,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/bulwval8","slide":7,"name":"kicker","text":"EVALUATION RESET","textPreview":"EVALUATION RESET","textChars":16,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":7,"name":"title","text":"The old style proxy and HumanML alignment answer different questions","textPreview":"The old style proxy and HumanML alignment answer different questions","textChars":68,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/tovahoza","slide":7,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/032lszqt","slide":7,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":7,"name":"footer","text":"7 / 10 - Thesis Report","textPreview":"7 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"shape","id":"sh/ixczed8v","slide":7,"bbox":[96,190,470,250]}
+{"kind":"shape","id":"sh/tcj6tova","slide":7,"bbox":[96,190,8,250]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":7,"text":"Direction","textPreview":"Direction","textChars":9,"textLines":1,"bbox":[120,204,426,36]}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":7,"text":"Old style proxy","textPreview":"Old style proxy","textChars":15,"textLines":1,"bbox":[120,240,426,24]}
+{"kind":"textbox","id":"sh/bulwval8","slide":7,"text":"Compares LoRA BVH against baseline BVH. It asks whether motion metrics moved in a hand-written style direction, such as slower speed for “slow deliberate”.","textPreview":"Compares LoRA BVH against baseline BVH. It asks whether motion metrics moved in a hand-written style direction, such as slower speed for ...","textChars":155,"textLines":1,"bbox":[120,268,426,164]}
+{"kind":"shape","id":"sh/0fepkzup","slide":7,"bbox":[714,190,470,250]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":7,"bbox":[714,190,8,250]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":7,"text":"Closeness","textPreview":"Closeness","textChars":9,"textLines":1,"bbox":[738,204,426,36]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":7,"text":"New HumanML alignment","textPreview":"New HumanML alignment","textChars":21,"textLines":1,"bbox":[738,240,426,24]}
+{"kind":"textbox","id":"sh/032lszqt","slide":7,"text":"Compares generated or selected BVH against the paired HumanML3D motion. It asks whether the motion statistics are close to the dataset reference.","textPreview":"Compares generated or selected BVH against the paired HumanML3D motion. It asks whether the motion statistics are close to the dataset re...","textChars":145,"textLines":1,"bbox":[738,268,426,164]}
+{"kind":"textbox","id":"sh/tovahoza","slide":7,"text":"Why this matters","textPreview":"Why this matters","textChars":16,"textLines":1,"bbox":[96,492,280,28]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":7,"bbox":[96,550,9,9]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":7,"text":"A lower-is-better proxy can reward over-shooting, such as making speed too low.","textPreview":"A lower-is-better proxy can reward over-shooting, such as making speed too low.","textChars":79,"textLines":1,"bbox":[118,542,1000,48]}
+{"kind":"shape","id":"sh/32lszqtc","slide":7,"bbox":[96,598,9,9]}
+{"kind":"textbox","id":"sh/ahoza1gv","slide":7,"text":"HumanML alignment penalizes both too high and too low values if they move away from the paired motion.","textPreview":"HumanML alignment penalizes both too high and too low values if they move away from the paired motion.","textChars":102,"textLines":1,"bbox":[118,590,1000,48]}
+{"kind":"notes","id":"nt/gadifa","slide":7,"text":"这一页解释为什么旧结果和新结果不能混在一起解读。旧 style proxy 比较的是 LoRA 和 baseline，看 LoRA 是否朝我们手写的风格方向变化；它不是在比较是否接近 HumanML3D。新 HumanML alignment 比较的是 candidate 或生成动作和对应 HumanML3D motion 的接近程度。两个指标回答的问题不同：旧指标问风格方向有没有更明显，新指标问是否更接近真实数据。"}
+{"kind":"slide","id":"sl/227jcr","slide":8,"title":"RESULTS","textShapes":37}
+{"kind":"shape","id":"sh/m94fu18j","slide":8,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":8,"name":"kicker","text":"RESULTS","textPreview":"RESULTS","textChars":7,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":8,"name":"title","text":"Top-k improves teacher alignment slightly, but not final student proxy","textPreview":"Top-k improves teacher alignment slightly, but not final student proxy","textChars":70,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/fil0rqd4","slide":8,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":8,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":8,"name":"footer","text":"8 / 10 - Thesis Report","textPreview":"8 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"textbox","id":"sh/83itgfml","slide":8,"text":"Original LoRA style proxy","textPreview":"Original LoRA style proxy","textChars":25,"textLines":1,"bbox":[96,178,260,22]}
+{"kind":"shape","id":"sh/fepkzupw","slide":8,"bbox":[96,206,260,16]}
+{"kind":"shape","id":"sh/mtwra5gb","slide":8,"bbox":[96,206,212.73,16]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":8,"text":"18/22","textPreview":"18/22","textChars":5,"textLines":1,"bbox":[374,201,80,24]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":8,"text":"HumanML deterministic","textPreview":"HumanML deterministic","textChars":21,"textLines":1,"bbox":[476,178,260,22]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":8,"bbox":[476,206,260,16]}
+{"kind":"shape","id":"sh/vy90je9c","slide":8,"bbox":[476,206,177.27,16]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":8,"text":"15/22","textPreview":"15/22","textChars":5,"textLines":1,"bbox":[754,201,80,24]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":8,"text":"HumanML top-k","textPreview":"HumanML top-k","textChars":13,"textLines":1,"bbox":[856,178,260,22]}
+{"kind":"shape","id":"sh/61032lsz","slide":8,"bbox":[856,206,260,16]}
+{"kind":"shape","id":"sh/vmtwra5g","slide":8,"bbox":[856,206,141.82,16]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":8,"text":"12/22","textPreview":"12/22","textChars":5,"textLines":1,"bbox":[1134,201,80,24]}
+{"kind":"shape","id":"sh/dg7adsji","slide":8,"bbox":[96,292,320,126]}
+{"kind":"shape","id":"sh/1kre1w7m","slide":8,"bbox":[96,292,8,126]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":8,"text":"12/22","textPreview":"12/22","textChars":5,"textLines":1,"bbox":[120,306,276,36]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":8,"text":"Style proxy dropped","textPreview":"Style proxy dropped","textChars":19,"textLines":1,"bbox":[120,342,276,24]}
+{"kind":"textbox","id":"sh/uxc3ylc7","slide":8,"text":"Old directional score: original 18/22, deterministic 15/22, top-k 12/22. This says the final student did not improve under the old proxy.","textPreview":"Old directional score: original 18/22, deterministic 15/22, top-k 12/22. This says the final student did not improve under the old proxy.","textChars":137,"textLines":1,"bbox":[120,370,276,40]}
+{"kind":"shape","id":"sh/1cfa9w3m","slide":8,"bbox":[480,292,320,126]}
+{"kind":"shape","id":"sh/crmhk3q5","slide":8,"bbox":[480,292,8,126]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":8,"text":"0.1477","textPreview":"0.1477","textChars":6,"textLines":1,"bbox":[504,306,276,36]}
+{"kind":"textbox","id":"sh/ulwval87","slide":8,"text":"Teacher alignment improved","textPreview":"Teacher alignment improved","textChars":26,"textLines":1,"bbox":[504,342,276,24]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":8,"text":"Selected teacher distance moved from 1.9666 to 1.9419, and score from 0.1443 to 0.1477.","textPreview":"Selected teacher distance moved from 1.9666 to 1.9419, and score from 0.1443 to 0.1477.","textChars":87,"textLines":1,"bbox":[504,370,276,40]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":8,"bbox":[864,292,320,126]}
+{"kind":"shape","id":"sh/mhk3q5o7","slide":8,"bbox":[864,292,8,126]}
+{"kind":"textbox","id":"sh/b2hwfyxo","slide":8,"text":"small gain","textPreview":"small gain","textChars":10,"textLines":1,"bbox":[888,306,276,36]}
+{"kind":"textbox","id":"sh/4nap4r65","slide":8,"text":"Interpretation","textPreview":"Interpretation","textChars":14,"textLines":1,"bbox":[888,342,276,24]}
+{"kind":"textbox","id":"sh/t83itgfm","slide":8,"text":"The teacher-selection target changed, but the final student generation objective did not yet fully inherit that improvement.","textPreview":"The teacher-selection target changed, but the final student generation objective did not yet fully inherit that improvement.","textChars":124,"textLines":1,"bbox":[888,370,276,40]}
+{"kind":"shape","id":"sh/bq1oryts","slide":8,"bbox":[72,442,1136,190]}
+{"kind":"textbox","id":"sh/4byhgn29","slide":8,"text":"What the two metrics say","textPreview":"What the two metrics say","textChars":24,"textLines":1,"bbox":[96,452,380,28]}
+{"kind":"shape","id":"sh/twra5gbq","slide":8,"bbox":[96,496,1088,34]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":8,"text":"Run","textPreview":"Run","textChars":3,"textLines":1,"bbox":[120,503,220,20]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":8,"text":"Old style proxy","textPreview":"Old style proxy","textChars":15,"textLines":1,"bbox":[430,503,220,20]}
+{"kind":"textbox","id":"sh/vixczed8","slide":8,"text":"HumanML alignment","textPreview":"HumanML alignment","textChars":17,"textLines":1,"bbox":[720,503,240,20]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":8,"text":"Interpretation","textPreview":"Interpretation","textChars":14,"textLines":1,"bbox":[990,503,170,20]}
+{"kind":"shape","id":"sh/donyd0z6","slide":8,"bbox":[96,530,1088,34]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":8,"text":"Original LoRA","textPreview":"Original LoRA","textChars":13,"textLines":1,"bbox":[120,538,240,18]}
+{"kind":"textbox","id":"sh/val87ed8","slide":8,"text":"18/22","textPreview":"18/22","textChars":5,"textLines":1,"bbox":[430,538,180,18]}
+{"kind":"textbox","id":"sh/6psfil0r","slide":8,"text":"not measured here","textPreview":"not measured here","textChars":17,"textLines":1,"bbox":[720,538,220,18]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":8,"text":"strong old proxy","textPreview":"strong old proxy","textChars":16,"textLines":1,"bbox":[990,538,180,18]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":8,"bbox":[96,564,1088,34]}
+{"kind":"textbox","id":"sh/v6psfil0","slide":8,"text":"HumanML deterministic","textPreview":"HumanML deterministic","textChars":21,"textLines":1,"bbox":[120,572,240,18]}
+{"kind":"textbox","id":"sh/2lszqtcj","slide":8,"text":"15/22","textPreview":"15/22","textChars":5,"textLines":1,"bbox":[430,572,180,18]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":8,"text":"score 0.1443","textPreview":"score 0.1443","textChars":12,"textLines":1,"bbox":[720,572,220,18]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":8,"text":"teacher baseline","textPreview":"teacher baseline","textChars":16,"textLines":1,"bbox":[990,572,180,18]}
+{"kind":"shape","id":"sh/y90je9cv","slide":8,"bbox":[96,598,1088,34]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":8,"text":"HumanML top-k","textPreview":"HumanML top-k","textChars":13,"textLines":1,"bbox":[120,606,240,18]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":8,"text":"12/22","textPreview":"12/22","textChars":5,"textLines":1,"bbox":[430,606,180,18]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":8,"text":"score 0.1477","textPreview":"score 0.1477","textChars":12,"textLines":1,"bbox":[720,606,220,18]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":8,"text":"slightly closer teacher","textPreview":"slightly closer teacher","textChars":23,"textLines":1,"bbox":[990,606,180,18]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":8,"text":"Reading: top-k fixes the teacher-selection mechanism, but the final student result still needs paired HumanML generation evaluation.","textPreview":"Reading: top-k fixes the teacher-selection mechanism, but the final student result still needs paired HumanML generation evaluation.","textChars":132,"textLines":1,"bbox":[96,640,1050,22]}
+{"kind":"image","id":"im/tcj6tova","slide":8,"name":"","alt":"Comparison chart","bbox":[120,454,1040,170]}
+{"kind":"notes","id":"nt/227jcr","slide":8,"text":"这一页把结果讲清楚：如果用旧 style proxy，top-k 结果反而更低，只有 12/22；但如果看新 HumanML alignment，top-k selected teacher 比 deterministic selected teacher 略好，distance 从 1.9666 降到 1.9419，score 从 0.1443 升到 0.1477。这个结果不是简单失败，而是说明两个目标不同：我们确实改善了 teacher selection 的候选多样性和一点点 HumanML 对齐，但还没有证明最终 student 的生成结果也更接近 HumanML。"}
+{"kind":"slide","id":"sl/xe32y2","slide":9,"title":"WHERE IT WORKS","textShapes":12}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":9,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":9,"name":"kicker","text":"WHERE IT WORKS","textPreview":"WHERE IT WORKS","textChars":14,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":9,"name":"title","text":"Alignment is better for global whole-body motions than local semantics","textPreview":"Alignment is better for global whole-body motions than local semantics","textChars":70,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":9,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":9,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":9,"name":"footer","text":"9 / 10 - Thesis Report","textPreview":"9 / 10 - Thesis Report","textChars":22,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":9,"text":"Samples that align better","textPreview":"Samples that align better","textChars":25,"textLines":1,"bbox":[790,160,340,28]}
+{"kind":"shape","id":"sh/90je9cvi","slide":9,"bbox":[790,218,9,9]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":9,"text":"Running, sprinting, jumping, forward motion","textPreview":"Running, sprinting, jumping, forward motion","textChars":43,"textLines":1,"bbox":[812,210,360,48]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":9,"bbox":[790,278,9,9]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":9,"text":"Clear root speed, path length, and vertical range","textPreview":"Clear root speed, path length, and vertical range","textChars":49,"textLines":1,"bbox":[812,270,360,48]}
+{"kind":"shape","id":"sh/eloj2t83","slide":9,"bbox":[790,338,9,9]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":9,"text":"Caption describes global body dynamics","textPreview":"Caption describes global body dynamics","textChars":38,"textLines":1,"bbox":[812,330,360,48]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":9,"text":"Samples that align worse","textPreview":"Samples that align worse","textChars":24,"textLines":1,"bbox":[790,410,340,28]}
+{"kind":"shape","id":"sh/7u54zido","slide":9,"bbox":[790,468,9,9]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":9,"text":"Hand waving, lifting, object-like actions","textPreview":"Hand waving, lifting, object-like actions","textChars":41,"textLines":1,"bbox":[812,460,360,48]}
+{"kind":"shape","id":"sh/psfil0rq","slide":9,"bbox":[790,528,9,9]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":9,"text":"Complex dances such as chicken dance","textPreview":"Complex dances such as chicken dance","textChars":36,"textLines":1,"bbox":[812,520,360,48]}
+{"kind":"shape","id":"sh/wb2hwfyx","slide":9,"bbox":[790,588,9,9]}
+{"kind":"textbox","id":"sh/lwval87e","slide":9,"text":"On-the-spot or local motion sequences","textPreview":"On-the-spot or local motion sequences","textChars":37,"textLines":1,"bbox":[812,580,360,48]}
+{"kind":"image","id":"im/2x4nap4r","slide":9,"name":"","alt":"Rendered motion preview contact sheet","bbox":[72,150,660,390]}
+{"kind":"notes","id":"nt/xe32y2","slide":9,"text":"这一页解释哪些样本对得上，哪些对不上。新 alignment 不是说只有部分数据有 ground truth，而是 200 条都能按 motion_id 对齐；差别在于运动统计是否真的接近。跑步、跳跃、前进这类全身运动比较容易对上，因为 root speed、path length、vertical range 能捕捉它们。挥手、拿东西、复杂舞蹈、局部动作顺序则对得差，因为当前指标主要是全局运动统计，无法充分表达局部语义。"}
+{"kind":"slide","id":"sl/b9kndy","slide":10,"title":"CONCLUSION","textShapes":17}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":10,"bbox":[72,44,28,4]}
+{"kind":"textbox","id":"sh/kb6xkf6d","slide":10,"name":"kicker","text":"CONCLUSION","textPreview":"CONCLUSION","textChars":10,"textLines":1,"bbox":[112,34,520,28]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":10,"name":"title","text":"The contribution is a better bridge, not a finished evaluator","textPreview":"The contribution is a better bridge, not a finished evaluator","textChars":61,"textLines":1,"bbox":[72,78,1060,76]}
+{"kind":"shape","id":"sh/2t83itgf","slide":10,"bbox":[72,666.67,1136,1.33]}
+{"kind":"textbox","id":"sh/re1w7mp0","slide":10,"name":"source","text":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textPreview":"Source: HumanML3D-guided MoConVQ LoRA distillation experiments","textChars":62,"textLines":1,"bbox":[72,674.67,720,20]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":10,"name":"footer","text":"10 / 10 - Thesis Report","textPreview":"10 / 10 - Thesis Report","textChars":23,"textLines":1,"bbox":[1000,674.67,208,20]}
+{"kind":"shape","id":"sh/9knih4by","slide":10,"bbox":[72,160,1136,82]}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":10,"text":"HumanML3D motion can guide teacher selection, but the final student still needs paired HumanML generation evaluation.","textPreview":"HumanML3D motion can guide teacher selection, but the final student still needs paired HumanML generation evaluation.","textChars":117,"textLines":1,"bbox":[110,184,1040,32]}
+{"kind":"shape","id":"sh/ra5gbq1o","slide":10,"bbox":[96,300,320,128]}
+{"kind":"shape","id":"sh/3m94fu18","slide":10,"bbox":[96,300,8,128]}
+{"kind":"textbox","id":"sh/a5gbq1or","slide":10,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[120,314,276,36]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":10,"text":"What is solved","textPreview":"What is solved","textChars":14,"textLines":1,"bbox":[120,350,276,24]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":10,"text":"HumanML3D motion is now used as a reference during teacher candidate selection; top-k sampling creates real candidate diversity.","textPreview":"HumanML3D motion is now used as a reference during teacher candidate selection; top-k sampling creates real candidate diversity.","textChars":128,"textLines":1,"bbox":[120,378,276,42]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":10,"bbox":[480,300,320,128]}
+{"kind":"shape","id":"sh/adsji5sn","slide":10,"bbox":[480,300,8,128]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":10,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[504,314,276,36]}
+{"kind":"textbox","id":"sh/sji5snel","slide":10,"text":"What is not solved","textPreview":"What is not solved","textChars":18,"textLines":1,"bbox":[504,350,276,24]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":10,"text":"Selected teacher alignment gains are small, and the final student has not been evaluated against paired HumanML motions yet.","textPreview":"Selected teacher alignment gains are small, and the final student has not been evaluated against paired HumanML motions yet.","textChars":124,"textLines":1,"bbox":[504,378,276,42]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":10,"bbox":[864,300,320,128]}
+{"kind":"shape","id":"sh/yd0z6103","slide":10,"bbox":[864,300,8,128]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":10,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[888,314,276,36]}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":10,"text":"Next step","textPreview":"Next step","textChars":9,"textLines":1,"bbox":[888,350,276,24]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":10,"text":"Generate baseline and LoRA BVHs from HumanML3D captions, then compare each output to the corresponding motion_id.","textPreview":"Generate baseline and LoRA BVHs from HumanML3D captions, then compare each output to the corresponding motion_id.","textChars":113,"textLines":1,"bbox":[888,378,276,42]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":10,"text":"Takeaway","textPreview":"Takeaway","textChars":8,"textLines":1,"bbox":[96,512,180,28]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":10,"text":"The method moves the project from caption-only pseudo-token distillation toward data-grounded teacher selection. The next experiment should close the loop at the student-output level.","textPreview":"The method moves the project from caption-only pseudo-token distillation toward data-grounded teacher selection. The next experiment shou...","textChars":183,"textLines":1,"bbox":[96,552,1040,56]}
+{"kind":"shape","id":"sh/g7adsji5","slide":10,"bbox":[72,160,1136,92]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":10,"text":"HumanML3D motion can guide teacher selection; the final student still needs paired HumanML generation evaluation.","textPreview":"HumanML3D motion can guide teacher selection; the final student still needs paired HumanML generation evaluation.","textChars":113,"textLines":1,"bbox":[110,187,1040,42]}
+{"kind":"notes","id":"nt/b9kndy","slide":10,"text":"最后总结。现在最重要的贡献不是最终分数已经全面提升，而是建立了一个更合理的桥：HumanML3D motion 可以参与 teacher selection，top-k 机制也让这个选择真正生效。还没有解决的是最终 student 是否更接近 HumanML3D，因为目前新 alignment 主要评估 selected teacher candidate。下一步应该用 HumanML3D caption 重新生成 baseline 和 LoRA BVH，再和每个 motion_id 的真实 motion 对齐，这样才能完整评估学生模型是否真正受益。"}
