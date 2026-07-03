@@ -1,4 +1,4 @@
-﻿\documentclass[conference]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 \usepackage{times}
 \usepackage[numbers]{natbib}
 \usepackage{multicol}
@@ -14,13 +14,13 @@
 }
 
 \title{Style-Aware Adaptation for Language-Conditioned Humanoid Motion Generation}
-\author{\IEEEauthorblockN{Haotian Wu, Yuhua Luo, and Xuyang Yuan}}
+\author{Haotian Wu, Yuhua Luo, and Xuyang Yuan}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We study style-aware adaptation for MoConVQ, a physics-based language-conditioned humanoid motion generator. The original proposal planned to fine-tune MoConVQ's language-conditioning transformer on HumanML3D style motions while freezing the motion representation backbone. During implementation, we found that the available HumanML3D parquet export provides processed 263-D motion features rather than MoConVQ-compatible BVH files or discrete motion-token labels. We therefore implement a parameter-efficient LoRA distillation alternative: style captions are filtered from HumanML3D, the pretrained MoConVQ generator produces pseudo token targets, and only low-rank LoRA updates are trained while the pretrained generator remains frozen. We further extend the distillation cache with HumanML3D motion-guided teacher selection: multiple teacher candidates are decoded, scored against the paired HumanML3D motion statistics, and the closest pseudo-token sequence is cached for student training. This yields a reproducible style-adaptation pipeline with 200 distilled examples, 1.97M trainable parameters out of 195.59M total parameters, measured training loss, generated BVH outputs, rendered qualitative comparisons, BVH-derived style proxy metrics, and a motion-aware teacher-selection ablation. The original LoRA run improves 18 of 22 pre-defined proxy comparisons, while the HumanML-selected top-k run improves teacher-target alignment slightly but drops the old style-proxy score to 12 of 22, showing that HumanML closeness and the earlier hand-written style proxy are not identical objectives. We do not report FID or R-Precision because the required official evaluator bridge is not available in this workspace.
+We present a parameter-efficient method for style-aware adaptation of MoConVQ, a physics-based language-conditioned humanoid motion generator. Because the available HumanML3D release provides processed 263-D motion features rather than MoConVQ-compatible BVH files or discrete token labels, we formulate adaptation as teacher-student distillation in MoConVQ's native token space. HumanML3D style captions define the language conditions, a frozen pretrained MoConVQ teacher supplies pseudo-token targets, and rank-8 LoRA adapters update only 1.97M trainable parameters out of a 195.59M-parameter text generator. To use paired HumanML3D motion information more directly, we also introduce motion-guided teacher selection: multiple teacher candidates are decoded, summarized with BVH-derived kinematic statistics, and the candidate closest to the paired HumanML3D motion profile is cached for training. The final system is evaluated through logged distillation loss, generated BVH files, rendered qualitative comparisons, pre-defined style-direction proxy metrics, and a teacher-selection ablation. The continued LoRA model improves 18 of 22 pre-defined BVH proxy checks relative to the baseline, while the top-k HumanML-selected cache slightly improves teacher-target alignment but reduces the legacy style-proxy score to 12 of 22. These results show that lightweight adapters can steer coarse motion style, and that HumanML motion closeness and hand-designed style-direction metrics capture different objectives.
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
@@ -37,7 +37,8 @@ MoConVQ is the primary baseline for this project because it connects discrete mo
 
 The project contribution is narrower than building a new motion generator. We instead study whether a small adapter can bias an existing generator toward style-specific prompts while preserving its pretrained motion representation and controller. This is consistent with LoRA-style parameter-efficient adaptation \cite{hu2022lora}: freeze the original network and learn low-rank updates in selected linear layers. The practical challenge is that HumanML3D motions in the local release are not MoConVQ token labels, so the final method uses teacher pseudo tokens rather than claiming direct supervised fine-tuning on ground-truth MoConVQ codes.
 
-\section{Data and Format Constraint}
+\section{Methodology and System Design}
+\subsection{Data and Format Constraint}
 HumanML3D is widely used for text-driven human motion generation \cite{guo2022humanml3d}. We curated a style subset using keyword groups for controlled, graceful, dance, energetic, and heavy/awkward motions. Filtering was performed independently inside train, validation, and test splits to avoid leakage.
 
 The available local dataset is the Hugging Face parquet export, which contains processed 263-D motion features and captions. MoConVQ fine-tuning expects its own discrete motion-token targets, generated by its VQ representation. Directly converting the available HumanML3D features into MoConVQ token labels would require a reliable skeleton, coordinate, frame-rate, and representation bridge that is not present in the release. To avoid fabricating supervision, we use pseudo-token distillation.
@@ -66,7 +67,7 @@ Test & 586 & 486 \\
 \label{fig:style_subset_distribution}
 \end{figure}
 
-\section{Method}
+\subsection{Adaptation Method}
 The baseline pipeline maps a prompt to text features, predicts a sequence of discrete motion codes, decodes those codes into motion latents, and tracks them with the MoConVQ controller to produce BVH output.
 
 \begin{figure*}[!t]
@@ -116,8 +117,8 @@ Duration & Motion length & sustained vs. brief action \\
 \label{tab:proxy_definitions}
 \end{table}
 
-\section{Experiments}
-All final runs used a fresh conda environment named \texttt{roboticsreport\_lora} with Python 3.8 and PyTorch 2.4.1+cu118. Baseline reproduction used the official MoConVQ pretrained assets and generated ten BVH files for generic and style-related prompts.
+\section{Experiments and Evaluation}
+All final runs used Python 3.8 and PyTorch 2.4.1+cu118 with the official MoConVQ pretrained assets. Baseline reproduction generated ten BVH files for generic and style-related prompts.
 
 The LoRA run used 200 style captions from the small style-training split. We trained for 5 epochs over a cached pseudo-token dataset. LoRA rank was 8, alpha was 16, dropout was 0.05, and learning rate was $10^{-4}$. The run trained 1,966,080 parameters, 1.005\% of the 195,591,680 parameters in the wrapped text generator.
 
@@ -153,7 +154,7 @@ Continuation epoch 2 & 2 & 0.2018 \\
 \label{fig:distill_loss_pack}
 \end{figure}
 
-\section{Results}
+\section{Results and Discussion}
 The baseline generated ten BVH files under \texttt{outputs/baseline/project\_prompts/}. The initial LoRA adapter generated the same ten prompts, and the selected continued-LoRA checkpoint generated deterministic outputs for the five style prompts. Selected baseline and continued-LoRA outputs were rendered as stick-figure previews for qualitative comparison.
 
 \begin{figure}[!t]
@@ -218,7 +219,7 @@ The HumanML-selected retraining runs change this picture. The deterministic Huma
 \label{fig:humanml_selected_topk}
 \end{figure*}
 
-\section{Result Interpretation}
+\subsection{Result Interpretation}
 The strongest prompt-level evidence appears in styles whose intended change can be described by simple kinematic quantities. For the slow deliberate walking prompt, the continued-LoRA output reduces root speed, mean joint velocity, acceleration, and jerk relative to the baseline. These four changes are directionally consistent with slower and smoother motion. For the heavy tired walking prompt, the adapter also reduces speed-related and smoothness-related quantities while producing a longer motion duration, which is consistent with a slower and heavier style interpretation.
 
 Figure~\ref{fig:key_metrics} converts representative raw BVH metrics into a common style-direction improvement scale, so larger bars consistently indicate stronger movement toward the intended style for this compact visualization. The energetic jump prompt has the clearest positive change in vertical motion. The LoRA output increases root vertical range and all-joint vertical range while also increasing root speed. These changes are visible in the rendered comparison and explain why this prompt receives five wins out of six proxy checks in the full proxy table. This does not mean the motion is universally better; it means the chosen proxy metrics detect stronger energetic and vertical motion under the same prompt.
@@ -238,7 +239,7 @@ The HumanML-selected cache results are also file-backed. The deterministic and t
 
 The report therefore separates three evidence types. First, the distillation loss demonstrates that LoRA parameters learn the teacher token distribution. Second, proxy metrics quantify visible kinematic changes in generated BVH motions. Third, rendered frames and videos allow qualitative inspection of whether the metric changes correspond to visible motion differences. None of these are presented as official HumanML3D benchmark scores.
 
-\section{Limitations}
+\subsection{Limitations}
 The main limitation is data compatibility. The available HumanML3D parquet features are not direct labels for MoConVQ's discrete token space. Our distillation method is therefore a practical adaptation experiment, not full supervised fine-tuning on true HumanML3D motion tokens.
 
 The HumanML-selected cache reduces but does not remove this limitation. It uses HumanML3D motion to choose among MoConVQ-valid teacher candidates, but the student still learns pseudo tokens rather than true HumanML3D-derived MoConVQ token labels. This is why an improved teacher-target alignment score should be interpreted as better target selection, not as proof that the final student BVH is closer to HumanML3D.
