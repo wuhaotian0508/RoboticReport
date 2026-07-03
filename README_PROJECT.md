@@ -25,6 +25,28 @@ preserved and reordered version of that early work is kept on the
 state; use `wuhao-first-main` only when checking the earlier development
 history.
 
+## Team Contributions
+
+This contribution summary is based on the visible git commit history after the
+repository-history cleanup described above.
+
+- Haotian Wu (`wuhaotian0508` / `haotian wu`): led repository setup and final
+  integration, including the initial project import, dataset exclusion rules,
+  large checkpoint/LFS handling, final submission packaging, RSS-format report
+  cleanup, GitHub history repair, and README documentation. He also led the
+  final HumanML3D-guided teacher-selection extension, updated the final report
+  and submission PDFs, prepared final presentation materials, and coordinated
+  the cleaned `main` branch with the preserved `wuhao-first-main` history.
+- Yuhua Luo (`silhovette` in the commit history): implemented and iterated on
+  the LoRA distillation experiment pipeline, including measured LoRA runs,
+  proxy evaluation scripts/results, report figure generation, midterm/final
+  report expansion, RSS report-template conversion, and final evaluation
+  figures for the paper.
+- Xuyang Yuan (`Yuan Xuyang` in the commit history): contributed the human
+  evaluation branch and related integration work, including human-evaluation
+  additions, conflict-marker cleanup, and pull-request/merge support for
+  evaluation materials.
+
 ## Current Method
 
 The original proposal planned to fine-tune MoConVQ's language-conditioning
