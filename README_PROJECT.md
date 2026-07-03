@@ -14,6 +14,17 @@ humanoid motion generation.
 - `outputs/`: measured baseline, LoRA, rendered comparison, table, figure, and log outputs.
 - `report/`: midterm and final LaTeX reports with shared references.
 
+## Repository History Note
+
+The `main` branch is the cleaned final submission branch. During earlier
+repository synchronization, the first project commits on the original main
+history were overwritten by a remote update. Those exact commits could not be
+recovered reliably from the available repository references, so the closest
+preserved and reordered version of that early work is kept on the
+`wuhao-first-main` branch. Use `main` for the final submitted report and code
+state; use `wuhao-first-main` only when checking the earlier development
+history.
+
 ## Current Method
 
 The original proposal planned to fine-tune MoConVQ's language-conditioning
