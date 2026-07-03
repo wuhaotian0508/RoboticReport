@@ -1,4 +1,5 @@
 MoConVQ/.venv/
+.tmp_moconvq_src/
 
 __pycache__/
 *.py[cod]
@@ -17,3 +18,14 @@ dist/
 *.log.tmp
 *.tmp
 *.bak
+
+# Office lock files and generated inspection dumps
+~$*
+*.inspect.ndjson
+
+# LaTeX build products
+*.aux
+*.log
+*.out
+*.blg
+*.synctex.gz

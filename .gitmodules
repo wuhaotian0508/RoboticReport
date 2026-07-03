@@ -3,4 +3,4 @@
 	url = https://huggingface.co/datasets/TeoGchx/HumanML3D
 [submodule "MoConVQ"]
 	path = MoConVQ
-	url = git@github.com:heyuanYao-pku/MoConVQ.git
+	url = https://github.com/heyuanYao-pku/MoConVQ.git
