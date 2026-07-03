@@ -38,14 +38,20 @@ repository-history cleanup described above.
   and submission PDFs, prepared final presentation materials, and coordinated
   the cleaned `main` branch with the preserved `wuhao-first-main` history.
 - Yuhua Luo (`silhovette` in the commit history): implemented and iterated on
-  the LoRA distillation experiment pipeline, including measured LoRA runs,
-  proxy evaluation scripts/results, report figure generation, midterm/final
-  report expansion, RSS report-template conversion, and final evaluation
-  figures for the paper.
+  the LoRA distillation experiment pipeline, including the smoke pipeline,
+  measured final LoRA runs, continued-refinement experiments, generated BVH
+  samples, proxy metric evaluation, and paper-ready result figures. He also
+  organized missing submission artifacts, expanded the midterm and final
+  reports with experimental results and analysis, converted the reports to the
+  RSS/IEEEtran format, refined the narrative around LoRA improvements, and
+  prepared the final evaluation figure pack used in the paper.
 - Xuyang Yuan (`Yuan Xuyang` in the commit history): contributed the human
   evaluation branch and related integration work, including human-evaluation
-  additions, conflict-marker cleanup, and pull-request/merge support for
-  evaluation materials.
+  additions, pairwise-evaluation material integration, conflict-marker cleanup,
+  and pull-request/merge support for evaluation materials. He also helped
+  maintain repository consistency during collaborative merging and contributed
+  supporting project updates that were incorporated into the final cleaned
+  branch.
 
 ## Current Method
 
