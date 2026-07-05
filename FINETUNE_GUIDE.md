@@ -14,18 +14,19 @@ low-rank LoRA updates in the frozen text-conditioned generator.
 
 ```powershell
 conda create -n roboticsreport_lora python=3.8 pip -y
-D:\anaconda3\envs\roboticsreport_lora\python.exe -m pip install torch==2.4.1+cu118 torchvision==0.19.1+cu118 torchaudio==2.4.1+cu118 --index-url https://download.pytorch.org/whl/cu118
-D:\anaconda3\envs\roboticsreport_lora\python.exe -m pip install einops==0.6.0 h5py==3.8.0 matplotlib==3.7.1 scikit-learn==1.2.2 scipy==1.10.1 tqdm==4.65.0 setuptools==58.2.0 tensorboardx opt_einsum numba psutil pyyaml cython==0.29.36 transformers==4.41.2 sentencepiece pandas pyarrow opencv-python imageio imageio-ffmpeg
+conda activate roboticsreport_lora
+python -m pip install torch==2.4.1+cu118 torchvision==0.19.1+cu118 torchaudio==2.4.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+python -m pip install einops==0.6.0 h5py==3.8.0 matplotlib==3.7.1 scikit-learn==1.2.2 scipy==1.10.1 tqdm==4.65.0 setuptools==58.2.0 tensorboardx opt_einsum numba psutil pyyaml cython==0.29.36 transformers==4.41.2 sentencepiece pandas pyarrow opencv-python imageio imageio-ffmpeg
 ```
 
-Use the explicit interpreter path to avoid Windows `conda run` Unicode logging
-issues.
+The commands below use `<env-python>` to denote the Python interpreter from this
+environment. After activation, it can usually be replaced with `python`.
 
 ## 2. Build Style Subsets
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\filter_style_subset.py --humanml3d-root HumanML3D
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\make_small_splits.py --train-size 200 --val-size 40 --test-size 40
+<env-python> scripts\filter_style_subset.py --humanml3d-root HumanML3D
+<env-python> scripts\make_small_splits.py --train-size 200 --val-size 40 --test-size 40
 ```
 
 Expected files:
@@ -41,7 +42,7 @@ data/style_subset_small/style_train_small.csv
 ## 3. Smoke Test
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distill.py `
+<env-python> scripts\train_style_lora_distill.py `
   --output-dir outputs\finetune_lora_smoke `
   --cache-path outputs\finetune_distill_smoke\distill_cache.pt `
   --train-only `
@@ -61,7 +62,7 @@ outputs/finetune_lora_smoke/style_lora_last.pth
 ## 4. Main LoRA Run
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distill.py `
+<env-python> scripts\train_style_lora_distill.py `
   --output-dir outputs\finetune_lora_200 `
   --cache-path outputs\finetune_lora_200\distill_cache.pt `
   --max-samples 200 `
@@ -69,7 +70,7 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distil
   --build-cache-only `
   --rebuild-cache
 
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distill.py `
+<env-python> scripts\train_style_lora_distill.py `
   --output-dir outputs\finetune_lora_200 `
   --cache-path outputs\finetune_lora_200\distill_cache.pt `
   --train-only `
@@ -92,7 +93,7 @@ outputs/finetune_lora_200/style_lora_last.pth
 ## 5. Generate BVH with LoRA
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py `
+<env-python> scripts\generate_with_style_lora.py `
   --checkpoint outputs\finetune_lora_200\style_lora_last.pth `
   --prompt-file data\prompts\baseline_and_style_prompts.txt `
   --output-dir outputs\finetune_lora_200_samples `
@@ -105,7 +106,7 @@ The final reported proxy metrics use a conservative two-epoch continuation from
 the epoch-4 checkpoint with a lower learning rate:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distill.py `
+<env-python> scripts\train_style_lora_distill.py `
   --output-dir outputs\finetune_lora_200_cont_lr5e5 `
   --cache-path outputs\finetune_lora_200\distill_cache.pt `
   --train-only `
@@ -115,7 +116,7 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\train_style_lora_distil
   --lr 5e-5 `
   --resume-lora outputs\finetune_lora_200\style_lora_epoch4.pth
 
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py `
+<env-python> scripts\generate_with_style_lora.py `
   --checkpoint outputs\finetune_lora_200_cont_lr5e5\style_lora_last.pth `
   --prompt-file data\prompts\baseline_and_style_prompts.txt `
   --output-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles `
@@ -133,7 +134,7 @@ prompts. This is still a proxy metric, not an official HumanML3D benchmark.
 Render selected BVH files with `scripts/render_bvh_video.py`, then summarize:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_lora_results.py `
+<env-python> scripts\summarize_lora_results.py `
   --run-dir outputs\finetune_lora_200 `
   --comparison-dir outputs\comparison_lora_200_cont
 ```
@@ -152,14 +153,14 @@ outputs/comparison_lora_200_cont/comparison_manifest.csv
 Measure whether the adapter learned the teacher pseudo-token distribution:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py `
+<env-python> scripts\evaluate_lora_distill_loss.py `
   --checkpoint-dir outputs\finetune_lora_200 `
   --train-cache outputs\finetune_lora_200\distill_cache.pt `
   --val-cache outputs\finetune_lora_val\distill_cache.pt `
   --output outputs\tables\lora_train_val_loss.csv
 ```
 
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_loss.py `
+<env-python> scripts\evaluate_lora_distill_loss.py `
   --checkpoint-dir outputs\finetune_lora_200_cont_lr5e5 `
   --train-cache outputs\finetune_lora_200\distill_cache.pt `
   --val-cache outputs\finetune_lora_val\distill_cache.pt `
@@ -168,7 +169,7 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\evaluate_lora_distill_l
 Measure BVH style-direction proxy metrics for baseline and LoRA outputs:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\compute_bvh_proxy_metrics.py `
+<env-python> scripts\compute_bvh_proxy_metrics.py `
   --baseline-dir outputs\baseline\project_prompts `
   --lora-dir outputs\finetune_lora_200_cont_lr5e5_seed7_styles `
   --output-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles
@@ -190,7 +191,7 @@ Generate the final report figures and one-row evaluation summary from the
 measured proxy/loss CSV files:
 
 ```powershell
-uv run --python .\MoConVQ\.venv\Scripts\python.exe python scripts\make_evaluation_figure_pack.py `
+python scripts\make_evaluation_figure_pack.py `
   --metrics-dir outputs\metrics_lora_200_cont_lr5e5_seed7_styles `
   --tables-dir outputs\tables `
   --figures-dir outputs\figures
@@ -214,7 +215,7 @@ does not use multi-candidate preference fine-tuning.
 Export held-out style prompts from the small test split:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\export_eval_prompts.py `
+<env-python> scripts\export_eval_prompts.py `
   --prompt-csv data\style_subset_small\style_test_small.csv `
   --caption-column caption `
   --max-items 40 `
@@ -224,16 +225,16 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\export_eval_prompts.py 
 Generate baseline BVH outputs for the same prompts:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\run_baseline_prompts.py `
+<env-python> scripts\run_baseline_prompts.py `
   --prompt-file outputs\human_pairwise_eval\test_prompts.txt `
   --output-dir outputs\human_pairwise_eval\baseline_bvh `
-  --python D:\anaconda3\envs\roboticsreport_lora\python.exe
+  --python <env-python>
 ```
 
 Generate LoRA BVH outputs from the continued adapter:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lora.py `
+<env-python> scripts\generate_with_style_lora.py `
   --checkpoint outputs\finetune_lora_200_cont_lr5e5\style_lora_last.pth `
   --prompt-file outputs\human_pairwise_eval\test_prompts.txt `
   --output-dir outputs\human_pairwise_eval\lora_bvh `
@@ -244,7 +245,7 @@ D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\generate_with_style_lor
 Build the blind A/B review page:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\build_blind_pairwise_eval.py `
+<env-python> scripts\build_blind_pairwise_eval.py `
   --prompt-file outputs\human_pairwise_eval\test_prompts.txt `
   --baseline-dir outputs\human_pairwise_eval\baseline_bvh `
   --lora-dir outputs\human_pairwise_eval\lora_bvh `
@@ -259,7 +260,7 @@ and place it in `outputs\human_pairwise_eval`.
 Summarize the blind labels:
 
 ```powershell
-D:\anaconda3\envs\roboticsreport_lora\python.exe scripts\summarize_blind_pairwise_eval.py `
+<env-python> scripts\summarize_blind_pairwise_eval.py `
   --blind-key outputs\human_pairwise_eval\blind_key.csv `
   --labels outputs\human_pairwise_eval\preference_labels.csv `
   --output-dir outputs\human_pairwise_eval

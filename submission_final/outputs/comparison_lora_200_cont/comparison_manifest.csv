@@ -1,4 +1,0 @@
-case,baseline_video,lora_video
-Slow deliberate walk,outputs\comparison_lora_200_cont\baseline_slow.mp4,outputs\comparison_lora_200_cont\lora_slow.mp4
-Graceful dance,outputs\comparison_lora_200_cont\baseline_dance.mp4,outputs\comparison_lora_200_cont\lora_dance.mp4
-Energetic jump,outputs\comparison_lora_200_cont\baseline_jump.mp4,outputs\comparison_lora_200_cont\lora_jump.mp4
